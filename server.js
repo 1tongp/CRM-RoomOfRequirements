@@ -2,24 +2,24 @@
 // "npm install" to download the node_modules
 // "npm run server" to run the server and connect to database
 
-// const express = require('express');
-// const cors = require('cors');
-// const mongoose = require('mongoose');
-// const bodyParser  = require('body-parser');
-// const app = express();
-// const server = require('http').createServer(app);
+const express = require('express');
+//const cors = require('cors');
+const mongoose = require('mongoose');
+const bodyParser  = require('body-parser');
+const app = express();
+const server = require('http').createServer(app);
 // const io = require("socket.io")(server);
 // const path = require('path');
-// // lead routes in
-// const customer = require('./routes/customer');
-// const vendor = require('./routes/vendor');
-// const snack = require('./routes/snack');
-// const order = require('./routes/order');
+// lead routes in
+const staff = require('./routes/staff');
+
 
 // app.use(cors());
-
-// // Bodyparser Middleware
-// app.use(bodyParser.json());
+app.get('/', (req, res) => {
+    res.status(200).send("Welcome to CRM Web App!")
+})
+// Bodyparser Middleware
+app.use(bodyParser.json());
 
 // io.of("api/socket").on("connection", (socket) => {
 //     console.log("socket.io: User connected: ", socket.id);
@@ -28,12 +28,12 @@
 //     });
 // });
 
-// // connect mongoose new method
-// const database = require('./config/keys').mangoURL;
-// mongoose
-//     .connect(database, 
-//         {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-//     .then(() => console.log("Successfully Connected to MongoDB!! Start run the request!"))
+// connect mongoose new method
+const database = require('./config/keys').mangoURL;
+mongoose
+    .connect(database, 
+        {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(() => console.log("Successfully Connected to MongoDB!! Start run the request!"))
     
 // const connection = mongoose.connection;
 // connection.once("open", () => {
@@ -67,11 +67,9 @@
 //     })
 // })
 
-// // use the routes
-// app.use('/customer',customer);
-// app.use('/vendor', vendor);
-// app.use('/snack', snack);
-// app.use('/order', order);
+// use the routes
+app.use('/staff', staff);
+
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use(express.static('customer/build'));
@@ -81,10 +79,10 @@
 //     });
 // }
 
-// server.listen(process.env.PORT || 8080,() => {
-//     console.log(`App now listening at http://localhost:8080`)
-// })
+server.listen(process.env.PORT || 8080,() => {
+    console.log(`App now listening at http://localhost:8080`)
+})
 
-// module.exports = app;
+module.exports = app;
 
 
