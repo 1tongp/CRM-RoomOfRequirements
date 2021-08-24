@@ -7,9 +7,9 @@ var teamController = require('../controllers/teamController');
 TeamRouter.post('/create', teamController.TeamCreatePost);
 
 // GET request to get team details
-TeamRouter.get('/:id', teamController.teamListGet);
+TeamRouter.get('/:teamNumber', teamController.teamListGet);
 
 // POST request to change the team details
-TeamRouter.post('/changeDetails/:id', teamController.teamChangePost);
+TeamRouter.post('/changeDetails/:teamNumber', teamController.teamChangePost);
 
 module.exports = TeamRouter;

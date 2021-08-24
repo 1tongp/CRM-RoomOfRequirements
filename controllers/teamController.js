@@ -34,7 +34,7 @@ exports.TeamCreatePost = function (req, res) {
 exports.teamChangePost = function(req, res){
 
     // check validation of the team id
-    Team.findById(req.params.id, function(err, teamDetail){
+    Team.findOne({teamNumber: req.params.teamNumber}, function(err, teamDetail){
         
         if(!teamDetail){
             res.status(404).send("team is not found!")
@@ -42,8 +42,8 @@ exports.teamChangePost = function(req, res){
         else{
 
             // update the team member and file link
-            Team.findByIdAndUpdate(
-                req.params.id,
+            Team.findOneAndUpdate(
+                {teamNumber: req.params.teamNumber},
                 req.body,
                 {new: true},
                 function(err, changeTeamDetails){
@@ -62,7 +62,7 @@ exports.teamChangePost = function(req, res){
 exports.teamListGet = function(req, res){
 
     // check validation of the order id
-    Team.findById(req.params.id, function(err, team){
+    Team.findOne({teamNumber: req.params.teamNumber}, function(err, team){
         if(!team){
             res.status(404).json({success: false, message: "team is not found!"})
         }
