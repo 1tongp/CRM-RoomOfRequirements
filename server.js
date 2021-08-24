@@ -14,6 +14,7 @@ const server = require('http').createServer(app);
 const staff = require('./routes/staff');
 const customer = require('./routes/customer');
 const order = require('./routes/order');
+const team = require('./routes/team');
 
 // app.use(cors());
 app.get('/', (req, res) => {
@@ -72,6 +73,7 @@ mongoose
 app.use('/staff', staff);
 app.use('/customer',customer);
 app.use('/order', order);
+app.use('/team', team);
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use(express.static('customer/build'));
