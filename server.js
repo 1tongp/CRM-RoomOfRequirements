@@ -12,7 +12,7 @@ const server = require('http').createServer(app);
 // const path = require('path');
 // lead routes in
 const staff = require('./routes/staff');
-
+const customer = require('./routes/customer');
 
 // app.use(cors());
 app.get('/', (req, res) => {
@@ -69,7 +69,7 @@ mongoose
 
 // use the routes
 app.use('/staff', staff);
-
+app.use('/customer',customer);
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use(express.static('customer/build'));
