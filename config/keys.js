@@ -1,4 +1,4 @@
 // 改一个新的
 module.exports = {
-    mangoURL : "mongodb+srv://Project-Connection:666@keepitsimple-project.zvwkr.mongodb.net/KeepItSimple-Project?retryWrites=true&w=majority"
+    mangoURL : "mongodb+srv://team20:666@cluster0.kcmc7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }

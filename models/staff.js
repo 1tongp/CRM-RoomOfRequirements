@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// required information for customer
-var CustomerSchema = new Schema({
+// required information for 
+var StaffSchema = new Schema({
     givenName:{
         type: String,
         required: true,
@@ -11,23 +11,18 @@ var CustomerSchema = new Schema({
         type: String,
         required: true,
     },
-    email:{
+    photoPath:{
+        type: String,
+    },
+    loginEmail:{
         type: String,
         required: true,
     },
-    gender:{
+    password:{
         type: String,
         required: true,
     },
-    age:{
-        type: Number,
-        required: true,
-    },
-    dateOfBirth:{
-        type: String,
-        required: true,
-    },
-    address:{
+    role:{
         type: String,
         required: true,
     },
@@ -35,7 +30,21 @@ var CustomerSchema = new Schema({
         type: Number,
         required: true,
     },
+    companysuburb:{
+        type: String,
+    },
+
+    location:{
+        type: {
+            type: String,
+            enum: ['Point']
+        },
+        coordinates:{
+            type: [Number]
+        }
+    },
+
 
 });
 
-module.exports = mongoose.model("Customer",CustomerSchema);
+module.exports = mongoose.model("Staff",StaffSchema);

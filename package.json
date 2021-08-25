@@ -12,7 +12,7 @@
     "customer-install": "npm install --prefix customer",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix customer && npm run build --prefix customer"
   },
-  "author": "keepitsimple",
+  "author": "RoomOfRequirement",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
