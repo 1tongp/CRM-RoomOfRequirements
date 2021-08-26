@@ -16,7 +16,8 @@ const customer = require('./routes/customer');
 const order = require('./routes/order');
 const team = require('./routes/team');
 
-// app.use(cors());
+var cors = require('cors')
+app.use(cors());
 app.get('/', (req, res) => {
     res.status(200).send("Welcome to CRM Web App!")
 })
