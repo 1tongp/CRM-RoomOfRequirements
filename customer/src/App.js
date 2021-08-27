@@ -24,6 +24,7 @@ function Login(props) {
                 props.history.push('/dashboard', { staff: response.data.staff });
             }
             else {
+                // alert('Invalid Email or Password')
                 message.error(response.data.error)
             }
         }).catch(error => {
