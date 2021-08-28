@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // required information for customer
 var CustomerSchema = new Schema({
+    staff: {
+        type: Schema.Types.ObjectId,
+        ref: 'Staff'
+    },
     givenName:{
         type: String,
         required: true,
@@ -36,6 +40,6 @@ var CustomerSchema = new Schema({
         required: true,
     },
 
-});
+}, { timestamps: {createdAt: 'createTime', updateAt: 'updateTime'}});
 
 module.exports = mongoose.model("Customer",CustomerSchema);

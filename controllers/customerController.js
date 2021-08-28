@@ -1,7 +1,8 @@
+const customer = require('../models/customer');
 const Customer = require('../models/customer');
 // const bcrypt = require('bcryptjs');
 
-// POST request for customer register 
+// POST request for customer create
 exports.customerCreatePost = function (req, res) {
     const { givenName, familyName, email, gender, age, dateOfBirth, phone, address} = req.body;
     Customer.findOne({ email: email }).then((emailExist) => {
@@ -60,3 +61,40 @@ exports.customerDetailGet = function (req, res) {
         }
     })
 }
+
+// Get request for customer list
+exports.customerListGet = function (req, res) {
+
+    customer.find({staff:req.params.staffId}, function(err, customers){
+
+        // if the staff has no current customers, return empty
+        if(customers.length === 0){
+            res.status(200).json({success: false, message: "Currently no customers"})
+        }
+        else if (customers.length === 1){
+            res.status(200).json({success: true, message: "1", customers: customers})
+        }
+        else{
+            var sortedCustomer = []
+            for(i = 0; i < customers.length; i++){
+                sortedCustomer.push({
+                    "staff": customers[i].staff,
+                    "givenName": customers[i].givenName,
+                    "familyName": customers[i].familyName,
+                    "email": customers[i].email,
+                    "gender":customers[i].gender,
+                    "age": customers[i].age,
+                    "dateOfBirth": customers[i].dateOfBirth,
+                    "address": customers[i].address,
+                    "phone": customers[i].phone,
+                    "_v": customers[i]._v,
+                    "_id": customers[i]._id,
+                    "createTime": customers[i]._id,
+                    "updateTime": customers[i].updateTime
+                })
+            }
+            sortedCustomer = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
+            res.status(200).json({success:true, customers: sortedCustomer})
+        }
+    })
+};

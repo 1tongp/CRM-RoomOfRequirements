@@ -9,5 +9,8 @@ CustomerRouter.post('/create',customerController.customerCreatePost);
 // GET request to get customer details
 CustomerRouter.get('/:id', customerController.customerDetailGet);
 
+// GET request to get all customer's for a specific staff
+CustomerRouter.get('/list/:staffId', customerController.customerListGet);
+
 
 module.exports = CustomerRouter;
