@@ -1,0 +1,32 @@
+.site-layout-background-content{
+    background: var(--blue) !important;
+    overflow: scroll !important;
+    padding: 24;
+    height: 100% !important;
+    position: center
+}
+
+.cluster{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.container--customerlist{
+    background-color: white;
+    border-radius: 10px;
+    border:solid 1px;
+    border-color: var(--darkblue);
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+}
+
+.container--basicinfo{
+    color:grey ;
+    width: 30%;
+    float: left;
+}
