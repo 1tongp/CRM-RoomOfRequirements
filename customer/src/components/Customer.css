@@ -1,0 +1,14 @@
+.searchBar{
+    float: right;
+    width: 300px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.table{
+    height: 100vh;
+}
+.button {
+    background-color: #FF5858;
+    color: white;
+}

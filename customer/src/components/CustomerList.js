@@ -4,6 +4,7 @@ import React from 'react';
 import { Table } from 'antd';
 import SearchBar from './SearchBar';
 import { Button } from 'antd';
+import './Customer.css';
 
 const columns = [
   {
@@ -46,7 +47,7 @@ const data = [
     contactNumber: 123456789,
     email: 'xihou@student.unimelb.edu.au',
     insurance: 'Landloard',
-    details: <Button>Details</Button>,
+    details: <Button className='button'>Details</Button>,
   },
   {
     key: '2',
@@ -55,7 +56,7 @@ const data = [
     contactNumber: 123456789,
     email: 'coco2@gmail.com',
     insurance: 'Car',
-    details: <Button>Details</Button>,
+    details: <Button className='button'>Details</Button>,
   },
   {
     key: '3',
@@ -64,7 +65,7 @@ const data = [
     contactNumber: 123456789,
     email: 'example@gmail.com',
     insurance: 'Car',
-    details: <Button>Details</Button>,
+    details: <Button className='button'>Details</Button>,
   },
   {
     key: '4',
@@ -73,7 +74,7 @@ const data = [
     contactNumber: 123456789,
     email: 'example2@gmail.com',
     insurance: 'Travel',
-    details: <Button>Details</Button>,
+    details: <Button className='button'>Details</Button>,
   },
 ];
 
@@ -85,8 +86,8 @@ function CustomerList() {
   
 	return (
 		<div id='example'>
-      <SearchBar />
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <SearchBar className='searchBar'/>
+      <Table className='table' columns={columns} dataSource={data} onChange={onChange} />
     </div>
 	);
 }

@@ -10,7 +10,7 @@ function Dashboard(props) {
         <>
             <Navigation data={props}></Navigation>
 
-            <Layout>
+            <Layout className='test'>
                 <Content className="site-layout-background-content">
                     <div className="container--customerlist">
                         <div className="container--basicinfo">
