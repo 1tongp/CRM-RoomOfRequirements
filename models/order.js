@@ -28,6 +28,12 @@ var OrderSchema = new Schema({
         default: null
     },
 
+    type: {
+        type: String,
+        default: '',
+        require: true
+    }
+
 }, { timestamps: { createdAt: 'createTime', updatedAt: 'updateTime' }});
 
 module.exports = mongoose.model("Order",OrderSchema);

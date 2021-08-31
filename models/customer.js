@@ -39,6 +39,20 @@ var CustomerSchema = new Schema({
         type: Number,
         required: true,
     },
+    location:{
+        type: {
+            type: String,
+            enum: ['Point']
+        },
+        coordinates:{
+            type: [Number]
+        }
+    },
+    Product: {
+        type: Array,
+        required: true,
+        default: []
+    },
 
 }, { timestamps: {createdAt: 'createTime', updateAt: 'updateTime'}});
 
