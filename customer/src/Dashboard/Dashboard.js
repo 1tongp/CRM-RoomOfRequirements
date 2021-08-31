@@ -7,12 +7,12 @@ const { Header, Content } = Layout;
 function Dashboard(props) {
     console.log(props)
     return (
-        <div>
-            <div>
+        <div className='div'>
+            <div className='navigationBar'>
                 <Navigation data={props}></Navigation>
             </div>
             
-            <div className='test'>
+            <div className='dashboard'>
                 <Layout >
                     <Content className="site-layout-background-content">
                         <div className="container--customerlist">

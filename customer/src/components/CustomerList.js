@@ -85,7 +85,7 @@ function onChange(pagination, filters, sorter, extra) {
 function CustomerList() {
   
 	return (
-		<div id='example'>
+		<div className='total'>
       <SearchBar className='searchBar'/>
       <Table className='table' columns={columns} dataSource={data} onChange={onChange} />
     </div>
