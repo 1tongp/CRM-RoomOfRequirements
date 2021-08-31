@@ -32,6 +32,12 @@ var OrderSchema = new Schema({
         type: String,
         default: '',
         require: true
+    },
+
+    expireDate: {
+        type: Date,
+        default: Date.now,
+        require: true
     }
 
 }, { timestamps: { createdAt: 'createTime', updatedAt: 'updateTime' }});
