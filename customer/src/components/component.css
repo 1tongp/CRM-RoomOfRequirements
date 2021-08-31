@@ -1,9 +1,9 @@
 .site-layout-background-content{
     background: var(--blue) !important;
     overflow: scroll !important;
-    padding: 24;
+    padding: 24px;
     height: 100% !important;
-    position: center
+    position: center;
 }
 
 .cluster{
@@ -29,4 +29,13 @@
     color:grey ;
     width: 30%;
     float: left;
+}
+
+/* .dashboard{
+    height: 100vh;
+    display: flex;
+} */
+
+.div{
+    display: flex;
 }
