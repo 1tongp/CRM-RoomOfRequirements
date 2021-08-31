@@ -98,3 +98,6 @@ exports.customerListGet = function (req, res) {
         }
     })
 };
+
+
+// GET request to filter the particular types of the customer
