@@ -7,7 +7,7 @@ var orderController = require('../controllers/orderController');
 orderRouter.post('/create', orderController.customerOrderCreatePost);
 
 // GET request for staff to get the orders list under a specific status
-orderRouter.get('/:staffId', orderController.staffOrderListGet);
+orderRouter.get('/:staffId', orderController.OrderListGet);
 
 // POST request for vendor to change the orders' status 
 orderRouter.post('/change/:id', orderController.orderChangePost)
@@ -16,5 +16,8 @@ orderRouter.post('/change/:id', orderController.orderChangePost)
 // orderRouter.get('/', orderController.customerOrderListGet);
 
 orderRouter.get('/search/:id', orderController.orderListGet);
+
+orderRouter.get('/filter/:staffId', orderController.orderFilterGet);
+
 
 module.exports = orderRouter;

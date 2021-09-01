@@ -98,3 +98,78 @@ exports.customerListGet = function (req, res) {
         }
     })
 };
+
+
+// GET request to filter the particular ages of the customer
+exports.customerAgeFilterGet = function(req,res){
+    customer.find({staff:req.params.staffId, age: req.query.age}, function(err, customers){
+        if(customers.length === 0){
+            res.status(200).json({success: false, message: "There is no customer in this age"})
+        }
+        else{
+            res.status(200).json({success: true, customers: customers})
+        }
+    })
+}
+
+// POST request for staff to update the detail for a particular customer
+// An example of using this function is to update or assign a customer to a staff (link the staff id)
+exports.customerChangePost = function(req, res){
+
+    // check validation of the customer id
+    Customer.findById(req.params.customerId, function(err, customerDetail){
+        if(!customerDetail){
+            res.status(404).send("customer is not found!")
+        }
+        else{
+            Customer.findByIdAndUpdate(
+                req.params.customerId,
+                req.body,
+                {new: true},
+                function(err, customerNew){
+                    if(err){
+                        res.status(404).json({success: false, err})
+                    }
+                    else{
+                        res.status(200).json({success: true, customerDetails: customerNew})
+                    }
+                })    
+        }
+    })
+}
+
+// GET request to filter the particular gender of the customer
+exports.customerGenderFilterGet = function(req,res){
+    customer.find({staff:req.params.staffId, gender: req.query.gender}, function(err, customers){
+        if(customers.length === 0){
+            res.status(200).json({success: false, message: "No Customers Founded"})
+        }
+        else{
+            res.status(200).json({success: true, customers: customers})
+        }
+    })
+}
+
+// GET request to search customer by using their first name
+exports.customerNameSearchGet = function(req,res){
+    customer.find({staff:req.params.staffId, givenName: req.query.givenName}, function(err, customers){
+        if(customers.length === 0){
+            res.status(200).json({success: false, message: "No Customers Founded"})
+        }
+        else{
+            res.status(200).json({success: true, customers: customers})
+        }
+    })
+}
+
+// GET request to get all customers that currently no assigned staff
+exports.customerNoStaffGet = function(req, res){
+    customer.find({staff: req.query.staffId},function(err, customerList){
+        if(customerList.length === 0){
+            res.status(200).json({success: false, message: "Every customer has an assigned staff"})
+        }
+        else{
+            res.status(200).json({success: true, customers: customerList})
+        }
+    })
+}
