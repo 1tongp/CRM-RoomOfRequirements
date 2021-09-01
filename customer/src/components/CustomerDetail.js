@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
-
+import './Customer.css';
 const CustomerDetail = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -18,8 +18,8 @@ const CustomerDetail = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
+      <Button className='button' onClick={showModal}>
+        Details
       </Button>
       <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <p>Some contents...</p>

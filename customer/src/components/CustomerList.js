@@ -5,6 +5,7 @@ import { Table } from 'antd';
 import SearchBar from './SearchBar';
 import { Button } from 'antd';
 import './Customer.css';
+import CustomerDetail from './CustomerDetail';
 
 const columns = [
   {
@@ -47,7 +48,7 @@ const data = [
     contactNumber: 123456789,
     email: 'xihou@student.unimelb.edu.au',
     insurance: 'Landloard',
-    details: <Button className='button'>Details</Button>,
+    details: <CustomerDetail className='button'>Details</CustomerDetail>,
   },
   {
     key: '2',
@@ -81,6 +82,9 @@ const data = [
 function onChange(pagination, filters, sorter, extra) {
   console.log('params', pagination, filters, sorter, extra);
 }
+
+
+
 
 function CustomerList() {
   

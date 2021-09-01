@@ -8,6 +8,7 @@
 }
 .table{
     height: 100vh;
+    width: 80vw;
 }
 .button {
     background-color: #FF5858;
