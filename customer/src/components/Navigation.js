@@ -14,31 +14,46 @@ class Navigation extends React.Component {
     console.log(this.props);
   };
 
+
+
   handleClick = e => {
     console.log('click ', e);
-    // if(e.key === '2'){
-    //     console.log("yes");
-    //     axios.get('/customer/list/' + this.props.data.location.state.staff.id).then(response =>{
-    //         console.log(response);
-    //         if(!response.data.success){
-    //           this.props.data.history.push('/customer', {staff: this.props.data.location.state.staff, customers:[], key:'2'})
-    //         }
-    //         else{
-    //           this.props.data.history.push('/customer', {vendor: this.props.data.location.state.vendor, orders: response.data.orders, key:'2'});
-    //         }
-    //       })
-    // }
+    if(e.key === '2'){
+        console.log("switch to customer");
+        axios.get('/customer/list/' + this.props.data.location.state.staff.id).then(response =>{
+            console.log(response);
+            if(!response.data.success){
+              this.props.data.history.push('/customer', {staff: this.props.data.location.state.staff, customers:[], key:'2'})
+            }
+            else{
+              this.props.data.history.push('/customer', {staff: this.props.data.location.state.staff, customers: response.data.customers, key:'2'});
+            }
+          })
+    }
+    if(e.key === "1"){
+      console.log("switch to dashboard");
+      console.log(this.props);
+      // axios needs implement later after finishing the front-end of the dashboard
+      axios.post('/staff/login/unhash', { loginEmail: this.props.data.location.state.staff.loginEmail , password: this.props.data.location.state.staff.password }).then(response =>{
+        console.log(response);
+        if(!response.data.success){
+          this.props.data.history.push('/dashboard', {staff: response.data.staff, key:'1'})
+        }
+        else{
+          this.props.data.history.push('/dashboard', {staff: response.data.staff, key:'1'});
+        }
+      })
+    }
   };
 
 
   render() {
     return (
 
-      <Menu
+      <Menu 
         onClick={this.handleClick}
         className='menu'
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        selectedKeys={[this.props.data.location.state.key]}
         mode="inline"
       >
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>

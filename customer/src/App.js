@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Jumbotron, Button, OverlayTrigger, Tooltip, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 import { message } from 'antd';
@@ -23,7 +23,7 @@ function Login(props) {
             console.log(props);
             console.log(response);
             if (response.data.success) {
-                props.history.push('/dashboard', { staff: response.data.staff });
+                props.history.push('/dashboard', { staff: response.data.staff, key:'1'});
             }
             else {
                 // alert('Invalid Email or Password')
