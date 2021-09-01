@@ -1,36 +1,39 @@
-import { Layout } from 'antd';
 import axios from '../API/axios';
 import Navigation from '../components/Navigation';
-import '../components/component.css';
+import CustomerList from '../components/CustomerList';
+import '../components/component.css'
+import React , {Component} from "react";
 
-const { Header, Content } = Layout;
-function Dashboard(props) {
-    console.log(props)
-    return (
-        <div className='div'>
-            <div className='navigationBar'>
-                <Navigation data={props}></Navigation>
-            </div>
-            
-            <div className='dashboard'>
-                <Layout >
-                    <Content className="site-layout-background-content">
-                        <div className="container--customerlist">
-                            <div className="container--basicinfo">
-                                <p>dashboard information from props</p>
-                                <p>staff familyName: {props.location.state.staff.familyName}</p>
-                                <p>staff id: {props.location.state.staff.id}</p>
-                                <p>staff loginEmail: {props.location.state.staff.loginEmail}</p>
-                                <p>staff password: {props.location.state.staff.password}</p>
-                            </div>
-                        </div>
-                    </Content>
-                </Layout>
-            </div>
-            
+class Dashboard extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(this.props)
+    }
 
-        </div>
-    )
+    state = {
+        collapsed: false,
+    };
+
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    };
+
+    render() {
+        return (
+            <div className='div'>
+                <div className='navigationBar'>
+                    <Navigation data={this.props}></Navigation>
+                </div>
+                <div className='customerList'>
+                    <p>dashboard</p>
+                </div>
+
+
+            </div>
+        );
+    }
 }
 
 export default Dashboard;
