@@ -1,0 +1,67 @@
+.lay1{ 
+    width:200px; 
+    height:20px; 
+    border:1px solid #FF6699;
+    margin-left: 580px;
+    margin-top: 10px;
+}   
+
+.Upload{
+    margin-left: 580px;
+    margin-top: 10px;
+}
+
+.lay2{ 
+    width: 80vw; 
+    height: 65vh; 
+    border: 10px; 
+    background-color:  #f4f4f4;
+    margin-left: 50px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+
+}   
+.lay3{ 
+    width:auto;
+    height: auto;
+    border:1px solid #FF6699;
+    margin-left: 50px;
+
+}  
+
+.saveRight{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    margin-right: 200px;
+    margin-bottom: 50px;
+}
+
+.cancelRight{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    margin-right: 300px;
+    margin-bottom: 50px;
+}
+
+
+.editRight{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    margin-right: 150px;
+    margin-bottom: 50px;
+}
+
+.passRight{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    margin-right: 300px;
+    margin-bottom: 50px;
+}

@@ -15,9 +15,11 @@
   "author": "RoomOfRequirement",
   "license": "ISC",
   "dependencies": {
+    "antd": "^4.16.13",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^5.1.0",
     "concurrently": "^6.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -25,6 +27,7 @@
     "mongoose": "^5.12.4",
     "node": "^15.14.0",
     "path": "^0.12.7",
+    "react-bootstrap": "^2.0.0-beta.6",
     "react-leaflet": "^3.1.0",
     "socket.io": "^4.0.2",
     "socket.io-client": "^4.1.2"
