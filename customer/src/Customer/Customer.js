@@ -1,8 +1,8 @@
-import axios from '../API/axios';
+// import axios from '../API/axios';
 import Navigation from '../components/Navigation';
 import CustomerList from '../components/CustomerList';
 import '../components/component.css'
-import React , {Component} from "react";
+import React from "react";
 
 class Customer extends React.Component {
     constructor(props) {

@@ -14,6 +14,8 @@ class Navigation extends React.Component {
     console.log(this.props);
   };
 
+
+
   handleClick = e => {
     console.log('click ', e);
     if(e.key === '2'){
@@ -48,20 +50,19 @@ class Navigation extends React.Component {
   render() {
     return (
 
-      <Menu
+      <Menu 
         onClick={this.handleClick}
         className='menu'
         selectedKeys={[this.props.data.location.state.key]}
-        defaultOpenKeys={['sub1']}
         mode="inline"
       >
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>
-        <Menu.Item className='menu-item' key="1" electedKeys={['1']} icon={<DashboardOutlined />}>Dashboard</Menu.Item>
-        <Menu.Item className='menu-item' key="2" electedKeys={['2']} icon={<MenuOutlined />}>Customers</Menu.Item>
-        <Menu.Item className='menu-item' key="3" electedKeys={['3']} icon={<TagsOutlined />}>Products</Menu.Item>
-        <Menu.Item className='menu-item' key="4" electedKeys={['4']} icon={<TeamOutlined />}>Group</Menu.Item>
-        <Menu.Item className='menu-item' key="5" electedKeys={['5']} icon={<CalendarOutlined />}>Calender</Menu.Item>
-        <Menu.Item className='menu-item' key="6" electedKeys={['6']} icon={<UserOutlined />}>Profile</Menu.Item>
+        <Menu.Item className='menu-item' key="1"  icon={<DashboardOutlined />}>Dashboard</Menu.Item>
+        <Menu.Item className='menu-item' key="2"  icon={<MenuOutlined />}>Customers</Menu.Item>
+        <Menu.Item className='menu-item' key="3"  icon={<TagsOutlined />}>Products</Menu.Item>
+        <Menu.Item className='menu-item' key="4"  icon={<TeamOutlined />}>Group</Menu.Item>
+        <Menu.Item className='menu-item' key="5"  icon={<CalendarOutlined />}>Calender</Menu.Item>
+        <Menu.Item className='menu-item' key="6"  icon={<UserOutlined />}>Profile</Menu.Item>
 
         {/* <SubMenu key="sub1" icon={<MailOutlined />} title="Dashboard"> */}
         {/* <Menu.ItemGroup key="g1" title="Item 1">
