@@ -10,11 +10,7 @@ var CalendarSchema = new Schema({
     events: {
         notes: Array,
         type: String
-    },
-
-
-
-    
+    }, 
 });
 
-module.exports = mongoose.model("Calendar",CalendarSchema);
+module.exports = mongoose.model("Calendar", CalendarSchema);
