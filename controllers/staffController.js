@@ -161,3 +161,33 @@ exports.staffLoginPost = function (req, res) {
     })
 }
 
+// staff login unhash 
+exports.staffLoginUnhashPost = function (req, res) {
+    const { loginEmail, password } = req.body;
+
+    Staff.findOne({
+        loginEmail: loginEmail,
+    }).then((staff) => {
+        if (!staff) {
+            res.status(200).json({ success: false, error: "Email Not Registered" });
+        }
+        else {
+            if (password === staff.password) {
+                res.status(200).json({
+                    success: true,
+                    staff: {
+                        id: staff.id,
+                        givenName: staff.givenName,
+                        familyName: staff.familyName,
+                        loginEmail: staff.loginEmail,
+                        password: staff.password,
+                    },
+                });
+            }
+            else {
+                res.status(200).json({ success: false, error: 'Password Incorrect' });
+            }
+        }
+    })
+}
+

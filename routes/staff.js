@@ -15,4 +15,6 @@ StaffRouter.post('/changeDetails/:id', staffController.staffChangeDetailsPost);
 // POST request to login as customer
 StaffRouter.post('/login', staffController.staffLoginPost);
 
+// POST request to login without hash 
+StaffRouter.post('/login/unhash', staffController.staffLoginUnhashPost);
 module.exports = StaffRouter;
