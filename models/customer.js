@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 var CustomerSchema = new Schema({
     staff: {
         type: Schema.Types.ObjectId,
-        ref: 'Staff'
+        ref: 'Staff',
+        default: null
     },
     givenName:{
         type: String,
@@ -48,11 +49,11 @@ var CustomerSchema = new Schema({
             type: [Number]
         }
     },
-    Product: {
-        type: Array,
-        required: true,
-        default: []
-    },
+    // Product: {
+    //     type: Array,
+    //     required: true,
+    //     default: []
+    // },
 
 }, { timestamps: {createdAt: 'createTime', updateAt: 'updateTime'}});
 
