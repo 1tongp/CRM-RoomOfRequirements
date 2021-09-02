@@ -26,7 +26,7 @@ function Profile(props) {
                 {/* <ChangeImage /> */}
                 <div className="lay2">
                     <div>
-                    <ChangeForm />
+                    <ChangeForm data={props}/>
                     </div>
                 </div>
             </div>

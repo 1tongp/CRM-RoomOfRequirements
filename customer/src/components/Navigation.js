@@ -44,6 +44,13 @@ class Navigation extends React.Component {
         }
       })
     }
+    if(e.key === "6"){
+      console.log("switch to Profile");
+      console.log(this.props);
+      // axios needs implement later after finishing the back-end of the Caldenlar
+      this.props.data.history.push('/ProfileShow', {staff: this.props.data.location.state.staff, key: '6'});
+    }
+
   };
 
 
@@ -53,7 +60,7 @@ class Navigation extends React.Component {
       <Menu 
         onClick={this.handleClick}
         className='menu'
-        selectedKeys={[this.props.data.location.state.key]}
+        // selectedKeys={[this.props.data.location.state.key]}
         mode="inline"
       >
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>

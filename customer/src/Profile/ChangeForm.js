@@ -2,7 +2,7 @@ import React from "react"
 import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
 
-class AddContact3 extends React.Component {
+class ChangeForm extends React.Component {
     render(){
         return(
             <Form>
@@ -82,4 +82,4 @@ class AddContact3 extends React.Component {
     }
 }
 
-export default AddContact3;
+export default ChangeForm;
