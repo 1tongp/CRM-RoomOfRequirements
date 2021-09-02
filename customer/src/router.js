@@ -5,6 +5,7 @@ import Dashboard from './Dashboard/Dashboard.js';
 import Customer from './Customer/Customer.js';
 import ProfileChange from './Profile/ProfileChange.js';
 import ProfileShow from './Profile/ProfileShow.js';
+import Calendar from './Calendar/Calendar.js';
 
 class Router extends React.Component{
     render(){
@@ -16,6 +17,7 @@ class Router extends React.Component{
                     <Route path="/customer" exact component={Customer}></Route>
                     <Route path="/profileChange" exact component={ProfileChange}></Route>
                     <Route path="/profileShow" exact component={ProfileShow}></Route>
+                    <Route path="/Calendar" exact component={Calendar}></Route>
                 </Switch>
             </BrowserRouter>
         )
