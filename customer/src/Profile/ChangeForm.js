@@ -2,7 +2,22 @@ import React from "react"
 import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
 
+
 class ChangeForm extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(this.props);
+    };
+
+    state = {
+        modal1Visible: false,
+        redirect: null
+    };
+
+    redirect = () => {
+        this.props.data.history.push('/profileShow', {staff: this.props.data.location.state.staff, key:'6'})
+   }
+
     render(){
         return(
             <Form>
@@ -70,10 +85,10 @@ class ChangeForm extends React.Component {
                 </Row>
 
                 <Row className="mb-3">
-                        <Button className="saveRight" variant="primary" type="button" >
+                        <Button className="saveRight" variant="primary" type="button" onClick={() => this.redirect()}>
                             Save
                         </Button>
-                        <Button className="cancelRight" variant="primary" type="button" >
+                        <Button className="cancelRight" variant="primary" type="button" onClick={() => this.redirect()} >
                             Cancel
                         </Button>
                 </Row>

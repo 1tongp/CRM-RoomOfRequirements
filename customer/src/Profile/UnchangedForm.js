@@ -4,7 +4,6 @@ import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
 import Popup from "./Password";
 import Popup2 from "./PasswordPopup";
-import { Redirect } from "react-router-dom";
 
 class UnchangedForm extends React.Component {
     constructor(props) {
@@ -13,7 +12,6 @@ class UnchangedForm extends React.Component {
     };
 
     state = {
-        modal1Visible: false,
         redirect: null
     };
 
