@@ -46,13 +46,13 @@ class Navigation extends React.Component {
       console.log("switch to Profile");
       console.log(this.props);
       // axios needs implement later after finishing the back-end of the Caldenlar
-      this.props.data.history.push('/ProfileShow', {staff: this.props.data.location.state.staff, key: '6'});
+      this.props.data.history.push('/ProfileShow', {staff: this.props.data.location.state.staff, key: '5'});
     }
     if(e.key === "4"){
       console.log("switch to calendar");
       console.log(this.props);
       // axios needs implement later after finishing the back-end of the Caldenlar
-      this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '5'});
+      this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '4'});
     }
 
   };
