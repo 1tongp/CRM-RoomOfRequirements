@@ -1,0 +1,49 @@
+.AllCustomer{
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+.Title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.Image{
+    width:  80px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%;     /*makes the images round */
+    object-fit: cover;
+}
+
+.CustomerList{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    padding: 0;
+}
+
+.ListItem{
+    list-style-type: none; /* switch off bullet-points */    
+    box-sizing: border-box;
+    flex: 0 0 25%;
+}
+
+.Customer{
+    display: flex;
+    flex-direction: column;
+}
+
+.Customername{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.expiration{
+    font-size: 10px;
+    font-weight: 300;
+}

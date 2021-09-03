@@ -1,0 +1,10 @@
+
+.dashboardContainer{
+    display: flex;
+}
+
+.dashboardContainer > div {
+    margin: 50px;
+    width: 35vw;
+  }
+

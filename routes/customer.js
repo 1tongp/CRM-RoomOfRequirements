@@ -9,5 +9,21 @@ CustomerRouter.post('/create',customerController.customerCreatePost);
 // GET request to get customer details
 CustomerRouter.get('/:id', customerController.customerDetailGet);
 
+// GET request to get all customer's for a specific staff
+CustomerRouter.get('/list/:staffId', customerController.customerListGet);
 
+// GET request to get all customers that in the particular age
+CustomerRouter.get('/filterAge/:staffId', customerController.customerAgeFilterGet);
+
+// GET request to get all customers that in the particular gender
+CustomerRouter.get('/filterGender/:staffId', customerController.customerGenderFilterGet);
+
+// GET request to get all customers by searching their first name
+CustomerRouter.get('/searchName/:staffId', customerController.customerNameSearchGet);
+
+// POST request to update or change details for the cuistomer  
+CustomerRouter.post('/update/:customerId', customerController.customerChangePost);
+
+// GET request to get all customers that currently no assigned staff
+CustomerRouter.get('/nostaff/:staffId', customerController.customerNoStaffGet);
 module.exports = CustomerRouter;

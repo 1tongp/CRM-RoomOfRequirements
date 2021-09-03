@@ -1,13 +1,10 @@
 // import axios from '../API/axios';
 import Navigation from '../components/Navigation';
+import CustomerList from '../components/CustomerList';
 import '../components/component.css'
 import React from "react";
 
-import 'antd/dist/antd.css';
-import DashboardContent from './DashboardContent';
-
-
-class Dashboard extends React.Component {
+class Customer extends React.Component {
     constructor(props) {
         super(props);
         console.log(this.props)
@@ -29,12 +26,14 @@ class Dashboard extends React.Component {
                 <div className='navigationBar'>
                     <Navigation data={this.props}></Navigation>
                 </div>
-                <div>
-                    <DashboardContent />
+                <div className='customerList'>
+                    <CustomerList data = {this.props} />
                 </div>
+
+
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default Customer;

@@ -25,7 +25,7 @@ exports.customerOrderCreatePost = function(req, res){
 
 
 // Get request for vendor to get the particular status' order list
-exports.staffOrderListGet = function(req, res){
+exports.OrderListGet = function(req, res){
     Order.find(req.query).populate("staff").populate("customer").then((orders)=>{
 
         //if for perticular staff, the order list for required status is an empty list, return error message
@@ -117,7 +117,7 @@ exports.orderChangePost = function(req, res){
 //     })       
 // };
 
-// GET request for staff to search orders
+// GET request for staff to search orders based on the order id
 exports.orderListGet = function(req, res){
 
     // check validation of the order id
@@ -127,6 +127,18 @@ exports.orderListGet = function(req, res){
         }
         else{
             res.status(200).json({success: true, orders: orders})   
+        }
+    })
+}
+
+// GET request for staff to filter the particular type of orders
+exports.orderFilterGet = function(req, res){
+    Order.find({staff: req.params.staffId, type: req.query.type},function(err, orders){
+        if(orders.length === 0){
+            res.status(200).json({success: false, message: "This type of Insurance order is not found"})
+        }
+        else{
+            res.status(200).json({success: true, order: orders})
         }
     })
 }
