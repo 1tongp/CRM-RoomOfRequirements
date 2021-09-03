@@ -27,7 +27,7 @@ class Customer extends React.Component {
                     <Navigation data={this.props}></Navigation>
                 </div>
                 <div className='customerList'>
-                    <CustomerList />
+                    <CustomerList data = {this.props} />
                 </div>
 
 

@@ -44,6 +44,13 @@ class Navigation extends React.Component {
         }
       })
     }
+
+    // if(e.key === "4"){
+    //   console.log("switch to Calender");
+    //   console.log(this.props);
+    //   // axios needs implement later after finishing the back-end of the Caldenlar
+    //   this.props.data.history.push('/Calendar', {staff: this.props.data.location.state.staff, key: '4'});
+    // }
   };
 
 
@@ -53,20 +60,18 @@ class Navigation extends React.Component {
       <Menu 
         onClick={this.handleClick}
         className='menu'
-        selectedKeys={[this.props.data.location.state.key]}
+        // selectedKeys={[this.props.data.location.state.key]}
         mode="inline"
       >
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>
         <Menu.Item className='menu-item' key="1" icon={<DashboardOutlined />}>Dashboard</Menu.Item>
         <Menu.Item className='menu-item' key="2" icon={<MenuOutlined />}>Customers</Menu.Item>
-        <Menu.Item className='menu-item' key="3" icon={<TagsOutlined />}>Products</Menu.Item>
-        <Menu.Item className='menu-item' key="4" icon={<TeamOutlined />}>Group</Menu.Item>
-        <Menu.Item className='menu-item' key="5" icon={<CalendarOutlined />}>Calender</Menu.Item>
-        <Menu.Item className='menu-item' key="6" icon={<UserOutlined />}>Profile</Menu.Item>
+        <Menu.Item className='menu-item' key="3" icon={<TeamOutlined />}>Group</Menu.Item>
+        <Menu.Item className='menu-item' key="4" icon={<CalendarOutlined />}>Calender</Menu.Item>
+        <Menu.Item className='menu-item' key="5" icon={<UserOutlined />}>Profile</Menu.Item>
         
         <Button className='logout' icon={<LogoutOutlined/>}></Button>
       </Menu>
-
     );
   }
 }
