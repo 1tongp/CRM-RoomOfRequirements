@@ -1,9 +1,28 @@
-import React from "react"
+import React from 'react';
+import {usestate} from 'react';
 import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
-import PopUp from "./Password";
+import Popup from "./Password";
+import Popup2 from "./PasswordPopup";
 
-class AddContact3 extends React.Component {
+class UnchangedForm extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(this.props);
+    };
+
+    state = {
+        redirect: null
+    };
+
+    setModal1Visible(modal1Visible){
+        this.setState({ modal1Visible});
+    }
+
+    redirect = () => {
+         this.props.data.history.push('/profileChange', {staff: this.props.data.location.state.staff, key:'6'})
+    }
+
     render(){
         return(
             <Form>
@@ -71,13 +90,32 @@ class AddContact3 extends React.Component {
                 </Row>
 
                 <Row className="mb-3">
-                        <Button className="editRight" variant="primary" type="button" onClick="">
+                        <Button className="editRight" variant="primary" type="button" onClick={() => this.redirect()}>
                             Edit Profile   
                         </Button>
-                        <div className="popup" onclick="myFunction()">Click me!
+                        <Popup2 trigger={this.state.modal1Visible}>
+
+                            <div className="popUp-title">Change Password for account: "xxx@hsbc.com"</div>
+
+                            <Form>
+                                <Col>
+                                <Form.Group as={Col} controlId="formGridOldPassword">
+                                <Form.Label>New Password</Form.Label>
+                                <Form.Control size="lg" type="text" placeholder="Enter Your New Password" />
+                                </Form.Group>
+                                </Col>
+                                <Col>
+                                <Form.Group as={Col} controlId="formGridNewPassword">
+                                <Form.Label>Old Password</Form.Label>
+                                <Form.Control size="lg" type="text" placeholder="Enter Your Old Password" />
+                                </Form.Group>
+                                </Col>
+                            </Form>
+                        </Popup2>
+                        {/* <div className="popup" onclick="myFunction()">Click me!
                             <span class="popuptext" id="myPopup">Popup text...</span>
-                        </div>
-                        <Button className="passRight" variant="primary" type="button" >
+                        </div> */}
+                        <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
                             Change Password
                         </Button>
                 </Row>
@@ -86,4 +124,4 @@ class AddContact3 extends React.Component {
     }
 }
 
-export default AddContact3;
+export default UnchangedForm;

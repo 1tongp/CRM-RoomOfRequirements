@@ -65,3 +65,39 @@
     margin-right: 300px;
     margin-bottom: 50px;
 }
+
+.popUp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,1,0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popUp-inner{
+    position: relative;
+    width: 30vw;
+    height: 50vh;
+    border: 1px solid #000000;
+    background-color: #f7f7f7;
+    margin-top: 1vh;
+}
+
+.popUp-title{
+    position: relative;
+    margin-left: 10vw;
+    text-align: center;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+.close-btn{
+    position: absolute;
+    bottom: 1vw;
+    right: 2vh;
+}

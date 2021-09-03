@@ -15,6 +15,7 @@
   "author": "RoomOfRequirement",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/charts": "^1.2.11",
     "antd": "^4.16.13",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",

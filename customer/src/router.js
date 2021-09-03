@@ -17,7 +17,7 @@ class Router extends React.Component{
                     <Route path="/customer" exact component={Customer}></Route>
                     <Route path="/profileChange" exact component={ProfileChange}></Route>
                     <Route path="/profileShow" exact component={ProfileShow}></Route>
-                    <Route path="/Calendar" exact component={Calendar}></Route>
+                    <Route path="/calendar" exact component={Calendar}></Route>
                 </Switch>
             </BrowserRouter>
         )

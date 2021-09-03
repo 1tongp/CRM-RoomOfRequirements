@@ -14,8 +14,6 @@ class Navigation extends React.Component {
     console.log(this.props);
   };
 
-
-
   handleClick = e => {
     console.log('click ', e);
     if(e.key === '2'){
@@ -44,14 +42,25 @@ class Navigation extends React.Component {
         }
       })
     }
-
-    // if(e.key === "4"){
-    //   console.log("switch to Calender");
-    //   console.log(this.props);
-    //   // axios needs implement later after finishing the back-end of the Caldenlar
-    //   this.props.data.history.push('/Calendar', {staff: this.props.data.location.state.staff, key: '4'});
-    // }
+    if(e.key === "5"){
+      console.log("switch to Profile");
+      console.log(this.props);
+      // axios needs implement later after finishing the back-end of the Caldenlar
+      this.props.data.history.push('/ProfileShow', {staff: this.props.data.location.state.staff, key: '5'});
+    }
+    if(e.key === "4"){
+      console.log("switch to calendar");
+      console.log(this.props);
+      // axios needs implement later after finishing the back-end of the Caldenlar
+      this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '4'});
+    }
   };
+
+  onLogOut = () =>{
+    console.log("log out");
+    console.log(this.props);
+    this.props.data.history.push('../');
+  }
 
 
   render() {
@@ -70,7 +79,7 @@ class Navigation extends React.Component {
         <Menu.Item className='menu-item' key="4" icon={<CalendarOutlined />}>Calender</Menu.Item>
         <Menu.Item className='menu-item' key="5" icon={<UserOutlined />}>Profile</Menu.Item>
         
-        <Button className='logout' icon={<LogoutOutlined/>}></Button>
+        <Button className='logout' onClick={() => this.onLogOut()} icon={<LogoutOutlined/>}></Button>
       </Menu>
     );
   }

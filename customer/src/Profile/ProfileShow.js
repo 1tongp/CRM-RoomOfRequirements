@@ -24,7 +24,7 @@ function Profile(props) {
                  />
                 <div className="lay2">
                     <div>
-                    <UnChangedForm />
+                    <UnChangedForm data={props}/>
                     </div>
                 </div>
                 <PopUp />

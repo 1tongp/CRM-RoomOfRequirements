@@ -3,6 +3,10 @@ import Navigation from '../components/Navigation';
 import '../components/component.css'
 import React from "react";
 
+import 'antd/dist/antd.css';
+import DashboardContent from './DashboardContent';
+
+
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -25,11 +29,9 @@ class Dashboard extends React.Component {
                 <div className='navigationBar'>
                     <Navigation data={this.props}></Navigation>
                 </div>
-                <div className='customerList'>
-                    <p>dashboard</p>
+                <div>
+                    <DashboardContent />
                 </div>
-
-
             </div>
         );
     }
