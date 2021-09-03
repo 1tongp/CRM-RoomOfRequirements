@@ -2,14 +2,15 @@ import React from 'react'
 import { Statistic, Card, Row, Col } from 'antd';
 import {Chart, DemoBar} from './Chart';
 import DashboardTable from './DashboardTable';
-
+import './DashboardContent.css';
 
 
 function DashboardContent() {
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <div className='dashboardContainer'>
             <div>
+                <h3>Dashboard</h3>
+            
                 <p>Insurance Summary</p>
                 <Row>
                     <Card>
@@ -41,9 +42,7 @@ function DashboardContent() {
                         />
                     </Card>
                 </Row>
-            </div>
-
-            <div>
+                <br />
                 <p>Customer Contact</p>
                     <Row>
                         <Card>
@@ -61,17 +60,18 @@ function DashboardContent() {
                             />
                         </Card>
                     </Row>
-            </div>
+                <br />
 
-            <div>
                 <p>Staff Selling Ranking</p>
                 <DemoBar />
+            </div>
+            <div>
                 <p>Monthly trading volume</p>
                 <Chart />
-
-            </div>
-
-            <div>
+                <br />
+                <br />
+                <br />
+                <br />
                 <DashboardTable />
             </div>
 
