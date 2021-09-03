@@ -14,8 +14,6 @@ class Navigation extends React.Component {
     console.log(this.props);
   };
 
-
-
   handleClick = e => {
     console.log('click ', e);
     if(e.key === '2'){
@@ -49,6 +47,12 @@ class Navigation extends React.Component {
       console.log(this.props);
       // axios needs implement later after finishing the back-end of the Caldenlar
       this.props.data.history.push('/ProfileShow', {staff: this.props.data.location.state.staff, key: '6'});
+    }
+    if(e.key === "5"){
+      console.log("switch to calendar");
+      console.log(this.props);
+      // axios needs implement later after finishing the back-end of the Caldenlar
+      this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '5'});
     }
 
   };

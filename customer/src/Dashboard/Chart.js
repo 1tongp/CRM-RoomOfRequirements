@@ -37,23 +37,23 @@ export const Chart: React.FC = () => {
 export const DemoBar: React.FC = () => {
   var data = [
     {
-      year: '1951 年',
+      year: '1951',
       value: 38,
     },
     {
-      year: '1952 年',
+      year: '1952',
       value: 52,
     },
     {
-      year: '1956 年',
+      year: '1956',
       value: 61,
     },
     {
-      year: '1957 年',
+      year: '1957',
       value: 145,
     },
     {
-      year: '1958 年',
+      year: '1958',
       value: 48,
     },
   ];
