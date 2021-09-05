@@ -6,7 +6,7 @@ import { Table } from 'antd';
 import { Button, Input } from 'antd';
 import './Customer.css';
 import CustomerDetail from './CustomerDetail';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from '../API/axios.js';
 import singleCustomer from '../Customer/singleCustomer';
 import { SearchOutlined } from '@ant-design/icons';

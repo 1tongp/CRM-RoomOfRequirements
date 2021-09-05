@@ -2,7 +2,7 @@
 import 'antd/dist/antd.css';
 import React from 'react';
 import { Table } from 'antd';
-import SearchBar from '../components/SearchBar';
+// import SearchBar from '../components/SearchBar';
 import { Button } from 'antd';
 import '../components/Customer.css';
 import CustomerDetail from '../components/CustomerDetail';
@@ -112,7 +112,7 @@ function CustomerList(props) {
 
   return (
     <div className='total'>
-      <SearchBar className='searchBar' />
+      {/* <SearchBar className='searchBar' /> */}
       <Table className='table' columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );
