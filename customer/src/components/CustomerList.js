@@ -10,6 +10,7 @@ import { SearchOutlined } from '@ant-design/icons';
 
 const { Search } = Input;
 function CustomerList(props) {
+	console.log(props);
   	const columns = [
 		{
 			title: 'First Name',
@@ -70,7 +71,7 @@ function CustomerList(props) {
 			contactNumber: 123456789,
 			email: 'xihou@student.unimelb.edu.au',
 			insurance: 'Landlord',
-			details: <CustomerDetail className='button'>Details</CustomerDetail>,
+			details: <CustomerDetail className='button' detailInfo="this is the first one">Details</CustomerDetail>,
 		},
 		{
 			key: '2',
@@ -79,7 +80,7 @@ function CustomerList(props) {
 			contactNumber: 123456789,
 			email: 'coco2@gmail.com',
 			insurance: 'Car',
-			details: <Button className='button'>Details</Button>,
+			details: <CustomerDetail className='button' detailInfo={props.data.location.state.customers}>Details</CustomerDetail>,
 		},
 		{
 			key: '3',
@@ -132,8 +133,6 @@ function CustomerList(props) {
 		result.includes(el.contactNumber.toString())||result.includes(el.email);
 	});
 
-
-	const onSearch = value => console.log(value);
 	return (
 		<div className='total'>
 			<div>
