@@ -7,10 +7,34 @@ var CalendarSchema = new Schema({
         ref: 'Staff'
     },
 
-    events: {
-        notes: Array,
-        type: String
+    event: {
+        type: String,
+        default: '',
     }, 
+
+    type: {
+        type: String,
+        default: ''
+    },
+
+    visibililty: {
+        type: String,
+        default: 'Private'
+    },
+
+    startTime:{
+        type: String,
+    },
+
+    endTime:{
+        type:String,
+    },
+
+    // MM/DD/YYYY
+    dateYear:{
+        type: String,
+    }
+
 });
 
 module.exports = mongoose.model("Calendar", CalendarSchema);

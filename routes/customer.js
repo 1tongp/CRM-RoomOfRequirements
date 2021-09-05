@@ -26,4 +26,7 @@ CustomerRouter.post('/update/:customerId', customerController.customerChangePost
 
 // GET request to get all customers that currently no assigned staff
 CustomerRouter.get('/nostaff/:staffId', customerController.customerNoStaffGet);
+
+// GET request to get the number of customers
+CustomerRouter.get('/number/:staffId', customerController.customerNumberGet);
 module.exports = CustomerRouter;

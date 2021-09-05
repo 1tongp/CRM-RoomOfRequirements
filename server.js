@@ -15,6 +15,7 @@ const staff = require('./routes/staff');
 const customer = require('./routes/customer');
 const order = require('./routes/order');
 const team = require('./routes/team');
+const calendar = require('./routes/calendar');
 
 var cors = require('cors')
 app.use(cors());
@@ -75,6 +76,7 @@ app.use('/staff', staff);
 app.use('/customer',customer);
 app.use('/order', order);
 app.use('/team', team);
+app.use('/calendar', calendar);
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use(express.static('customer/build'));
