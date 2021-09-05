@@ -83,17 +83,18 @@
     position: relative;
     width: 30vw;
     height: 50vh;
-    border: 1px solid #000000;
+    padding-top: 10vh;
     background-color: #f7f7f7;
-    margin-top: 1vh;
+
 }
 
 .popUp-title{
     position: relative;
-    margin-left: 10vw;
+    margin-left: 1vw;
     text-align: center;
     font-weight: bold;
-    font-size:x-large;
+    font-size: large;
+    padding-top: 1%;
 }
 
 .close-btn{

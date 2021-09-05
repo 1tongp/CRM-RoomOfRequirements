@@ -6,7 +6,7 @@ import './Profile.css';
 import ChangeForm from './ChangeForm.js';
 import Test from './UploadImage.js';
 import UnChangedForm from './UnchangedForm.js';
-import PopUp from './Password';
+
 
 
 function Profile(props) {
@@ -27,7 +27,6 @@ function Profile(props) {
                     <UnChangedForm data={props}/>
                     </div>
                 </div>
-                <PopUp />
             </div>
             
         </div>
