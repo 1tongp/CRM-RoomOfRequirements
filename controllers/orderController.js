@@ -24,10 +24,9 @@ exports.customerOrderCreatePost = function(req, res){
 }
 
 
-// Get request for vendor to get the particular status' order list
+// Get request for staff to get the orders
 exports.OrderListGet = function(req, res){
-    Order.find(req.query).populate("staff").populate("customer").then((orders)=>{
-
+    Order.find({staff: req.params.staffId}, function(err, orders){
         //if for perticular staff, the order list for required status is an empty list, return error message
         if(orders.length === 0 ){
             res.status(200).json({success: false, message:"Order is not found"})
@@ -48,7 +47,8 @@ exports.OrderListGet = function(req, res){
             sortOrder = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
             res.status(200).json({success: true, orders: sortOrder})
         }
-    })       
+    })
+
 };
 
 // POST request for staff to update the detail for a particular order
