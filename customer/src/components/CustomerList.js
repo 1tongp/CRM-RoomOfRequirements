@@ -50,6 +50,8 @@ function CustomerList(props) {
 
 
   const data = [
+    
+    
     {
       key: '1',
       firstName: 'Xiaochen',
@@ -66,7 +68,7 @@ function CustomerList(props) {
       contactNumber: 123456789,
       email: 'coco2@gmail.com',
       insurance: 'Car',
-      details: <Button className='button'>Details</Button>,
+      details: <CustomerDetail className='button'>Details</CustomerDetail>,
     },
     {
       key: '3',
@@ -75,7 +77,7 @@ function CustomerList(props) {
       contactNumber: 123456789,
       email: 'example@gmail.com',
       insurance: 'Car',
-      details: <Button className='button'>Details</Button>,
+      details: <CustomerDetail className='button'>Details</CustomerDetail>,
     },
     {
       key: '4',
@@ -84,7 +86,7 @@ function CustomerList(props) {
       contactNumber: 123456789,
       email: 'example2@gmail.com',
       insurance: 'Travel',
-      details: <Button className='button'>Details</Button>,
+      details: <CustomerDetail className='button'>Details</CustomerDetail>,
     },
   ];
 

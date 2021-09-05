@@ -69,11 +69,13 @@ const aevent = [{
 
 
 function EventPopup(props) {
+    console.log(props);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [newEvent, setNewEvent] = useState({title:"", start:Date(), end:Date()})
+
+    const [newEvent, setNewEvent] = useState({Description:"", visibiliry:"", type:"", start:'', end:''})
     const [allEvent, setAllEvent] = useState(events)
 
     // to reload the page showing new added events on the calendar
@@ -86,7 +88,8 @@ function EventPopup(props) {
         // event is not updated in the list (one step behind????)
         setAllEvent({...allEvent, newEvent})
         console.log(allEvent)
-        window.location.reload(false)
+        // axios.post('/calendar/create', {staff: props.location.state.staff.id, event:})
+        // window.location.reload(false)
     }
 
     const changeDatetype = (newEvent) => {
@@ -152,8 +155,20 @@ function EventPopup(props) {
                             <Modal.Body>
                                 <Form>
                                     <Form.Group controlId="formEventTitle">                
-                                        <Form.Control type="text" placeholder="Event title"
-                                            onChange={e => setNewEvent({...newEvent, title: e.target.value})} />
+                                        <Form.Control type="text" placeholder="Event Description"
+                                            onChange={e => setNewEvent({...newEvent, Description: e.target.value})} />
+                                        <Form.Text className="text-mutes">
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Form.Group controlId="formEventTitle">                
+                                        <Form.Control type="text" placeholder="Event Visibility"
+                                            onChange={e => setNewEvent({...newEvent, visibility: e.target.value})} />
+                                        <Form.Text className="text-mutes">
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Form.Group controlId="formEventTitle">                
+                                        <Form.Control type="text" placeholder="Event Type"
+                                            onChange={e => setNewEvent({...newEvent, type: e.target.value})} />
                                         <Form.Text className="text-mutes">
                                         </Form.Text>
                                     </Form.Group>

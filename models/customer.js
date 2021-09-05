@@ -49,6 +49,10 @@ var CustomerSchema = new Schema({
             type: [Number]
         }
     },
+    region:{
+        type:String,
+        required:true,
+    }
     // Product: {
     //     type: Array,
     //     required: true,
