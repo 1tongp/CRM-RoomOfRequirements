@@ -19,7 +19,7 @@ const testStaffResult = {
     }
 }
 
-describe("unit tests", () => {
+describe("staff unit tests", () => {
     it('should return a updated information for staff', function (done) {
         var curBody = {
             "givenName": "Jennie",

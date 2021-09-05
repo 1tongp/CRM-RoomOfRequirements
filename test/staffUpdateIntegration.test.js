@@ -17,7 +17,7 @@ const testStaffInfo = {
 
 const testStaffId = "6124b0c04093d131dc476e44"
 
-describe("vendor integration tests", () => {
+describe("staff integration tests", () => {
     it('should be able to update profile for staff', function(done) {
         request.post(
             {
