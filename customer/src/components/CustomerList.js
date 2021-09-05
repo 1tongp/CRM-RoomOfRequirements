@@ -6,9 +6,17 @@ import SearchBar from './SearchBar';
 import { Button } from 'antd';
 import './Customer.css';
 import CustomerDetail from './CustomerDetail';
+import { useState, useEffect } from 'react';
+import axios from '../API/axios.js';
+import singleCustomer from '../Customer/singleCustomer';
 
 function CustomerList(props) {
   console.log(props);
+
+
+  const [customers, setCus] = useState(...[]);
+  const [numCustomers, setNum] = useState(0);
+
   const columns = [
     {
       title: 'First Name',
@@ -41,7 +49,6 @@ function CustomerList(props) {
   ];
 
 
-  // data
   const data = [
     {
       key: '1',
@@ -85,14 +92,38 @@ function CustomerList(props) {
     console.log('params', pagination, filters, sorter, extra);
   }
 
+  // useEffect(() => {
 
+  //   axios.get('/customer/list/' + props.data.location.state.staff.id).then(response => {
+  //     console.log(props);
+  //     console.log(response);
+  //     if (response.data.success) {
+  //       setCus(response.data.customers);
+  //     }
+  //   })
 
+  //   axios.get('/customer/number/' + props.data.location.state.staff.id).then(response => {
+  //     console.log(props);
+  //     console.log(response);
+  //     if (response.data.success) {
+  //       setNum(response.data.numCustomers);
+  //     }
+  //   })
+  // })
 
+  
 
   return (
     <div className='total'>
       <SearchBar className='searchBar' />
       <Table className='table' columns={columns} dataSource={data} onChange={onChange} />
+      {
+        (props.data.location.state.customers.length > 0) ? 
+        props.data.location.state.customers.map((singleCus) => (
+          <singleCustomer>{JSON.stringify(singleCus)}</singleCustomer>
+        ))
+        : <p>no customer</p>
+      }
     </div>
   );
 }
