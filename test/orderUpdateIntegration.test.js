@@ -2,22 +2,23 @@ const expect = require('chai').expect;
 const request = require('request');
 const app = require('../server');
 
-const baseUrl = "http://localhost:8080/staff"
+const baseUrl = "http://localhost:8080/order"
 
-const testStaffLogin = {
+const testOrderInfo = {
     vaildBody: {
-        "loginEmail": "test@liu",
-        "password": "111"
+        "detail": "2021/8/24, use the phone to contact the customer; 2021/9/05, send a gift to customer"
     }
 }
 
-describe("staff integration tests", () => {
-    it('should be able to Sign in to account', function(done) {
+const testOrderId = "6124e0e03cd92a39a0633944"
+
+describe("order integration tests", () => {
+    it('should be able to update detail or staff for order', function(done) {
         request.post(
             {
                 headers: { 'content-type': 'application/json' },
-                url: baseUrl + '/login',
-                body: testStaffLogin.vaildBody,
+                url: baseUrl + '/change/' + testOrderId,
+                body: testOrderInfo.vaildBody,
                 json: true,
             },
             function (error, response, body) {

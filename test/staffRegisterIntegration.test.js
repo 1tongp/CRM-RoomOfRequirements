@@ -4,25 +4,29 @@ const app = require('../server');
 
 const baseUrl = "http://localhost:8080/staff"
 
-const testStaffLogin = {
+const testStaffSignup = {
     vaildBody: {
-        "loginEmail": "test@liu",
-        "password": "111"
+        "givenName": "Kerry",
+        "familyName": "liu",
+        "loginEmail": "Kerry@365",
+        "password": "365",
+        "role": "manager",
+        "phone": 13580807979
     }
 }
 
 describe("staff integration tests", () => {
-    it('should be able to Sign in to account', function(done) {
+    it('should be able to create account', function(done) {
         request.post(
             {
                 headers: { 'content-type': 'application/json' },
-                url: baseUrl + '/login',
-                body: testStaffLogin.vaildBody,
+                url: baseUrl + '/register',
+                body: testStaffSignup.vaildBody,
                 json: true,
             },
             function (error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body.success).to.equal(true);
+                expect(body.message).to.equal("staff registered successfully");
                 if (error) done (error);
                 else done();
             }
