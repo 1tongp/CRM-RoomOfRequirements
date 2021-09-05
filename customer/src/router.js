@@ -6,6 +6,7 @@ import Customer from './Customer/Customer.js';
 import ProfileChange from './Profile/ProfileChange.js';
 import ProfileShow from './Profile/ProfileShow.js';
 import Calendar from './Calendar/Calendar.js';
+import Chat from './Chat/Chat.js';
 
 class Router extends React.Component{
     render(){
@@ -18,6 +19,7 @@ class Router extends React.Component{
                     <Route path="/profileChange" exact component={ProfileChange}></Route>
                     <Route path="/profileShow" exact component={ProfileShow}></Route>
                     <Route path="/calendar" exact component={Calendar}></Route>
+                    <Route path="/chat" exact component={Chat}></Route>
                 </Switch>
             </BrowserRouter>
         )

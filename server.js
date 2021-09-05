@@ -6,8 +6,13 @@ const express = require('express');
 //const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser  = require('body-parser');
-const app = express();
+const app = require('express')()
 const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
+});
 // const io = require("socket.io")(server);
 // const path = require('path');
 // lead routes in
@@ -24,6 +29,14 @@ app.get('/', (req, res) => {
 })
 // Bodyparser Middleware
 app.use(bodyParser.json());
+
+// chat starts here
+io.on('connection', socket => {
+  socket.on('message', ({ name, message }) => {
+    io.emit('message', { name, message })
+  })
+})
+
 
 // io.of("api/socket").on("connection", (socket) => {
 //     console.log("socket.io: User connected: ", socket.id);
