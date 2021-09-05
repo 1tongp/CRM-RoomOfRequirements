@@ -90,10 +90,10 @@ exports.customerListGet = function (req, res) {
                     "_v": customers[i]._v,
                     "_id": customers[i]._id,
                     "createTime": customers[i]._id,
-                    "updateTime": customers[i].updateTime
+                    "updateTime": customers[i].updateTime,
                 })
             }
-            sortedCustomer = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
+            sortedCustomer = sortedCustomer.sort(({updateTime: a}, {updateTime: b}) => b - a)
             res.status(200).json({success:true, customers: sortedCustomer})
         }
     })
@@ -170,6 +170,18 @@ exports.customerNoStaffGet = function(req, res){
         }
         else{
             res.status(200).json({success: true, customers: customerList})
+        }
+    })
+}
+
+// GET request to get the number of customers that associated with particular staff
+exports.customerNumberGet = function(req,res){
+    customer.find({staff:req.params.staffId}, function(err, customers){
+        if(customers.length === 0){
+            res.status(200).json({success: false, message: "No Customers Founded"})
+        }
+        else{
+            res.status(200).json({success: true, numCustomers: customers.length})
         }
     })
 }
