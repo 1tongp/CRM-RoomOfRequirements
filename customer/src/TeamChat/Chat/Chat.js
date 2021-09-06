@@ -7,7 +7,7 @@ import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 
 
-import Navigation from '../Navigation';
+import Navigation from '../../components/Navigation';
 import TeamList from '../../Group/TeamList.js';
 import UploadFile from '../../Group/UploadFile.js';
 
