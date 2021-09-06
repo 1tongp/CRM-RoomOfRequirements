@@ -1,0 +1,13 @@
+
+.GroupBeforeChatPage {
+    display: grid;
+    grid-template-columns: 0.8fr 2.8fr 4.5fr 2.2fr;
+    grid-gap: 1rem;
+    grid-template-areas:
+         "Navibar TeamList Chat-Join UploadFile"
+}
+
+.NavBar {grid-area: Navibar;}
+.TeamList {grid-area: TeamList;}
+.Chat-Join {grid-area: Chat-Join;}
+.UploadFile {grid-area: UploadFile;}

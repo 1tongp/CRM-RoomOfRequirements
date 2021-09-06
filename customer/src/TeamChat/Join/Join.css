@@ -1,0 +1,46 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.JoinGroupchatPage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #F4F4F4;
+}
+
+.JoinContent {
+  width: 60%;
+}
+
+.joinInput {
+  border-radius: 5vh;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.heading {
+  color: black;
+  font-size: 5vh;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.button {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #DE6161;
+    padding: 20px;
+    border-radius: 5vh;
+    display: inline-block;
+    border: none;
+    width: 100%;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
