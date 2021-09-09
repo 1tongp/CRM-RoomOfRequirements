@@ -2,13 +2,16 @@ const Order = require('../models/order');
 
 // POST request for customer order create
 exports.customerOrderCreatePost = function(req, res){
-    const{customer, staff, detail} = req.body;
+    const{customer, staff, detail, expireDate,type} = req.body;
 
     // create a new order
     const newOrder = new Order({
         customer,
         staff,
-        detail
+        detail,
+        expireDate,
+        type
+        
     });
 
     // save new order's data
@@ -42,6 +45,7 @@ exports.OrderListGet = function(req, res){
                     "staff":orders[i].staff,
                     "_v":orders[i]._v,
                     "_id":orders[i]._id,
+                    "type":orders[i].type,
                 })
             }
             sortOrder = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
@@ -79,44 +83,6 @@ exports.orderChangePost = function(req, res){
     })
 }
 
-
-/* url: http://localhost:5000/order?customer=:customerID&status=outstanding to get all outstanding orders */
-// Get request for customer to get their order details
-// exports.customerOrderListGet = function(req, res){
-//     Order.find(req.query).populate("vendor").populate("customer").then((orders)=>{
-        
-//         //if for perticular vendor, the order list for required status is an empty list, return error message
-//         if (orders.length == 0){
-//             res.status(200).json({ success: false, error: "no order found"})
-//         } else {
-//             var sortOrder = []
-//             for(i = 0; i < orders.length; i++){
-//                 sortOrder.push({
-//                     "comments":orders[i].comments,
-//                     "createTime":orders[i].createTime,
-//                     "customer":orders[i].customer,
-//                     "discount":orders[i].discount,
-//                     "isCanceled":orders[i].isCanceled,
-//                     "isChangeable":orders[i].isChangeable,
-//                     "isDelivered":orders[i].isDelivered,
-//                     "ratings":orders[i].ratings,
-//                     "snacksList":orders[i].snacksList,
-//                     "status":orders[i].status,
-//                     "totalPrice":orders[i].totalPrice,
-//                     "updateTime":orders[i].updateTime,
-//                     "vendor":orders[i].vendor,
-//                     "_v":orders[i]._v,
-//                     "_id":orders[i]._id,
-//                     "customerName":orders[i].customerName
-//                 })
-//             }
-//             sortOrder = sortOrder.sort(({createTime: a}, {createTime: b}) => b - a)
-//             res.status(200).json({ success: true, customerOrders: sortOrder})
-//         }
-        
-//     })       
-// };
-
 // GET request for staff to search orders based on the order id
 exports.orderListGet = function(req, res){
 
@@ -142,3 +108,42 @@ exports.orderFilterGet = function(req, res){
         }
     })
 }
+
+// GET post to get the order list for a particular customer
+exports.OrderCustomerGet = function(req, res){
+    Order.find({customer: req.params.customerId}, function(err, orders){
+        if(orders.length === 0 ){
+            res.status(200).json({success: false, message:"Customer Order is not found"})
+        }
+        else{
+            var sortOrder = []
+            for(i = 0; i < orders.length; i++){
+                sortOrder.push({
+                    "detail":orders[i].detail,
+                    "customer":orders[i].customer,
+                    "status":orders[i].status,
+                    "updateTime":orders[i].updateTime,
+                    "staff":orders[i].staff,
+                    "_v":orders[i]._v,
+                    "_id":orders[i]._id,
+                    "type":orders[i].type,
+                })
+            }
+            sortOrder = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
+            res.status(200).json({success: true, orders: sortOrder})
+        }
+    })
+
+};
+// GET request to get the order details based on the customer id and insuranc type
+exports.OrderCustomerTypeGet = function(req, res){
+    Order.find({customer: req.params.customerId, type: req.query.type}, function(err, orders){
+        if(!orders){
+            res.status(200).json({success: false, message:"Customer Order is not found"})
+        }
+        else{
+            res.status(200).json({success: true, orderDetail: orders})
+        }
+    })
+
+};

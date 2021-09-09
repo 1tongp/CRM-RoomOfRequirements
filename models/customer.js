@@ -50,15 +50,19 @@ var CustomerSchema = new Schema({
         }
     },
     region:{
-        type:String,
-        required:true,
-    }
+        type: String,
+        required: true,
+    },
     // Product: {
     //     type: Array,
     //     required: true,
     //     default: []
     // },
 
+    insurance:{
+        type: Array,
+        required: true,
+    }
 }, { timestamps: {createdAt: 'createTime', updateAt: 'updateTime'}});
 
 module.exports = mongoose.model("Customer",CustomerSchema);
