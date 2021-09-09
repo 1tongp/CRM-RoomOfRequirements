@@ -3,6 +3,7 @@ import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
 import Popup2 from "./PasswordPopup";
 
+
 class UnchangedForm extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +11,8 @@ class UnchangedForm extends React.Component {
     };
 
     state = {
-        redirect: null
+        redirect: null,
+        modal1Visible: false
     };
 
     setModal1Visible(modal1Visible){
@@ -94,11 +96,12 @@ class UnchangedForm extends React.Component {
                         {/* <div className="popup" onclick="myFunction()">Click me!
                             <span class="popuptext" id="myPopup">Popup text...</span>
                         </div> */}
-                        <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
+                        {/* <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
                             Change Password
                         </Button>
-                        <Popup2 trigger={this.state.modal1Visible}>  
-                        </Popup2>
+                        <Popup2 visible={this.state.modal1Visible}>  
+                        </Popup2> */}
+                        <Popup2>Change Password</Popup2>
                 </Row>
                 </Form>
         )

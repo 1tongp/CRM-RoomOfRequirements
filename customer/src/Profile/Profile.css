@@ -52,18 +52,23 @@
     position: absolute;
     bottom: 0;
     right: 0;
-
-    margin-right: 150px;
-    margin-bottom: 50px;
+    margin-right: 5vw;
+    margin-bottom: 8vh;
+    color: #000000;
+    font-family: Reem Kufi;
+    background-color: #c4c4c4;
 }
 
 .passRight{
     position: absolute;
     bottom: 0;
     right: 0;
-
-    margin-right: 300px;
-    margin-bottom: 50px;
+    margin-right: 15vw;
+    margin-bottom: 8vh;
+    color: #000000;
+    font-family: Reem Kufi;
+    background-color: #c4c4c4;
+    
 }
 
 .popUp{
@@ -90,10 +95,9 @@
 
 .popUp-title{
     position: relative;
-    margin-left: 1vw;
     text-align: center;
     font-weight: bold;
-    font-size: large;
+    font-size: medium;
     padding-top: 1%;
 }
 
@@ -101,4 +105,9 @@
     position: absolute;
     bottom: 1vw;
     right: 2vh;
+}
+
+.button {
+    background-color: #FF5858;
+    color: white;
 }
