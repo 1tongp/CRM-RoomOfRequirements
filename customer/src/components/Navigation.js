@@ -54,6 +54,12 @@ class Navigation extends React.Component {
       // axios needs implement later after finishing the back-end of the Caldenlar
       this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '4'});
     }
+    if(e.key === "3"){
+      console.log("switch to group and chat");
+      console.log(this.props);
+      this.props.data.history.push('/group', {staff: this.props.data.location.state.staff, key: '3'});
+
+    }
   };
 
   onLogOut = () =>{

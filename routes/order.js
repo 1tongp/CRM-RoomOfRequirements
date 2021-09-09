@@ -19,5 +19,8 @@ orderRouter.get('/search/:id', orderController.orderListGet);
 
 orderRouter.get('/filter/:staffId', orderController.orderFilterGet);
 
+orderRouter.get('/customerorder/:customerId', orderController.OrderCustomerGet);
+
+orderRouter.get('/customertype/:customerId', orderController.OrderCustomerTypeGet);
 
 module.exports = orderRouter;

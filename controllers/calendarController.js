@@ -60,3 +60,23 @@ exports.eventDetailGet = function(req, res){
         }
     })
 }
+
+// GET request to get the all events
+exports.eventListGet = function(req, res){
+    Calendar.find({staff: req.params.staffId},function(err, eventsList){
+        if(eventsList.length === 0){
+            res.status(200).json({success: false, message: "No events"})
+        }
+        else{
+            var eventsLists = []
+            for(i = 0; i < eventsList.length; i++){
+                eventsLists.push({
+                    "title": eventsList[i].event,
+                    "start": eventsList[i].startTime,
+                    "end":eventsList[i].endTime
+                })
+            }
+            res.status(200).json({success: true, events: eventsLists})
+        }
+    })
+}

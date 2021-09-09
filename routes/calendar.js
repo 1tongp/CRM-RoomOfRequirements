@@ -12,4 +12,6 @@ CalendarRouter.post('/edit/:eventId', calendarController.eventEditPost);
 // GET request to get the events based on date and time
 CalendarRouter.get('/find/:staffId', calendarController.eventDetailGet);
 
+// GET request to get the events based on date and time
+CalendarRouter.get('/show/:staffId', calendarController.eventListGet);
 module.exports = CalendarRouter;
