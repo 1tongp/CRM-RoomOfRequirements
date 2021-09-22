@@ -21,7 +21,7 @@ import moment from "moment";
 
 
 function EventPopup(props) {
-    // console.log(props);
+    console.log(props);
     const locales = {
         "en-AU": require("date-fns/locale/en-AU"),
     };
@@ -36,22 +36,40 @@ function EventPopup(props) {
 
 
     const [allEvents, setEventList] = useState([])
+    const [publicEvents, setPublic] = useState([])
+   
     useEffect(
         () => {
-            axios.get('/calendar/show/' + props.location.state.staff.id).then(response => {
+            axios.get('/calendar/show/' + props.location.state.staff.id + '?visibility=Private').then(response => {
                 if (response.data.success) {
                     setEventList(response.data.events)
-                    // console.log(allEvents)
+                    //console.log(allEvents)
                 }
                 // console.log(typeof(response.data.events[1].start))
             })
+            axios.get('/calendar/public/' + props.location.state.staff.team + '?visibility=Public').then(response => {
+                if (response.data.success) {
+                    setPublic(response.data.events)
+                    //console.log(publicEvents)
+                }
+            })
+            
         }, [])
 
+    var allEventss = []
     for (let i = 0; i < allEvents.length; i++) {
         allEvents[i].start = new Date(allEvents[i].start)
         allEvents[i].end = new Date(allEvents[i].end)
-        console.log(allEvents[i])
+        allEventss.push(allEvents[i])
+        // console.log(allEvents[i])
     }
+    for (let i = 0; i < publicEvents.length; i++) {
+        publicEvents[i].start = new Date(publicEvents[i].start)
+        publicEvents[i].end = new Date(publicEvents[i].end)
+        allEventss.push(publicEvents[i])
+    }
+    console.log(allEventss)
+   
 
 
 
@@ -122,7 +140,7 @@ function EventPopup(props) {
         // event is not updated in the list (one step behind????)
         setAllEvent({ ...allEvent, newEvent })
         console.log(allEvent)
-        axios.post('/calendar/create', { staff: props.location.state.staff.id, event: newEvent.title, startTime: newEvent.start, endTime: newEvent.end, type: newEvent.type, visibility: newEvent.visibility }, function (res) {
+        axios.post('/calendar/create', { staff: props.location.state.staff.id, team: props.location.state.staff.team, event: newEvent.title, startTime: newEvent.start, endTime: newEvent.end, type: newEvent.type, visibility: newEvent.visibility }, function (res) {
             if (res.data.success) {
                 console.log(res);
             }
@@ -241,20 +259,20 @@ function EventPopup(props) {
                             <Calendar
                                 selectable
                                 localizer={localizer}
-                                events={allEvents}
+                                events={allEventss}
                                 // defaultView='week'
                                 // startAccessor={(allEvents) => { const start = Date(allEvents.start)}}
                                 // startAccessor={(allEvents) => { return moment(allEvents.start)}}
-                                startAccessor = "start"
+                                startAccessor="start"
                                 endAccessor="end"
                                 style={{ height: 460, margin: "50px" }}
-                                onSelectEvent={allEvents => alert(allEvents.title)}
-                                eventPropGetter={(allEvents) => { const backgroundColor = allEvents.allDay ? '#8a083e' : '#e4d6d6'; return { style: { backgroundColor } } }}
+                                onSelectEvent={allEventss => alert(allEventss.title)}
+                                eventPropGetter={(allEventss) => { const backgroundColor = allEventss.allDay ? '#8a083e' : '#e4d6d6'; return { style: { backgroundColor } } }}
                             />
                         </div>
                     </div>
 
-                    <div class='customerList'> <CustomerList data= {props}></CustomerList> </div>
+                    <div class='customerList'> <CustomerList data={props}></CustomerList> </div>
                 </div>
             </div>
         </>
