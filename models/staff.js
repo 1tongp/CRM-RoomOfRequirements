@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // required information for 
 var StaffSchema = new Schema({
+    team: {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
+    },
     givenName:{
         type: String,
         required: true,
