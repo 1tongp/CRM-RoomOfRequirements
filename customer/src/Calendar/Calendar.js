@@ -17,7 +17,7 @@ import 'react-day-picker/lib/style.css';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 import Navigation from '../components/Navigation';
-
+import moment from "moment";
 
 
 function EventPopup(props) {
@@ -45,7 +45,14 @@ function EventPopup(props) {
                 }
                 // console.log(typeof(response.data.events[1].start))
             })
-        }, [allEvents])
+        }, [])
+
+    for (let i = 0; i < allEvents.length; i++) {
+        allEvents[i].start = new Date(allEvents[i].start)
+        allEvents[i].end = new Date(allEvents[i].end)
+        console.log(allEvents[i])
+    }
+
 
 
 
@@ -121,6 +128,7 @@ function EventPopup(props) {
             }
             console.log(res);
         })
+        alert("Added event successfully!")
         window.location.reload(false)
     }
 
@@ -233,13 +241,15 @@ function EventPopup(props) {
                             <Calendar
                                 selectable
                                 localizer={localizer}
-                                events={allEvent}
+                                events={allEvents}
                                 // defaultView='week'
                                 // startAccessor={(allEvents) => { const start = Date(allEvents.start)}}
+                                // startAccessor={(allEvents) => { return moment(allEvents.start)}}
                                 startAccessor = "start"
                                 endAccessor="end"
                                 style={{ height: 460, margin: "50px" }}
-                                eventPropGetter={(allEvent) => { const backgroundColor = allEvent.allDay ? '#8a083e' : '#e4d6d6'; return { style: { backgroundColor } } }}
+                                onSelectEvent={allEvents => alert(allEvents.title)}
+                                eventPropGetter={(allEvents) => { const backgroundColor = allEvents.allDay ? '#8a083e' : '#e4d6d6'; return { style: { backgroundColor } } }}
                             />
                         </div>
                     </div>

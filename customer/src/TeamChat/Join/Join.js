@@ -10,7 +10,7 @@ export default function SignIn() {
   return (
     <div className="JoinGroupchatPage">
       <div className="JoinContent">
-        <h1 className="heading">Start Group Chat</h1>
+        <h1 className="heading">Start Team Chat</h1>
         <div>
           <input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
         </div>
