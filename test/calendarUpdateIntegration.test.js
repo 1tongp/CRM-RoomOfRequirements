@@ -11,7 +11,8 @@ const testEventUpdate = {
     }
 }
 
-const testCalendarId = "61336effc3becb16841a04f8"
+//const testCalendarId = "61336effc3becb16841a04f8"
+const testCalendarId = "614c1d64501f380a044b5285"
 
 describe("Calendar integration tests", () => {
     it('should be able to update Event', function(done) {

@@ -10,7 +10,8 @@ const testOrderInfo = {
     }
 }
 
-const testOrderId = "6124e0e03cd92a39a0633944"
+//const testOrderId = "6124e0e03cd92a39a0633944"
+const testOrderId = "61398639041fbf5258ee1f7c"
 
 describe("order integration tests", () => {
     it('should be able to update detail or staff for order', function(done) {
