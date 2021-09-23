@@ -122,6 +122,11 @@ function EventPopup(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    {/* new set up here */}
+    const [showUpdate, setShowUpdate] = useState(false);
+    const handleUpdateClose = () => setShowUpdate(false);
+    const handleUpdateShow = () => setShowUpdate(true);
+
 
     const [newEvent, setNewEvent] = useState({ title: "", visibility: "", type: "", start: new Date().toLocaleDateString, end: new Date().toLocaleDateString })
     const [allEvent, setAllEvent] = useState(events)
@@ -205,6 +210,11 @@ function EventPopup(props) {
                                 Add event
                             </Button>
 
+                            {/* new button here */}
+                            <Button variant='custom' size="sm" onClick={handleUpdateShow}>
+                                Update event
+                            </Button>
+
                             <Modal show={show} onHide={handleClose} bodyStyle={{ height: 400 }}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>Add Event</Modal.Title>
@@ -254,6 +264,60 @@ function EventPopup(props) {
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
+
+                            {/* new modal here */}
+
+                            <Modal show={showUpdate} onHide={handleUpdateClose} bodyStyle={{ height: 400 }}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Update Event</Modal.Title>
+                                </Modal.Header>
+
+                                <Modal.Body>
+                                    <Form>
+                                        {/* add the prop.event.title in the defaultValue */}
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control type="text" placeholder="Event Event Title" defaultValue = {"Title"}
+                                                onChange={e => setNewEvent({ ...newEvent, title: e.target.value })} />
+                                            <Form.Text className="text-mutes">
+                                            </Form.Text>
+                                        </Form.Group>
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control type="text" placeholder="Event Visibility" defaultValue = {"Visibility"}
+                                                onChange={e => setNewEvent({ ...newEvent, visibility: e.target.value })} />
+                                            <Form.Text className="text-mutes">
+                                            </Form.Text>
+                                        </Form.Group>
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control type="text" placeholder="Event Type"
+                                                onChange={e => setNewEvent({ ...newEvent, type: e.target.value })} />
+                                            <Form.Text className="text-mutes">
+                                            </Form.Text>
+                                        </Form.Group>
+
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control type="datetime-local" name='event-start-date'
+                                                onChange={(e) => setNewEvent({ ...newEvent, start: new Date(e.target.value) })}
+                                            />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control type="datetime-local" name='event-end-date'
+                                                onChange={(e) => setNewEvent({ ...newEvent, end: new Date(e.target.value) })}
+                                            />
+                                        </Form.Group>
+                                    </Form>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={handleUpdateClose}>
+                                        Close
+                                    </Button>
+                                    <Button variant="primary">
+                                        Update event
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+
                         </div>
                         <div class="big-calendar-component">
                             <Calendar
