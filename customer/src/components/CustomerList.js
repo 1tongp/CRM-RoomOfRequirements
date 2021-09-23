@@ -12,248 +12,244 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const { Search } = Input;
 function CustomerList(props) {
-  // console.log(props);
+    // console.log(props);
 
-  const [data, setData] = useState([]);
-  const [data2, setData2] = useState([]);
-  useEffect(() => {
-    axios
-      .get("/customer/show/" + props.data.location.state.staff.id)
-      .then((response) => {
-        if (response.data.success) {
-          setData(response.data.customerList);
+    const [data, setData] = useState([]);
+    const [data2, setData2] = useState([]);
+    useEffect(() => {
+        axios
+            .get("/customer/show/" + props.data.location.state.staff.id)
+            .then((response) => {
+                if (response.data.success) {
+                    console.log(response);
+                    setData(response.data.customerList);
+                }
+            });
+
+        // axios.get("/customer/nostaff/" + null).then((response) => {
+        //     if (response.data.success) {
+        //         setData2(response.data.customers);
+        //     }
+        // });
+    }, []);
+
+    const columns = [
+        {
+            title: "First Name",
+            dataIndex: "firstName",
+            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Last Name",
+            dataIndex: "lastName",
+            sorter: (a, b) => a.lastName.localeCompare(b.lastName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Contact Number",
+            dataIndex: "contactNumber",
+        },
+        {
+            title: "Email Address",
+            dataIndex: "email",
+        },
+        {
+            title: "Region",
+            dataIndex: "region",
+            filters: [
+                {
+                    text: "Box Hill",
+                    value: "Box Hill",
+                },
+                {
+                    text: "Carlton",
+                    value: "Carlton",
+                },
+                {
+                    text: "Caulfield",
+                    value: "Caulfield",
+                },
+                {
+                    text: "Glen Waverley",
+                    value: "Glen Waverley",
+                },
+                {
+                    text: "Melbourne",
+                    value: "Melbourne",
+                },
+            ],
+            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+        },
+        {
+            title: "Insurance Type",
+            dataIndex: "insurance",
+            filters: [
+                {
+                    text: "Car",
+                    value: "Car",
+                },
+                {
+                    text: "Landlord",
+                    value: "Landlord",
+                },
+                {
+                    text: "Home",
+                    value: "Home",
+                },
+                {
+                    text: "Travel",
+                    value: "Travel",
+                },
+            ],
+            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+        },
+        {
+            title: "Details",
+            dataIndex: "details",
+        },
+    ];
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].details.length == 0) {
+            data[i].details.push(
+                <CustomerDetail
+                    className="button"
+                    data={data[i]}
+                ></CustomerDetail>
+            );
         }
-      });
+    }
 
-    axios.get("/customer/nostaff/" + null).then((response) => {
-      if (response.data.success) {
-        setData2(response.data.customers);
-      }
+    // search functionality
+    var nameArray = [];
+    for (let i = 0; i < data.length; i++) {
+        nameArray.push(data[i].firstName);
+        nameArray.push(data[i].lastName);
+        nameArray.push(data[i].contactNumber.toString());
+        nameArray.push(data[i].email);
+    }
+    // console.log(nameArray);
+    function onChange(pagination, filters, sorter, extra) {
+        console.log("params", pagination, filters, sorter, extra);
+    }
+
+    const [SearchTerm, setSearchTerm] = useState("");
+    const searchHandler = (event) => {
+        setSearchTerm(event.currentTarget.value);
+    };
+
+    var result = nameArray.filter((val) => {
+        if (SearchTerm == "") {
+            return val;
+        } else if (val.toLowerCase().includes(SearchTerm.toLowerCase())) {
+            return val;
+        }
     });
-  }, []);
 
-  const columns = [
-    {
-      title: "First Name",
-      dataIndex: "firstName",
-      sorter: (a, b) => a.firstName.localeCompare(b.firstName),
-      sortDirections: ["descend"],
-    },
-    {
-      title: "Last Name",
-      dataIndex: "lastName",
-      sorter: (a, b) => a.lastName.localeCompare(b.lastName),
-      sortDirections: ["descend"],
-    },
-    {
-      title: "Contact Number",
-      dataIndex: "contactNumber",
-    },
-    {
-      title: "Email Address",
-      dataIndex: "email",
-    },
-    {
-      title: "Region",
-      dataIndex: "region",
-      filters: [
-        {
-          text: "Box Hill",
-          value: "Box Hill",
-        },
-        {
-          text: "Carlton",
-          value: "Carlton",
-        },
-        {
-          text: "Caulfield",
-          value: "Caulfield",
-        },
-        {
-          text: "Glen Waverley",
-          value: "Glen Waverley",
-        },
-        {
-          text: "Melbourne",
-          value: "Melbourne",
-        },
-      ],
-      onFilter: (value, record) => record.insurance.indexOf(value) === 0,
-    },
-    {
-      title: "Insurance Type",
-      dataIndex: "insurance",
-      filters: [
-        {
-          text: "Car",
-          value: "Car",
-        },
-        {
-          text: "Landlord",
-          value: "Landlord",
-        },
-        {
-          text: "Home",
-          value: "Home",
-        },
-        {
-          text: "Travel",
-          value: "Travel",
-        },
-      ],
-      onFilter: (value, record) => record.insurance.indexOf(value) === 0,
-    },
-    {
-      title: "Details",
-      dataIndex: "details",
-    },
-  ];
+    var filteredData = data.filter(function (el) {
+        return (
+            result.includes(el.firstName) ||
+            result.includes(el.lastName) ||
+            result.includes(el.contactNumber.toString()) ||
+            result.includes(el.email)
+        );
+    });
 
-  for (let i = 0; i < data.length; i++) {
-    data[i].details.push(
-      <CustomerDetail className="button" data={data[i]}>
-        Details
-      </CustomerDetail>
-    );
-  }
-
-  // search functionality
-  var nameArray = [];
-  for (let i = 0; i < data.length; i++) {
-    nameArray.push(data[i].firstName);
-    nameArray.push(data[i].lastName);
-    nameArray.push(data[i].contactNumber.toString());
-    nameArray.push(data[i].email);
-  }
-  // console.log(nameArray);
-  function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
-  }
-
-  const [SearchTerm, setSearchTerm] = useState("");
-  const searchHandler = (event) => {
-    setSearchTerm(event.currentTarget.value);
-  };
-
-  var result = nameArray.filter((val) => {
-    if (SearchTerm == "") {
-      return val;
-    } else if (val.toLowerCase().includes(SearchTerm.toLowerCase())) {
-      return val;
+    // second no staff list
+    for (let i = 0; i < data2.length; i++) {
+        data2[i].details.push(
+            <CustomerDetail className="button" data={data2[i]}>
+                Details
+            </CustomerDetail>
+        );
+        data2[i].assign.push(
+            <CustomerAssign
+                className="button"
+                staff={props.data.location.state.staff.id}
+                data={data2[i]}
+            >
+                Assign
+            </CustomerAssign>
+        );
     }
-  });
 
-  var filteredData = data.filter(function (el) {
-    return (
-      result.includes(el.firstName) ||
-      result.includes(el.lastName) ||
-      result.includes(el.contactNumber.toString()) ||
-      result.includes(el.email)
-    );
-  });
-
-  // second no staff list
-  for (let i = 0; i < data2.length; i++) {
-    data2[i].details.push(
-      <CustomerDetail className="button" data={data2[i]}>
-        Details
-      </CustomerDetail>
-    );
-    data2[i].assign.push(
-      <CustomerAssign
-        className="button"
-        staff={props.data.location.state.staff.id}
-        data={data2[i]}
-      >
-        Assign
-      </CustomerAssign>
-    );
-  }
-
-  // search functionality
-  var nameArray2 = [];
-  for (let i = 0; i < data2.length; i++) {
-    nameArray2.push(data2[i].firstName);
-    nameArray2.push(data2[i].lastName);
-    nameArray2.push(data2[i].contactNumber.toString());
-    nameArray2.push(data2[i].email);
-  }
-
-  const [SearchTerm2, setSearchTerm2] = useState("");
-  const searchHandler2 = (event) => {
-    setSearchTerm2(event.currentTarget.value);
-  };
-
-  var result2 = nameArray2.filter((val) => {
-    if (SearchTerm2 == "") {
-      return val;
-    } else if (val.toLowerCase().includes(SearchTerm2.toLowerCase())) {
-      return val;
+    // search functionality
+    var nameArray2 = [];
+    for (let i = 0; i < data2.length; i++) {
+        nameArray2.push(data2[i].firstName);
+        nameArray2.push(data2[i].lastName);
+        nameArray2.push(data2[i].contactNumber.toString());
+        nameArray2.push(data2[i].email);
     }
-  });
 
-  var filteredData2 = data2.filter(function (el) {
+    const [SearchTerm2, setSearchTerm2] = useState("");
+    const searchHandler2 = (event) => {
+        setSearchTerm2(event.currentTarget.value);
+    };
+
+    var result2 = nameArray2.filter((val) => {
+        if (SearchTerm2 == "") {
+            return val;
+        } else if (val.toLowerCase().includes(SearchTerm2.toLowerCase())) {
+            return val;
+        }
+    });
+
+    var filteredData2 = data2.filter(function (el) {
+        return (
+            result2.includes(el.firstName) ||
+            result2.includes(el.lastName) ||
+            result2.includes(el.contactNumber.toString()) ||
+            result2.includes(el.email)
+        );
+    });
+
     return (
-      result2.includes(el.firstName) ||
-      result2.includes(el.lastName) ||
-      result2.includes(el.contactNumber.toString()) ||
-      result2.includes(el.email)
+        <>
+            <div className="total">
+                <div>
+                    <h2>Customers</h2>
+
+                    <Search
+                        className="searchBar"
+                        placeholder="input search text"
+                        onChange={searchHandler}
+                        value={SearchTerm}
+                        icon={<SearchOutlined />}
+                    />
+                </div>
+                <div>
+                    <p>Ongoing Customers</p>
+                    <Table
+                        size="middle"
+                        className="table"
+                        columns={columns}
+                        dataSource={filteredData}
+                        onChange={onChange}
+                    />
+                </div>
+                <div>
+                    <Search
+                        className="searchBar"
+                        placeholder="input search text"
+                        onChange={searchHandler2}
+                        value={SearchTerm2}
+                        icon={<SearchOutlined />}
+                    />
+                </div>
+                <div>
+                    <p>Assign New Customers</p>
+                    <Table
+                        size="small"
+                        className="table"
+                        columns={columns}
+                        dataSource={filteredData2}
+                        onChange={onChange}
+                    />
+                </div>
+            </div>
+        </>
     );
-  });
-
-  return (
-    <>
-      <div className="total">
-        <div>
-          <h2>Customers</h2>
-
-          <Search
-            className="searchBar"
-            placeholder="input search text"
-            onChange={searchHandler}
-            value={SearchTerm}
-            icon={<SearchOutlined />}
-          />
-        </div>
-        <div>
-          <p>Ongoing Customers</p>
-          <Table
-            size="middle"
-            className="table"
-            columns={columns}
-            dataSource={filteredData}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <Search
-            className="searchBar"
-            placeholder="input search text"
-            onChange={searchHandler2}
-            value={SearchTerm2}
-            icon={<SearchOutlined />}
-          />
-        </div>
-        <div>
-          <p>Assign New Customers</p>
-          <Table
-            size="small"
-            className="table"
-            columns={columns}
-            dataSource={filteredData2}
-            onChange={onChange}
-          />
-        </div>
-      </div>
-    </>
-  );
 }
 export default CustomerList;
