@@ -8,7 +8,7 @@ const testStaffSignup = {
     vaildBody: {
         "givenName": "Kerry1",
         "familyName": "liu1",
-        "loginEmail": "25@test",
+        "loginEmail": "27@test",
         "password": "365",
         "role": "manager",
         "phone": 13580807979
