@@ -6,14 +6,16 @@ const baseUrl = "http://localhost:8080/customer"
 
 const testCustomerCreate = {
     vaildBody: {
-        "givenName": "Lay",
-        "familyName": "Zhang",
-        "email": "Lay@test",
+        "givenName": "Lay1",
+        "familyName": "Zhang1",
+        "email": "23@test",
         "gender": "male",
         "age": 27,
         "dateOfBirth": "1990/12/22",
         "phone": 33333311111,
-        "address": "Beijing"
+        "address": "Beijing",
+        "region": "Box Hill",
+        "insurance": {}
     }
 }
 

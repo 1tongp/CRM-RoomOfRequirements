@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 // POST request for staff register 
 exports.staffRegisterPost = function (req, res) {
-    const { givenName, familyName, loginEmail, password, role, phone } = req.body;
+    const { givenName, familyName, loginEmail, password, role, phone, team} = req.body;
     Staff.findOne({ loginEmail: loginEmail }).then((emailExist) => {
 
         // for the case when email is already registered
@@ -19,7 +19,8 @@ exports.staffRegisterPost = function (req, res) {
                 loginEmail,
                 password,
                 role,
-                phone
+                phone,
+                team
             });
 
             // hash the password
@@ -40,6 +41,7 @@ exports.staffRegisterPost = function (req, res) {
                                 password: staff.password,
                                 role: staff.role,
                                 phone: staff.phone,
+                                team: staff.team
                             },
                         })
                     })
@@ -151,6 +153,7 @@ exports.staffLoginPost = function (req, res) {
                             role: staff.role,
                             phone: staff.phone,
                             photoPath: staff.photoPath,
+                            team: staff.team
                         },
                     });
                 }
@@ -178,10 +181,14 @@ exports.staffLoginUnhashPost = function (req, res) {
                     success: true,
                     staff: {
                         id: staff.id,
-                        givenName: staff.givenName,
-                        familyName: staff.familyName,
-                        loginEmail: staff.loginEmail,
-                        password: staff.password,
+                            givenName: staff.givenName,
+                            familyName: staff.familyName,
+                            loginEmail: staff.loginEmail,
+                            password: staff.password,
+                            role: staff.role,
+                            phone: staff.phone,
+                            photoPath: staff.photoPath,
+                            team: staff.team
                     },
                 });
             }

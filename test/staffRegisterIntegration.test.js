@@ -6,9 +6,9 @@ const baseUrl = "http://localhost:8080/staff"
 
 const testStaffSignup = {
     vaildBody: {
-        "givenName": "Kerry",
-        "familyName": "liu",
-        "loginEmail": "Kerry@365",
+        "givenName": "Kerry1",
+        "familyName": "liu1",
+        "loginEmail": "26@test",
         "password": "365",
         "role": "manager",
         "phone": 13580807979

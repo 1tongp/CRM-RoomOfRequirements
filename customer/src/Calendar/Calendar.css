@@ -65,7 +65,7 @@
   }
     
   .full-calendar-wrapper .rbc-calendar {
-        min-height: 500px ;
+        min-height: 85vh ;
         background-color: #ffffff;
       }
   .full-calendar-wrapper .rbc-calendar .rbc-toolbar {
@@ -106,7 +106,7 @@
     color: #4a4a4a;
     padding: 8px; }
   
-  .full-calendar-wrapper .rbc-calendar .rbc-month-view .rbc-month-row .rbc-row-content .rbc-row .rbc-date-cell.rbc-now {
+  /* .full-calendar-wrapper .rbc-calendar .rbc-month-view .rbc-month-row .rbc-row-content .rbc-row .rbc-date-cell.rbc-now {
     min-height: 500px ;
-    background-color: #f3ecf0; }
+    background-color: #f3ecf0; } */
   

@@ -2,7 +2,7 @@ const Calendar = require('../models/calendar');
 
 // POST request to create an event
 exports.eventCreatePost = function(req, res){
-    const{staff, event, type, visibility, startTime, endTime, dateYear} = req.body;
+    const{staff, event, type, visibility, startTime, endTime, team} = req.body;
 
     const newEvent = new Calendar({
         staff,
@@ -11,7 +11,7 @@ exports.eventCreatePost = function(req, res){
         visibility,
         startTime,
         endTime,
-        dateYear
+        team
     });
 
     newEvent.save(function(err, eve){
@@ -61,9 +61,9 @@ exports.eventDetailGet = function(req, res){
     })
 }
 
-// GET request to get the all events
+// GET request to get the all events for a particular staff
 exports.eventListGet = function(req, res){
-    Calendar.find({staff: req.params.staffId},function(err, eventsList){
+    Calendar.find({staff: req.params.staffId, visibility: req.query.visibility},function(err, eventsList){
         if(eventsList.length === 0){
             res.status(200).json({success: false, message: "No events"})
         }
@@ -73,7 +73,33 @@ exports.eventListGet = function(req, res){
                 eventsLists.push({
                     "title": eventsList[i].event,
                     "start": eventsList[i].startTime,
-                    "end":eventsList[i].endTime
+                    "end":eventsList[i].endTime,
+                    "team": eventsList[i].team,
+                    "visibility": eventsList[i].visibility,
+                    "staff":eventsList[i].staff
+                })
+            }
+            res.status(200).json({success: true, events: eventsLists})
+        }
+    })
+}
+
+// GET request to get the all team's events that the visibility is 'Public' 
+exports.eventTeamGet = function(req, res){
+    Calendar.find({team: req.params.teamId, visibility: req.query.visibility},function(err, eventsList){
+        if(eventsList.length === 0){
+            res.status(200).json({success: false, message: "No events"})
+        }
+        else{
+            var eventsLists = []
+            for(i = 0; i < eventsList.length; i++){
+                eventsLists.push({
+                    "title": eventsList[i].event,
+                    "start": eventsList[i].startTime,
+                    "end":eventsList[i].endTime,
+                    "team": eventsList[i].team,
+                    "visibility": eventsList[i].visibility,
+                    "staff":eventsList[i].staff
                 })
             }
             res.status(200).json({success: true, events: eventsLists})

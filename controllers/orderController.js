@@ -135,7 +135,7 @@ exports.OrderCustomerGet = function(req, res){
     })
 
 };
-// GET request to get the order details based on the customer id and insuranc type
+// GET request to get the order details based on the customer id and insurance type
 exports.OrderCustomerTypeGet = function(req, res){
     Order.find({customer: req.params.customerId, type: req.query.type}, function(err, orders){
         if(!orders){

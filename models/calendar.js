@@ -6,6 +6,10 @@ var CalendarSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Staff'
     },
+    team: {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
+    },
 
     event: {
         type: String,
@@ -18,7 +22,7 @@ var CalendarSchema = new Schema({
     },
     
     // {enum:{Private, Public}}
-    visibililty: {
+    visibility: {
         type: String,
         default: 'Private'
     },
@@ -28,7 +32,6 @@ var CalendarSchema = new Schema({
         type: String,
     },
 
-    // 0900AM == 09:00, 1345PM == 13:45
     endTime:{
         type:String,
     },
