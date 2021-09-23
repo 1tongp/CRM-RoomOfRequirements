@@ -2,7 +2,7 @@ const Team = require('../models/team');
 
 // POST request for customer order create
 exports.TeamCreatePost = function (req, res) {
-    const { teamNumber, fileList, TeamMemberList } = req.body;
+    const { teamNumber, fileList, staff } = req.body;
 
     Team.findOne({ teamNumber: teamNumber }).then((team) => {
         if (team) {
@@ -13,7 +13,7 @@ exports.TeamCreatePost = function (req, res) {
             const newTeam = new Team({
                 teamNumber,
                 fileList,
-                TeamMemberList
+                staff               
             });
 
             // save new team's data
@@ -23,7 +23,6 @@ exports.TeamCreatePost = function (req, res) {
                 }
                 else {
                     res.status(200).json({ message: "created a new order", result: result });
-
                 }
             })
         }
@@ -31,10 +30,11 @@ exports.TeamCreatePost = function (req, res) {
 }
 
 
+// POST request to change the team details for staff
 exports.teamChangePost = function(req, res){
 
     // check validation of the team id
-    Team.findOne({teamNumber: req.params.teamNumber}, function(err, teamDetail){
+    Team.find({staff: req.params.staff}, function(err, teamDetail){
         
         if(!teamDetail){
             res.status(404).send("team is not found!")

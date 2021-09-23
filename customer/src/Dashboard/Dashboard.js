@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
                     <Navigation data={this.props}></Navigation>
                 </div>
                 <div>
-                    <DashboardContent />
+                    <DashboardContent data={this.props}></DashboardContent>
                 </div>
             </div>
         );

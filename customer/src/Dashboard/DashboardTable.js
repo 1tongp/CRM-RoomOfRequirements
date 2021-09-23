@@ -2,26 +2,28 @@ import { Table, Tag, Space } from 'antd';
 import React from 'react'
 const { Column, ColumnGroup } = Table;
 
-const data = [
-  {
-    key: '1',
-    insurance: "1",
-    tags: ['woman', 'young'],
-  },
-  {
-    key: '2',
-    insurance: "2",
-    tags: ['man', 'old'],
-  },
-  {
-    key: '3',
-    insurance: "3",
-    tags: ['man', 'young'],
-  },
-];
 
 
-export default function DashboardTable() {
+export default function DashboardTable(props) {
+console.log(props);
+  const data = [
+    {
+      key: '1',
+      insurance: "1",
+      tags: ['woman', 'young'],
+    },
+    {
+      key: '2',
+      insurance: "2",
+      tags: ['man', 'old'],
+    },
+    {
+      key: '3',
+      insurance: "3",
+      tags: ['man', 'young'],
+    },
+  ];
+
     return (
         <div>
             <Table dataSource={data}>

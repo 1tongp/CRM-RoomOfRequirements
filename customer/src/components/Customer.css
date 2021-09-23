@@ -2,9 +2,9 @@
     float: right;
     width: 300px;
     margin-right: 50px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     margin-bottom: 10px;
-    color: #FF5858;
+    color: black;
 }
 .table{
     height: 100vh;
@@ -14,3 +14,13 @@
     background-color: #FF5858;
     color: white;
 }
+
+.total{
+    display: flex;
+    flex-direction: column;
+}
+h2{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+   

@@ -6,11 +6,41 @@ var CalendarSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Staff'
     },
+    team: {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
+    },
 
-    events: {
-        notes: Array,
-        type: String
+    event: {
+        type: String,
+        default: '',
     }, 
+
+    type: {
+        type: String,
+        default: ''
+    },
+    
+    // {enum:{Private, Public}}
+    visibility: {
+        type: String,
+        default: 'Private'
+    },
+
+    // 0900AM == 09:00, 1345PM == 13:45
+    startTime:{
+        type: String,
+    },
+
+    endTime:{
+        type:String,
+    },
+
+    // MM/DD/YYYY
+    // dateYear:{
+    //     type: Date,
+    // }
+
 });
 
 module.exports = mongoose.model("Calendar", CalendarSchema);

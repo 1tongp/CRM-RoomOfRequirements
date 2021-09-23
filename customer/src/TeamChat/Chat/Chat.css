@@ -1,0 +1,31 @@
+.GroupPageInChat {
+  display: grid;
+  grid-template-columns: 0.8fr 2.8fr 4.5fr 2.2fr;
+  grid-gap: 1rem;
+  grid-template-areas:
+       "Navibar TeamList chatWhole UploadFile"
+}
+
+.NavBar {grid-area: Navibar;}
+.TeamList {grid-area: TeamList;}
+.chatWhole {grid-area: chatWhole;}
+.UploadFile {grid-area: UploadFile;}
+
+
+.chatWhole {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F4F4F4;
+}
+
+.Chatbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border-radius: 8px;
+  height: 90%;
+  width: 90%;
+}

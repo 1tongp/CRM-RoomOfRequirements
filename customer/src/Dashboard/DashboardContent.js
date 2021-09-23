@@ -3,9 +3,43 @@ import { Statistic, Card, Row, Col } from 'antd';
 import {Chart, DemoBar} from './Chart';
 import DashboardTable from './DashboardTable';
 import './DashboardContent.css';
+import axios from '../API/axios.js';
+import {useState, useEffect} from 'react';
+
+function DashboardContent(props) {
+
+    console.log(props);
+    console.log("content");
+
+    // get all customers for a particular staff
+    const [numCustomer, setCus] = useState(0);
+    const [numOrder, setOrd] = useState(0);
 
 
-function DashboardContent() {
+    useEffect(() =>{
+        
+        axios.get('/customer/list/' + props.data.location.state.staff.id).then(response => {
+            console.log(props);
+            console.log(response);
+            if (response.data.success) {
+                setCus(response.data.customers.length)
+            }   
+        })
+
+        axios.get('/order/' + props.data.location.state.staff.id).then(response => {
+            console.log(props);
+            console.log(response);
+            if (response.data.success) {
+                setOrd(response.data.orders.length)
+            }
+            
+        })
+      })
+
+
+
+
+
     return (
         <div className='dashboardContainer'>
             <div>
@@ -16,18 +50,18 @@ function DashboardContent() {
                     <Card>
                         <Statistic
                             title="Customer"
-                            value={105}
+                            value={numCustomer}
                             valueStyle={{ color: "red" }}
                         />
                     </Card>
                     <Card>
                         <Statistic
                             title="Order"
-                            value={105}
+                            value={numOrder}
                             valueStyle={{ color: "blue" }}
                         />
                     </Card>
-                    <Card>
+                    {/* <Card>
                         <Statistic
                             title="Total Payment"
                             value={310000}
@@ -40,7 +74,7 @@ function DashboardContent() {
                             value={32}
                             valueStyle={{ color: "yellow" }}
                         />
-                    </Card>
+                    </Card> */}
                 </Row>
                 <br />
                 <p>Customer Contact</p>
@@ -72,7 +106,7 @@ function DashboardContent() {
                 <br />
                 <br />
                 <br />
-                <DashboardTable />
+                <DashboardTable data={props} numCus = {numCustomer}/>
             </div>
 
             

@@ -54,6 +54,12 @@ class Navigation extends React.Component {
       // axios needs implement later after finishing the back-end of the Caldenlar
       this.props.data.history.push('/calendar', {staff: this.props.data.location.state.staff, key: '4'});
     }
+    if(e.key === "3"){
+      console.log("switch to group and chat");
+      console.log(this.props);
+      this.props.data.history.push('/group', {staff: this.props.data.location.state.staff, key: '3'});
+
+    }
   };
 
   onLogOut = () =>{
@@ -75,7 +81,7 @@ class Navigation extends React.Component {
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>
         <Menu.Item className='menu-item' key="1" icon={<DashboardOutlined />}>Dashboard</Menu.Item>
         <Menu.Item className='menu-item' key="2" icon={<MenuOutlined />}>Customers</Menu.Item>
-        <Menu.Item className='menu-item' key="3" icon={<TeamOutlined />}>Group</Menu.Item>
+        <Menu.Item className='menu-item' key="3" icon={<TeamOutlined />}>Team</Menu.Item>
         <Menu.Item className='menu-item' key="4" icon={<CalendarOutlined />}>Calender</Menu.Item>
         <Menu.Item className='menu-item' key="5" icon={<UserOutlined />}>Profile</Menu.Item>
         

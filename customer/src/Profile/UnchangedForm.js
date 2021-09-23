@@ -1,9 +1,8 @@
 import React from 'react';
-import {usestate} from 'react';
 import { Button, Modal, Form, Row, Col} from 'react-bootstrap';
 import './Profile.css';
-import Popup from "./Password";
 import Popup2 from "./PasswordPopup";
+
 
 class UnchangedForm extends React.Component {
     constructor(props) {
@@ -12,7 +11,8 @@ class UnchangedForm extends React.Component {
     };
 
     state = {
-        redirect: null
+        redirect: null,
+        modal1Visible: false
     };
 
     setModal1Visible(modal1Visible){
@@ -93,31 +93,15 @@ class UnchangedForm extends React.Component {
                         <Button className="editRight" variant="primary" type="button" onClick={() => this.redirect()}>
                             Edit Profile   
                         </Button>
-                        <Popup2 trigger={this.state.modal1Visible}>
-
-                            <div className="popUp-title">Change Password for account: "xxx@hsbc.com"</div>
-
-                            <Form>
-                                <Col>
-                                <Form.Group as={Col} controlId="formGridOldPassword">
-                                <Form.Label>New Password</Form.Label>
-                                <Form.Control size="lg" type="text" placeholder="Enter Your New Password" />
-                                </Form.Group>
-                                </Col>
-                                <Col>
-                                <Form.Group as={Col} controlId="formGridNewPassword">
-                                <Form.Label>Old Password</Form.Label>
-                                <Form.Control size="lg" type="text" placeholder="Enter Your Old Password" />
-                                </Form.Group>
-                                </Col>
-                            </Form>
-                        </Popup2>
                         {/* <div className="popup" onclick="myFunction()">Click me!
                             <span class="popuptext" id="myPopup">Popup text...</span>
                         </div> */}
-                        <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
+                        {/* <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
                             Change Password
                         </Button>
+                        <Popup2 visible={this.state.modal1Visible}>  
+                        </Popup2> */}
+                        <Popup2>Change Password</Popup2>
                 </Row>
                 </Form>
         )
