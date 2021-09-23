@@ -18,6 +18,8 @@
 .total{
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    height: 100vh;
 }
 h2{
     margin-top: 30px;
