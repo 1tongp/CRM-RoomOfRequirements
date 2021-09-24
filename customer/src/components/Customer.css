@@ -21,7 +21,12 @@
     overflow: auto;
     height: 100vh;
 }
+
 h2 {
     margin-top: 30px;
     margin-left: 20px;
+}
+
+.ant-spin-dot-item {
+    background-color: #ff5858;
 }

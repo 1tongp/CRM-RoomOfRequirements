@@ -1,14 +1,13 @@
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import { Table } from "antd";
-// import SearchBar from './SearchBar';
-import { Button, Input } from "antd";
+import { Table, Input, Spin } from "antd";
 import "./Customer.css";
 import CustomerDetail from "./CustomerDetail";
 import CustomerAssign from "./CustomerAssign";
 import { useEffect } from "react";
 import axios from "../API/axios.js";
 import { SearchOutlined } from "@ant-design/icons";
+import CustomerHistory from "./CustomerHistory";
 
 const { Search } = Input;
 function CustomerList(props) {
@@ -16,6 +15,8 @@ function CustomerList(props) {
 
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         axios
             .get("/customer/show/" + props.data.location.state.staff.id)
@@ -23,6 +24,7 @@ function CustomerList(props) {
                 if (response.data.success) {
                     console.log(response);
                     setData(response.data.customerList);
+                    setLoading(false);
                 }
             });
 
@@ -108,8 +110,13 @@ function CustomerList(props) {
             title: "Details",
             dataIndex: "details",
         },
+        {
+            title: "History",
+            dataIndex: "history",
+        },
     ];
 
+    // adding the customer detail button to the columns
     for (let i = 0; i < data.length; i++) {
         if (data[i].details.length == 0) {
             data[i].details.push(
@@ -129,7 +136,7 @@ function CustomerList(props) {
         nameArray.push(data[i].contactNumber.toString());
         nameArray.push(data[i].email);
     }
-    // console.log(nameArray);
+
     function onChange(pagination, filters, sorter, extra) {
         console.log("params", pagination, filters, sorter, extra);
     }
@@ -210,7 +217,6 @@ function CustomerList(props) {
             <div className="total">
                 <div>
                     <h2>Customers</h2>
-
                     <Search
                         className="searchBar"
                         placeholder="input search text"
@@ -227,8 +233,15 @@ function CustomerList(props) {
                         columns={columns}
                         dataSource={filteredData}
                         onChange={onChange}
+                        loading={{
+                            indicator: <Spin size="large" />,
+                            spinning: loading,
+                        }}
                     />
                 </div>
+                {/* apply this to the table */}
+                <CustomerHistory></CustomerHistory>
+
                 <div>
                     <Search
                         className="searchBar"
