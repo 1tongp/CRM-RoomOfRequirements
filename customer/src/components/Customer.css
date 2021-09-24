@@ -2,7 +2,6 @@
     float: right;
     width: 300px;
     margin-right: 50px;
-    /* margin-top: 50px; */
     margin-bottom: 10px;
     color: black;
 }
@@ -16,9 +15,8 @@
 }
 
 .total {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+    /* display: flex;
+    flex-direction: column; */
     height: 100vh;
 }
 
@@ -30,3 +28,4 @@ h2 {
 .ant-spin-dot-item {
     background-color: #ff5858;
 }
+
