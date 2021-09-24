@@ -14,7 +14,7 @@ function Profile(props) {
             <div className="navigationBar">
                 <Navigation data={props}></Navigation>
             </div>
-            <div>
+            <div className='profilePage'>
                 <Avatar
                     className="lay1"
                     size={200}
