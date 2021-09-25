@@ -1,26 +1,31 @@
-.searchBar{
+.searchBar {
     float: right;
     width: 300px;
     margin-right: 50px;
-    /* margin-top: 50px; */
     margin-bottom: 10px;
     color: black;
 }
-.table{
+.table {
     height: 100vh;
     width: 80vw;
 }
-.button {
-    background-color: #FF5858;
+.detailButton {
+    background-color: #ff5858;
     color: white;
 }
 
-.total{
-    display: flex;
-    flex-direction: column;
+.total {
+    /* display: flex;
+    flex-direction: column; */
+    height: 100vh;
 }
-h2{
+
+h2 {
     margin-top: 30px;
     margin-left: 20px;
 }
-   
+
+.ant-spin-dot-item {
+    background-color: #ff5858;
+}
+

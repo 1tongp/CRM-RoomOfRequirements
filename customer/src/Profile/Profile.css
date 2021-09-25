@@ -1,35 +1,33 @@
-.lay1{ 
-    width:200px; 
-    height:20px; 
-    border:1px solid #FF6699;
-    margin-left: 580px;
-    margin-top: 10px;
-}   
-
-.Upload{
+.lay1 {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #ff6699;
     margin-left: 580px;
     margin-top: 10px;
 }
 
-.lay2{ 
-    width: 80vw; 
-    height: 65vh; 
-    border: 10px; 
-    background-color:  #f4f4f4;
+.Upload {
+    margin-left: 580px;
+    margin-top: 10px;
+}
+
+.lay2 {
+    width: 80vw;
+    height: 65vh;
+    border: 10px;
+    background-color: #f4f4f4;
     margin-left: 50px;
     margin-top: 30px;
     letter-spacing: 1px;
-
-}   
-.lay3{ 
-    width:auto;
+}
+.lay3 {
+    width: auto;
     height: auto;
-    border:1px solid #FF6699;
+    border: 1px solid #ff6699;
     margin-left: 50px;
+}
 
-}  
-
-.saveRight{
+.saveRight {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -38,7 +36,7 @@
     margin-bottom: 50px;
 }
 
-.cancelRight{
+.cancelRight {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -47,8 +45,7 @@
     margin-bottom: 50px;
 }
 
-
-.editRight{
+.editRight {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -59,7 +56,7 @@
     background-color: #c4c4c4;
 }
 
-.passRight{
+.passRight {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -68,32 +65,30 @@
     color: #000000;
     font-family: Reem Kufi;
     background-color: #c4c4c4;
-    
 }
 
-.popUp{
+.popUp {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,1,0.2);
+    background-color: rgba(0, 0, 1, 0.2);
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.popUp-inner{
+.popUp-inner {
     position: relative;
     width: 30vw;
     height: 50vh;
     padding-top: 10vh;
     background-color: #f7f7f7;
-
 }
 
-.popUp-title{
+.popUp-title {
     position: relative;
     text-align: center;
     font-weight: bold;
@@ -101,13 +96,13 @@
     padding-top: 1%;
 }
 
-.close-btn{
+.close-btn {
     position: absolute;
     bottom: 1vw;
     right: 2vh;
 }
 
 .button {
-    background-color: #FF5858;
+    background-color: #ff5858;
     color: white;
 }
