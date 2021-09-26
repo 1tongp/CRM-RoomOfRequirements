@@ -8,7 +8,7 @@ const testCustomerCreate = {
     vaildBody: {
         "givenName": "Lay1",
         "familyName": "Zhang1",
-        "email": "33@test",
+        "email": "34@test",
         "gender": "male",
         "age": 27,
         "dateOfBirth": "1990/12/22",
