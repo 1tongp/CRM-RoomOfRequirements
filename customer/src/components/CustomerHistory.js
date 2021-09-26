@@ -6,6 +6,7 @@ import axios from "../API/axios.js";
 import { SearchOutlined } from "@ant-design/icons";
 
 function CustomerHistory(props) {
+    console.log(props)
     const { Search } = Input;
     const [history, setHistory] = useState([]);
     useEffect(() => {

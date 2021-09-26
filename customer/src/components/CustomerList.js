@@ -115,6 +115,87 @@ function CustomerList(props) {
             dataIndex: "history",
         },
     ];
+    
+    const columns2 = [
+        {
+            title: "First Name",
+            dataIndex: "firstName",
+            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Last Name",
+            dataIndex: "lastName",
+            sorter: (a, b) => a.lastName.localeCompare(b.lastName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Contact Number",
+            dataIndex: "contactNumber",
+        },
+        {
+            title: "Email Address",
+            dataIndex: "email",
+        },
+        {
+            title: "Region",
+            dataIndex: "region",
+            filters: [
+                {
+                    text: "Box Hill",
+                    value: "Box Hill",
+                },
+                {
+                    text: "Carlton",
+                    value: "Carlton",
+                },
+                {
+                    text: "Caulfield",
+                    value: "Caulfield",
+                },
+                {
+                    text: "Glen Waverley",
+                    value: "Glen Waverley",
+                },
+                {
+                    text: "Melbourne",
+                    value: "Melbourne",
+                },
+            ],
+            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+        },
+        {
+            title: "Insurance Type",
+            dataIndex: "insurance",
+            filters: [
+                {
+                    text: "Car",
+                    value: "Car",
+                },
+                {
+                    text: "Landlord",
+                    value: "Landlord",
+                },
+                {
+                    text: "Home",
+                    value: "Home",
+                },
+                {
+                    text: "Travel",
+                    value: "Travel",
+                },
+            ],
+            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+        },
+        {
+            title: "Details",
+            dataIndex: "details",
+        },
+        {
+            title: "Assign",
+            dataIndex: "assign",
+        },
+    ];
 
     // adding the customer detail button to the columns
     for (let i = 0; i < data.length; i++) {
@@ -124,6 +205,12 @@ function CustomerList(props) {
                     className="button"
                     data={data[i]}
                 ></CustomerDetail>
+            );
+            data[i].history.push(
+                <CustomerHistory
+                    className="button"
+                    data={data[i]}
+                ></CustomerHistory>
             );
         }
     }
@@ -240,7 +327,7 @@ function CustomerList(props) {
                     />
                 </div>
                 {/* apply this to the table */}
-                <CustomerHistory></CustomerHistory>
+                {/* <CustomerHistory></CustomerHistory> */}
 
                 <div>
                     <Search
@@ -256,7 +343,7 @@ function CustomerList(props) {
                     <Table
                         size="small"
                         className="table"
-                        columns={columns}
+                        columns={columns2}
                         dataSource={filteredData2}
                         onChange={onChange}
                     />

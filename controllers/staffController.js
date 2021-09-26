@@ -153,7 +153,9 @@ exports.staffLoginPost = function (req, res) {
                             role: staff.role,
                             phone: staff.phone,
                             photoPath: staff.photoPath,
-                            team: staff.team
+                            team: staff.team,
+                            address: staff.address,
+                            companysuburb: staff.companysuburb
                         },
                     });
                 }
@@ -188,7 +190,9 @@ exports.staffLoginUnhashPost = function (req, res) {
                             role: staff.role,
                             phone: staff.phone,
                             photoPath: staff.photoPath,
-                            team: staff.team
+                            team: staff.team,
+                            address: staff.address,
+                            companysuburb: staff.companysuburb
                     },
                 });
             }

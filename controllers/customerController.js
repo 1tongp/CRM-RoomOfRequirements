@@ -232,7 +232,8 @@ exports.customerPartialGet = function (req, res) {
                         "email": cusList[i].email,
                         "insurance": cusList[i].insurance[j],
                         "id":cusList[i]._id,
-                        "details":[]
+                        "details":[],
+                        "history":[]
                     })
                 }
 
