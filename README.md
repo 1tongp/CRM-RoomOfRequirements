@@ -88,7 +88,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repository
     ```sh
     git clone https://github.com/1tongp/COMP30022-Team020.git
     ```
@@ -97,8 +97,11 @@ This is an example of how to list things you need to use the software and how to
     npm install
     ```
 3. Install NPM packages in customer folder (frontend)
-`sh cd customer npm install `
- <!-- USAGE EXAMPLES -->
+    ```sh 
+    cd customer 
+    npm install 
+    ```
+  <!-- USAGE EXAMPLES -->
 
 ## Usage
 
