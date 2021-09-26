@@ -6,9 +6,23 @@ import "./Profile.css";
 import ChangeForm from "./ChangeForm.js";
 import Test from "./UploadImage.js";
 import UnChangedForm from "./UnchangedForm.js";
-
+import { useEffect, useState } from "react";
+import axios from "../API/axios.js";
 function Profile(props) {
     console.log(props);
+    const [team, setT] = useState('')
+    useEffect(() => {
+        axios
+            .get("/team/teamid/" + props.location.state.staff.team)
+            .then((response) => {
+                if (response.data.success) {
+                    console.log(response);
+                    setT(response.data.teamDetail.teamNumber)
+                }
+            });
+
+        
+    }, []);
     return (
         <div className="div">
             <div className="navigationBar">
@@ -25,7 +39,7 @@ function Profile(props) {
                 />
                 <div className="lay2">
                     <div>
-                        <UnChangedForm data={props} />
+                        <UnChangedForm data={props} team = {team}/>
                     </div>
                 </div>
             </div>

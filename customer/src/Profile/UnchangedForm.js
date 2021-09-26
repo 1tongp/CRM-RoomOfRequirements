@@ -38,7 +38,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="Coco"
+                                value = {this.props.data.location.state.staff.givenName +" "+ this.props.data.location.state.staff.familyName}
                             />
                         </Form.Group>
                     </Col>
@@ -49,7 +49,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="Staff"
+                                value = {this.props.data.location.state.staff.role}
                             />
                         </Form.Group>
                     </Col>
@@ -63,7 +63,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="xxxx@hsbc.com"
+                                value = {this.props.data.location.state.staff.loginEmail}
                             />
                         </Form.Group>
                     </Col>
@@ -74,7 +74,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="1234567"
+                                value = {this.props.data.location.state.staff.id}
                             />
                         </Form.Group>
                     </Col>
@@ -88,7 +88,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="0401457390"
+                                value = {this.props.data.location.state.staff.phone}
                             />
                         </Form.Group>
                     </Col>
@@ -99,7 +99,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="12"
+                                value = {this.props.team}
                             />
                         </Form.Group>
                     </Col>
@@ -118,7 +118,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="380 Swanston Stree, Melbourne 3000 VIC"
+                                value = {this.props.data.location.state.staff.address}
                             />
                         </Form.Group>
                     </Col>
@@ -129,7 +129,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="Melbourne"
+                                value = {this.props.data.location.state.staff.companysuburb}
                             />
                         </Form.Group>
                     </Col>

@@ -50,7 +50,7 @@ class PasswordPopup extends React.Component {
         loading: false,
         visible: false,
         password: false,
-        Password2: false,
+        password2: false,
     };
 
     showModal = () => {
@@ -60,11 +60,10 @@ class PasswordPopup extends React.Component {
     };
 
     handleOk = () => {
+        console.log(this.password);
+        console.log(this.password2);
         this.setState({ visible: false });
-        // this.setState({ loading: true });
-        // setTimeout(() => {
-        //   this.setState({ loading: false, visible: false });
-        // }, 3000);
+        
     };
 
     handleCancel = () => {
