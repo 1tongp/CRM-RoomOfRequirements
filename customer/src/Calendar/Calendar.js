@@ -18,6 +18,8 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 import Navigation from "../components/Navigation";
 import moment from "moment";
+import { message } from "antd";
+import poptest from "./PopupTest";
 
 function EventPopup(props) {
     console.log(props);
@@ -34,13 +36,13 @@ function EventPopup(props) {
 
     const [allEvents, setEventList] = useState([]);
     const [publicEvents, setPublic] = useState([]);
-
+    const [creator, setCreator] = useState('');
     useEffect(() => {
         axios
             .get(
                 "/calendar/show/" +
-                    props.location.state.staff.id +
-                    "?visibility=Private"
+                props.location.state.staff.id +
+                "?visibility=Private"
             )
             .then((response) => {
                 if (response.data.success) {
@@ -52,8 +54,8 @@ function EventPopup(props) {
         axios
             .get(
                 "/calendar/public/" +
-                    props.location.state.staff.team +
-                    "?visibility=Public"
+                props.location.state.staff.team +
+                "?visibility=Public"
             )
             .then((response) => {
                 if (response.data.success) {
@@ -67,12 +69,24 @@ function EventPopup(props) {
     for (let i = 0; i < allEvents.length; i++) {
         allEvents[i].start = new Date(allEvents[i].start);
         allEvents[i].end = new Date(allEvents[i].end);
+        axios.get("staff/" + allEvents[i].staff).then((response) => {
+            if(response.data.success){
+                console.log(response)
+                allEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+            }
+        });
         allEventss.push(allEvents[i]);
         // console.log(allEvents[i])
     }
     for (let i = 0; i < publicEvents.length; i++) {
         publicEvents[i].start = new Date(publicEvents[i].start);
         publicEvents[i].end = new Date(publicEvents[i].end);
+        axios.get("staff/" + publicEvents[i].staff).then((response) => {
+            if(response.data.success){
+                console.log(response)
+                publicEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+            }
+        });
         allEventss.push(publicEvents[i]);
     }
     console.log(allEventss);
@@ -123,7 +137,7 @@ function EventPopup(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    {/* new set up here */}
+    {/* new set up here */ }
     const [showUpdate, setShowUpdate] = useState(false);
     const handleUpdateClose = () => setShowUpdate(false);
     const handleUpdateShow = () => setShowUpdate(true);
@@ -208,6 +222,50 @@ function EventPopup(props) {
         weekdayFormat: (date, culture, localizer) =>
             localizer.format(date, "Mon", culture),
     };
+
+
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
+
+    const handleShow2 = () => setShow2(true);
+    const customerModal = (singleEvent) => {
+        return(
+
+        
+        <>
+            <Button
+                onClick={handleShow2}>
+                
+            </Button>
+            <Modal
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={show2}
+                onHide={handleClose2}
+                style={{ marginTup: "2vh" }}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Sign In</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+
+                        {
+                            singleEvent.title
+                        }
+
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+        </>
+        )
+}
+
+
+
 
     return (
         <>
@@ -346,13 +404,13 @@ function EventPopup(props) {
                                     <Form>
                                         {/* add the prop.event.title in the defaultValue */}
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="text" placeholder="Event Event Title" defaultValue = {"Title"}
+                                            <Form.Control type="text" placeholder="Event Event Title" defaultValue={"Title"}
                                                 onChange={e => setNewEvent({ ...newEvent, title: e.target.value })} />
                                             <Form.Text className="text-mutes">
                                             </Form.Text>
                                         </Form.Group>
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="text" placeholder="Event Visibility" defaultValue = {"Visibility"}
+                                            <Form.Control type="text" placeholder="Event Visibility" defaultValue={"Visibility"}
                                                 onChange={e => setNewEvent({ ...newEvent, visibility: e.target.value })} />
                                             <Form.Text className="text-mutes">
                                             </Form.Text>
@@ -390,8 +448,18 @@ function EventPopup(props) {
 
                         </div>
                         <div class="big-calendar-component">
+                            <Modal
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                                show={show2}
+                                onHide={handleClose2}
+                                style={{ marginTup: "2vh" }}
+                            >
+                                {customerModal}
+                            </Modal>
                             <Calendar
                                 selectable
+                                // popup
                                 localizer={localizer}
                                 events={allEventss}
                                 // defaultView='week'
@@ -400,9 +468,20 @@ function EventPopup(props) {
                                 startAccessor="start"
                                 endAccessor="end"
                                 style={{ height: 460, margin: "50px" }}
-                                onSelectEvent={(allEventss) =>
-                                    alert(allEventss.title)
+                                onSelectEvent={
+                                    (singleEvent) => {
+                                        <poptest data = {singleEvent}/>
+                                    }
                                 }
+                                components = {{event:
+                                    poptest}}
+                                // alert(allEventss.title)
+
+
+
+                                // onClick = {(allEventss) =>
+                                //     alert(allEventss.title)
+                                // }
                                 eventPropGetter={(allEventss) => {
                                     const backgroundColor = allEventss.allDay
                                         ? "#8a083e"

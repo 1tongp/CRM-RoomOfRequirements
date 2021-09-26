@@ -76,7 +76,9 @@ exports.eventListGet = function(req, res){
                     "end":eventsList[i].endTime,
                     "team": eventsList[i].team,
                     "visibility": eventsList[i].visibility,
-                    "staff":eventsList[i].staff
+                    "staff":eventsList[i].staff,
+                    "id": eventsList[i].id,
+                    "staffName":''
                 })
             }
             res.status(200).json({success: true, events: eventsLists})
@@ -87,7 +89,7 @@ exports.eventListGet = function(req, res){
 // GET request to get the all team's events that the visibility is 'Public' 
 exports.eventTeamGet = function(req, res){
     Calendar.find({team: req.params.teamId, visibility: req.query.visibility},function(err, eventsList){
-        if(eventsList.length === 0){
+        if(eventsList === []){
             res.status(200).json({success: false, message: "No events"})
         }
         else{
@@ -99,10 +101,24 @@ exports.eventTeamGet = function(req, res){
                     "end":eventsList[i].endTime,
                     "team": eventsList[i].team,
                     "visibility": eventsList[i].visibility,
-                    "staff":eventsList[i].staff
+                    "staff":eventsList[i].staff,
+                    "id": eventsList[i].id,
+                    "staffName":''
                 })
             }
             res.status(200).json({success: true, events: eventsLists})
+        }
+    })
+}
+
+// GET request to delete the event
+exports.eventDeleteGet = function(req, res){
+    Calendar.findByIdAndDelete(req.params.id,function(err, event){
+        if(!event){
+            res.status(200).json({success: false, message: "Event Not Found"})
+        }
+        else{
+            res.status(200).json({success: true, message:"Deleted"})
         }
     })
 }
