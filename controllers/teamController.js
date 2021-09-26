@@ -71,3 +71,17 @@ exports.teamListGet = function(req, res){
         }
     })
 }
+
+// GET request for vendor to search orders
+exports.teamDetailGet = function(req, res){
+
+    // check validation of the order id
+    Team.findById(req.params.id, function(err, team){
+        if(!team){
+            res.status(404).json({success: false, message: "team is not found!"})
+        }
+        else{
+            res.status(200).json({success: true, teamDetail: team})   
+        }
+    })
+}

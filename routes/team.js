@@ -12,4 +12,7 @@ TeamRouter.get('/:teamNumber', teamController.teamListGet);
 // POST request to change the team details
 TeamRouter.post('/changeDetails/:teamNumber', teamController.teamChangePost);
 
+// GET request to get team details
+TeamRouter.get('/teamid/:id', teamController.teamDetailGet);
+
 module.exports = TeamRouter;

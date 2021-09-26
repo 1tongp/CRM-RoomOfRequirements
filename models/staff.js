@@ -47,7 +47,10 @@ var StaffSchema = new Schema({
             type: [Number]
         }
     },
-
+    address:{
+        type: String,
+        required: true,
+    },
 
 });
 
