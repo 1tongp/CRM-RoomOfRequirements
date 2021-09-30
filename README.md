@@ -123,3 +123,12 @@ This is an example of how to list things you need to use the software and how to
 ## License
 
 Distributed under the MIT License.
+
+## Login Detail
+Login Page:
+- Email: 
+- Password: 
+
+Team Page:
+- Name: You can use any name. (eg, Will)
+- Room: You can use any room number (eg. 1), but you and your team member need to enter the same room to chat together. 
