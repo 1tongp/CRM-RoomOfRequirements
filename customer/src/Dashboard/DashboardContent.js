@@ -76,7 +76,7 @@ function DashboardContent(props) {
                         />
                     </Card> */}
                 </Row>
-                <br />
+                {/* <br />
                 <p>Customer Contact</p>
                     <Row>
                         <Card>
@@ -94,6 +94,7 @@ function DashboardContent(props) {
                             />
                         </Card>
                     </Row>
+                <br /> */}
                 <br />
 
                 <p>Staff Selling Ranking</p>
