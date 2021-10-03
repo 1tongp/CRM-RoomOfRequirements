@@ -191,7 +191,9 @@ exports.customerNoStaffGet = function (req, res) {
                         "insurance": cusList[i].insurance[j],
                         "id":cusList[i]._id,
                         "details":[],
-                        "assign":[]
+                        "assign":[],
+                        "staff":"",
+                        "region":cusList[i].region,
                     })
                 }
             }
@@ -233,13 +235,11 @@ exports.customerPartialGet = function (req, res) {
                         "insurance": cusList[i].insurance[j],
                         "id":cusList[i]._id,
                         "details":[],
-                        "history":[]
+                        "history":[],
+                        "region":cusList[i].region,
+                        "staff":""
                     })
                 }
-
-
-
-
             }
             res.status(200).json({ success: true, customerList: cusLists })
         }

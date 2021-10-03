@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "../API/axios.js";
 
 function CustomerDetail(props) {
+    console.log(props)
     const [detail, setData] = useState([]);
     useEffect(() => {
         axios
@@ -20,6 +21,7 @@ function CustomerDetail(props) {
                 }
             });
     }, []);
+    console.log(detail)
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -56,7 +58,6 @@ function CustomerDetail(props) {
                 <p>Insurance Status: {detail.status}</p>
                 <p>Purchase Time: {detail.createTime}</p>
                 <p>Expire Date: {detail.expireDate}</p>
-                <p>Order Details: {detail.detail}</p>
             </Modal>
         </>
     );

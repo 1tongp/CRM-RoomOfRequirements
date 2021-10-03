@@ -8,21 +8,23 @@ import { SearchOutlined } from "@ant-design/icons";
 function CustomerHistory(props) {
     console.log(props)
     const { Search } = Input;
-    const [history, setHistory] = useState([]);
+    const [historyData, setHistory] = useState([]);
+    const[insurance, setIns] = useState('');
+    const[staffLast, setLast] = useState('');
     useEffect(() => {
-        // axios
-        //     .get(
-        //         "/order/customertype/" +
-        //             props.historyData.id +
-        //             "?type=" +
-        //             props.historyData.insurance
-        //     )
-        //     .then((response) => {
-        //         if (response.historyData.success) {
-        //             setData(response.historyData.orderDetail[0]);
-        //         }
-        //     });
+        axios.get("/history/list/" + props.data.id).then((response) => 
+        {
+            if (response.data.success) {
+                console.log(response);
+                setHistory(response.data.history);
+            }
+        });
     }, []);
+
+    for(let i = 0; i < historyData.length; i++){
+        historyData[i].staff = props.data.staff
+    }
+    console.log(historyData)
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -44,59 +46,52 @@ function CustomerHistory(props) {
 
     const historyColumn = [
         {
-            title: "Oder Type",
-            dataIndex: "orderType",
+            title: "Insurance Type",
+            dataIndex: "insuranceType",
             filters: [
                 {
-                    text: "Transfer",
-                    value: "Transfer",
+                    text: "Car",
+                    value: "Car",
                 },
                 {
-                    text: "Credit",
-                    value: "Credit",
+                    text: "Landlord",
+                    value: "Landlord",
+                },
+                {
+                    text: "Home",
+                    value: "Home",
+                },
+                {
+                    text: "Travel",
+                    value: "Travel",
                 },
             ],
             onFilter: (value, record) => record.orderType.indexOf(value) === 0,
         },
         {
-            title: "Operator",
-            dataIndex: "operator",
+            title: "Staff",
+            dataIndex: "staff",
             sorter: (a, b) => a.operator.localeCompare(b.operator),
             sortDirections: ["descend"],
-        },
-        {
-            title: "Status",
-            dataIndex: "status",
-            filters: [
-                {
-                    text: "Successful",
-                    value: "Successful",
-                },
-                {
-                    text: "Fail",
-                    value: "Fail",
-                },
-            ],
-            onFilter: (value, record) => record.status.indexOf(value) === 0,
         },
         {
             title: "Date",
             dataIndex: "date",
         },
         {
-            title: "Order Amount",
-            dataIndex: "orderAmount",
+            title: "Note",
+            dataIndex: "note",
         },
     ];
-    const historyData = [
-        {
-            orderType: "Credit",
-            operator: '1',
-            status: 'Successful',
-            date: '01/01/2021',
-            orderAmount: 100,
-        }
-    ];
+    // const historyData = [
+    //     {
+    //         orderType: "Credit",
+    //         operator: '1',
+    //         status: 'Successful',
+    //         date: '01/01/2021',
+    //         orderAmount: 100,
+    //     }
+    // ];
 
     // search functionality
     var nameArray = [];
@@ -123,6 +118,7 @@ function CustomerHistory(props) {
             result.includes(el.operator) || result.includes(el.date.toString())
         );
     });
+
 
     // button and modal
     return (

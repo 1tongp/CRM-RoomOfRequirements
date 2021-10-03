@@ -11,7 +11,7 @@ import CustomerHistory from "./CustomerHistory";
 
 const { Search } = Input;
 function CustomerList(props) {
-    // console.log(props);
+    console.log(props);
 
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
@@ -28,11 +28,11 @@ function CustomerList(props) {
                 }
             });
 
-        // axios.get("/customer/nostaff/" + null).then((response) => {
-        //     if (response.data.success) {
-        //         setData2(response.data.customers);
-        //     }
-        // });
+        axios.get("/customer/nostaff/" + null).then((response) => {
+            if (response.data.success) {
+                setData2(response.data.customers);
+            }
+        });
     }, []);
 
     const columns = [
@@ -197,6 +197,7 @@ function CustomerList(props) {
         },
     ];
 
+    console.log(data)
     // adding the customer detail button to the columns
     for (let i = 0; i < data.length; i++) {
         if (data[i].details.length == 0) {
@@ -212,6 +213,7 @@ function CustomerList(props) {
                     data={data[i]}
                 ></CustomerHistory>
             );
+            data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
         }
     }
 
