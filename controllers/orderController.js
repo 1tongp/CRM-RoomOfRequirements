@@ -31,7 +31,7 @@ exports.customerOrderCreatePost = function(req, res){
 exports.OrderListGet = function(req, res){
     Order.find({staff: req.params.staffId}, function(err, orders){
         //if for perticular staff, the order list for required status is an empty list, return error message
-        if(orders.length === 0 ){
+        if(orders.length === 0){
             res.status(200).json({success: false, message:"Order is not found"})
         }
         else{
@@ -46,9 +46,12 @@ exports.OrderListGet = function(req, res){
                     "_v":orders[i]._v,
                     "_id":orders[i]._id,
                     "type":orders[i].type,
+                    "expireDate": orders[i].expireDate,
+                    "customerName": ""
+                    
                 })
             }
-            sortOrder = sortOrder.sort(({updateTime: a}, {updateTime: b}) => b - a)
+            sortOrder = sortOrder.sort(({expireDate: a}, {expireDate: b}) => a - b)
             res.status(200).json({success: true, orders: sortOrder})
         }
     })
