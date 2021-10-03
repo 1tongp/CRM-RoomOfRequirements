@@ -23,7 +23,7 @@ function Render(props) {
         <ul className="CustomerList">
             <li className="ListItem">
                 <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                        src="https://y.qichejiashi.com/tupian/upload/246852168.jpg"
                         alt=""
                         className="Image"
                     />

@@ -5,83 +5,6 @@ import React, { useState } from "react";
 import { Menu, Dropdown, Button } from 'antd';
 import axios from "../API/axios.js";
 import { message } from "antd";
-// import _ from 'lodash';
-
-// function MyEvent(props) {
-//     // constructor(props){
-//     //     super(props)
-//     //     console.log(this.props)
-//     // }
-//     // componentDidMount(){
-//     //     MyGlobal.popOver();
-//     // }
-//     const [show2, setShow2] = useState(false);
-//     const handleClose2 = () => setShow2(false);
-
-//     const handleShow2 = () => setShow2(true);
-//     const customerModal = (
-
-
-
-//         <>
-//                 <Modal.Header closeButton>
-//                     <Modal.Title>Sign In</Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>
-//                     <Form>
-
-//                         {
-//                             props.event.title
-//                         }
-
-//                     </Form>
-//                 </Modal.Body>
-//                 <Modal.Footer>
-
-//                 </Modal.Footer>
-
-//         </>
-
-//     )
-
-//     return (
-//         <div>
-//             <Modal
-//                 aria-labelledby="contained-modal-title-vcenter"
-//                 centered
-//                 show={show2}
-//                 onHide={handleClose2}
-//                 style={{ marginTup: "2vh" }}
-//             >
-//                 {customerModal}
-//             </Modal>
-//             <div className="custom_event_content"
-//                 data-toggle="popover"
-//                 data-placement="top"
-//                 data-popover-content={"#custom_event_" + props.event.id}
-//                 tabIndex="0"
-//             >
-//                 {/* {props.event.title} */}
-//                 <Button onClick={handleShow2}>{props.event.title}</Button>
-
-//             </div>
-
-//             {/* <div className="hidden" id={"custom_event_" + this.props.event.id} >
-//               <div className="popover-heading">
-//                 {this.props.event.driver}
-
-//               </div>
-
-//               <div className="popover-body">
-//                 {this.props.event.title}<br/>
-//               </div>
-//             </div> */}
-//         </div>
-//     );
-// }
-
-
-// export default MyEvent
 
 class MyEvent extends React.Component {
     constructor(props) {
@@ -118,39 +41,10 @@ class MyEvent extends React.Component {
         }
     }
 
-    // customerModal = (
-    //     <>
-    //         <Modal.Header closeButton>
-    //             <Modal.Title>Edit</Modal.Title>
-    //         </Modal.Header>
-    //         <Modal.Body>
-    //             <Form>
-
-    //                 {
-    //                     this.props.event.title
-    //                 }
-
-    //             </Form>
-    //         </Modal.Body>
-    //         <Modal.Footer>
-
-    //         </Modal.Footer>
-
-    //     </>
-
-    // )
+    
 
     menu = (
         <>
-            {/* <Modal
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                show={this.visible}
-                onHide={this.handleCancel}
-                style={{ marginTup: "2vh" }}
-            >
-                {this.customerModal}
-            </Modal> */}
             <Menu>
                 <Menu.Item>               
                         <a target="_blank">
@@ -180,15 +74,7 @@ class MyEvent extends React.Component {
     render() {
         return (
             <div>
-                {/* <Modal
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    show={this.visible}
-                    onHide={this.handleCancel}
-                    style={{ marginTup: "2vh" }}
-                >
-                    {this.customerModal}
-                </Modal> */}
+               
                 <div className="custom_event_content"
                     data-toggle="popover"
                     data-placement="top"
@@ -199,20 +85,11 @@ class MyEvent extends React.Component {
                     <Dropdown overlay={this.menu} placement="bottomCenter" arrow>
                         <Button>{this.props.event.title}</Button>
                     </Dropdown>
-                    {/* <Button onClick={this.showModal}>{this.props.event.title}</Button> */}
+                    
 
                 </div>
 
-                {/* <div className="hidden" id={"custom_event_" + this.props.event.id} >
-                  <div className="popover-heading">
-                    {this.props.event.driver}
-                    
-                  </div>
-    
-                  <div className="popover-body">
-                    {this.props.event.title}<br/>
-                  </div>
-                </div> */}
+              
             </div>
         );
     }
