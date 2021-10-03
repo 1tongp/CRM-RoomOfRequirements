@@ -1,6 +1,6 @@
 const Team = require('../models/team');
 
-// POST request for customer order create
+// POST request to create a team
 exports.TeamCreatePost = function (req, res) {
     const { teamNumber, fileList, staff } = req.body;
 
@@ -9,14 +9,11 @@ exports.TeamCreatePost = function (req, res) {
             res.status(409).send("This Team Number has already registered!");
         }
         else {
-            // create a new order
             const newTeam = new Team({
                 teamNumber,
                 fileList,
                 staff               
             });
-
-            // save new team's data
             newTeam.save(function (err, result) {
                 if (err) {
                     res.status(400).json({ err });
@@ -73,10 +70,9 @@ exports.teamListGet = function(req, res){
 }
 
 
-// GET request for vendor to search orders
+// GET request to get the details of the order
 exports.teamDetailGet = function(req, res){
 
-    // check validation of the order id
     Team.findById(req.params.id, function(err, team){
         if(!team){
             res.status(404).json({success: false, message: "team is not found!"})
