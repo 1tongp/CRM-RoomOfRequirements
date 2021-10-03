@@ -10,11 +10,13 @@ function uploadRender() {
             <div className="filecontent">
                 <div className="icon">
                     <InsertDriveFileIcon></InsertDriveFileIcon>
-                    <p className="icontext"> View Files</p>
+                    {/* <p className="icontext"> View Files</p> */}
+                    <a className="icontext" href="https://drive.google.com/drive/folders/1oUcY7o3mam4mgCmdPGTQuV02HudniyWC?usp=sharing">View Files</a>
                 </div>
                 <div className="icon">
                     <CloudUploadIcon></CloudUploadIcon>
-                    <p className="icontext"> Upload Files</p>
+                    <a className="icontext" href="https://drive.google.com/drive/folders/1oUcY7o3mam4mgCmdPGTQuV02HudniyWC?usp=sharing">Upload Files</a>
+                    {/* <p className="icontext"> Upload Files</p> */}
                 </div>
             </div>
         </div>
