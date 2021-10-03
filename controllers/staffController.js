@@ -203,3 +203,16 @@ exports.staffLoginUnhashPost = function (req, res) {
     })
 }
 
+// GET request to get the team members based on the 'team ObjectID'
+exports.teamMemberGet = function(req, res){
+
+    // check validation of the order id
+    Staff.find({team: req.params.teamId}, function(err, team){
+        if(!team){
+            res.status(404).json({success: false, message: "team is not found!"})
+        }
+        else{
+            res.status(200).json({success: true, members: team})   
+        }
+    })
+}

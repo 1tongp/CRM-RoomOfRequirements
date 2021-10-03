@@ -58,7 +58,7 @@ exports.teamChangePost = function(req, res){
     })
 }
 
-// GET request for vendor to search orders
+// GET request to get the team members based on the 'teamNumber'
 exports.teamListGet = function(req, res){
 
     // check validation of the order id
@@ -71,6 +71,7 @@ exports.teamListGet = function(req, res){
         }
     })
 }
+
 
 // GET request for vendor to search orders
 exports.teamDetailGet = function(req, res){
