@@ -1,4 +1,4 @@
-.Team{
+.Team {
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     padding: 20px;
@@ -7,47 +7,45 @@
 .listcontent {
     display: flex;
     flex-direction: column;
-
 }
 
-.Title{
+.Title {
     text-align: center;
     font-size: 4vh;
     font-weight: 500;
     margin-bottom: 3vh;
-    border-bottom: 2px solid black
+    border-bottom: 2px solid black;
 }
 
-.Image{
-    width:  80px;
+.Image {
+    width: 80px;
     height: 80px;
     padding: 10px;
-    border-radius: 50%;     /*makes the images round */
+    border-radius: 50%; /*makes the images round */
     object-fit: cover;
 }
 
-.TeamMemberList{
+.TeamMemberList {
     display: flex;
     flex-flow: column;
 }
 
-.memberItem{
+.memberItem {
     margin-left: -10vh;
     display: flex;
     flex-direction: row;
-    list-style-type: none; /* switch off bullet-points */    
+    list-style-type: none; /* switch off bullet-points */
     box-sizing: border-box;
     flex: 0 0 25%;
     margin-left: 0vh;
 }
 
-.membername{
+.membername {
     text-align: center;
     margin-top: 5vh;
 }
 
-
-.membername{
+.membername {
     font-size: 15px;
     font-weight: 500;
 }

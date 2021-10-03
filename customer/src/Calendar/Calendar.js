@@ -7,18 +7,19 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './Calendar.css'
-import axios from '../API/axios.js';
-import CustomerList from './CustomerExpired.js'
+import "./Calendar.css";
+import axios from "../API/axios.js";
+import CustomerList from "./CustomerExpired.js";
 
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form } from "react-bootstrap";
 
-import Navigation from '../components/Navigation';
+import Navigation from "../components/Navigation";
 import moment from "moment";
-
+import { message } from "antd";
+import poptest from "./PopupTest";
 
 function EventPopup(props) {
     console.log(props);
@@ -33,51 +34,66 @@ function EventPopup(props) {
         locales,
     });
 
-
-
-    const [allEvents, setEventList] = useState([])
-    const [publicEvents, setPublic] = useState([])
-   
-    useEffect(
-        () => {
-            axios.get('/calendar/show/' + props.location.state.staff.id + '?visibility=Private').then(response => {
+    const [allEvents, setEventList] = useState([]);
+    const [publicEvents, setPublic] = useState([]);
+    const [creator, setCreator] = useState('');
+    useEffect(() => {
+        axios
+            .get(
+                "/calendar/show/" +
+                props.location.state.staff.id +
+                "?visibility=Private"
+            )
+            .then((response) => {
                 if (response.data.success) {
-                    setEventList(response.data.events)
+                    setEventList(response.data.events);
                     //console.log(allEvents)
                 }
                 // console.log(typeof(response.data.events[1].start))
-            })
-            axios.get('/calendar/public/' + props.location.state.staff.team + '?visibility=Public').then(response => {
+            });
+        axios
+            .get(
+                "/calendar/public/" +
+                props.location.state.staff.team +
+                "?visibility=Public"
+            )
+            .then((response) => {
                 if (response.data.success) {
-                    setPublic(response.data.events)
+                    setPublic(response.data.events);
                     //console.log(publicEvents)
                 }
-            })
-            
-        }, [])
+            });
+    }, []);
 
-    var allEventss = []
+    var allEventss = [];
     for (let i = 0; i < allEvents.length; i++) {
-        allEvents[i].start = new Date(allEvents[i].start)
-        allEvents[i].end = new Date(allEvents[i].end)
-        allEventss.push(allEvents[i])
+        allEvents[i].start = new Date(allEvents[i].start);
+        allEvents[i].end = new Date(allEvents[i].end);
+        axios.get("staff/" + allEvents[i].staff).then((response) => {
+            if(response.data.success){
+                console.log(response)
+                allEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+            }
+        });
+        allEventss.push(allEvents[i]);
         // console.log(allEvents[i])
     }
     for (let i = 0; i < publicEvents.length; i++) {
-        publicEvents[i].start = new Date(publicEvents[i].start)
-        publicEvents[i].end = new Date(publicEvents[i].end)
-        allEventss.push(publicEvents[i])
+        publicEvents[i].start = new Date(publicEvents[i].start);
+        publicEvents[i].end = new Date(publicEvents[i].end);
+        axios.get("staff/" + publicEvents[i].staff).then((response) => {
+            if(response.data.success){
+                console.log(response)
+                publicEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+            }
+        });
+        allEventss.push(publicEvents[i]);
     }
-    console.log(allEventss)
-   
+    console.log(allEventss);
 
-
-
-
-    // dummy data 
+    // dummy data
     // The input for month indication is smaller than the true month by one -> 6 means 7(July)
     const events = [
-
         // month - 1 => index
         // start time : end time (exclusive)
         {
@@ -107,24 +123,29 @@ function EventPopup(props) {
             end: new Date(2021, 8, 23, 20, 0, 0),
         },
         // props.loction.state.staff.id
-
     ];
 
-
-    const aevent = [{
-        "title": "test",
-        "start": "2021-08-12T15:01:00.000Z",
-        "end": "2021-08-12T04:01:00.000Z"
-    }]
-
+    const aevent = [
+        {
+            title: "test",
+            start: "2021-08-12T15:01:00.000Z",
+            end: "2021-08-12T04:01:00.000Z",
+        },
+    ];
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    {/* new set up here */ }
+    const [showUpdate, setShowUpdate] = useState(false);
+    const handleUpdateClose = () => setShowUpdate(false);
+    const handleUpdateShow = () => setShowUpdate(true);
+
 
     const [newEvent, setNewEvent] = useState({ title: "", visibility: "", type: "", start: new Date().toLocaleDateString, end: new Date().toLocaleDateString })
     const [allEvent, setAllEvent] = useState(events)
+
     // console.log(allEvent)
 
     // to reload the page showing new added events on the calendar
@@ -132,35 +153,45 @@ function EventPopup(props) {
         // The datetime is changed into the correct Date form via 'new Date()'
         // console.log(new Date(newEvent.start))
         // console.log(newEvent.start)
-        console.log(newEvent)
+        console.log(newEvent);
         console.log(newEvent.start);
         console.log(newEvent.end);
-        console.log(typeof (newEvent.end))
-        console.log({ ...allEvent, newEvent })
+        console.log(typeof newEvent.end);
+        console.log({ ...allEvent, newEvent });
         // event is not updated in the list (one step behind????)
-        setAllEvent({ ...allEvent, newEvent })
-        console.log(allEvent)
-        axios.post('/calendar/create', { staff: props.location.state.staff.id, team: props.location.state.staff.team, event: newEvent.title, startTime: newEvent.start, endTime: newEvent.end, type: newEvent.type, visibility: newEvent.visibility }, function (res) {
-            if (res.data.success) {
+        setAllEvent({ ...allEvent, newEvent });
+        console.log(allEvent);
+        axios.post(
+            "/calendar/create",
+            {
+                staff: props.location.state.staff.id,
+                team: props.location.state.staff.team,
+                event: newEvent.title,
+                startTime: newEvent.start,
+                endTime: newEvent.end,
+                type: newEvent.type,
+                visibility: newEvent.visibility,
+            },
+            function (res) {
+                if (res.data.success) {
+                    console.log(res);
+                }
                 console.log(res);
             }
-            console.log(res);
-        })
-        alert("Added event successfully!")
-        window.location.reload(false)
-    }
+        );
+        alert("Added event successfully!");
+        window.location.reload(false);
+    };
 
     const changeDatetype = (newEvent) => {
-
-        console.log(newEvent)
-        console.log(Date(newEvent.start))
-        console.log(Date(newEvent.end))
-    }
+        console.log(newEvent);
+        console.log(Date(newEvent.start));
+        console.log(Date(newEvent.end));
+    };
 
     const addeventtolist = () => {
-
-        console.log(newEvent.start)
-        console.log(Date(newEvent.start))
+        console.log(newEvent.start);
+        console.log(Date(newEvent.start));
 
         /*    
         for (let i = 0; i < {...allEvent, newEvent}.length; i++) {
@@ -170,42 +201,97 @@ function EventPopup(props) {
         //setAllEvent({...allEvent, newEvent})
         console.log(allEvent)
         */
-    }
+    };
 
     const addenwevent = () => {
-        return {}
-
-    }
-
+        return {};
+    };
 
     const eventPropGetter = () => {
         const style = {
             backgroundColor: "#FF0000",
             paddingLeft: "10px",
-            color: 'white',
+            color: "white",
         };
         return {
-            style: style
+            style: style,
         };
-    }
+    };
 
     const formats = {
-        weekdayFormat: (date, culture, localizer) => localizer.format(date, 'Mon', culture),
-    }
+        weekdayFormat: (date, culture, localizer) =>
+            localizer.format(date, "Mon", culture),
+    };
+
+
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
+
+    const handleShow2 = () => setShow2(true);
+    const customerModal = (singleEvent) => {
+        return(
+
+        
+        <>
+            <Button
+                onClick={handleShow2}>
+                
+            </Button>
+            <Modal
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={show2}
+                onHide={handleClose2}
+                style={{ marginTup: "2vh" }}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Sign In</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+
+                        {
+                            singleEvent.title
+                        }
+
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+        </>
+        )
+}
+
+
+
 
     return (
         <>
             <div class="CalendarPage">
-                <div class='NavBar'> <Navigation data={props}></Navigation> </div>
+                <div class="NavBar">
+                    {" "}
+                    <Navigation data={props}></Navigation>{" "}
+                </div>
 
                 <div class="pagecontent">
-                    <div class='full-calendar-wrapper'>
+                    <div class="full-calendar-wrapper">
                         <div class="AddEvent-buttom">
-                            <Button variant='custom' size="sm" onClick={handleShow}>
+                            <Button
+                                variant="custom"
+                                size="sm"
+                                onClick={handleShow}
+                            >
                                 Add event
                             </Button>
 
-                            <Modal show={show} onHide={handleClose} bodyStyle={{ height: 400 }}>
+                            <Modal
+                                show={show}
+                                onHide={handleClose}
+                                bodyStyle={{ height: 400 }}
+                            >
+
                                 <Modal.Header closeButton>
                                     <Modal.Title>Add Event</Modal.Title>
                                 </Modal.Header>
@@ -213,51 +299,110 @@ function EventPopup(props) {
                                 <Modal.Body>
                                     <Form>
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="text" placeholder="Event Event Title"
-                                                onChange={e => setNewEvent({ ...newEvent, title: e.target.value })} />
-                                            <Form.Text className="text-mutes">
-                                            </Form.Text>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Event Event Title"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        title: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                            <Form.Text className="text-mutes"></Form.Text>
                                         </Form.Group>
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="text" placeholder="Event Visibility"
-                                                onChange={e => setNewEvent({ ...newEvent, visibility: e.target.value })} />
-                                            <Form.Text className="text-mutes">
-                                            </Form.Text>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Event Visibility"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        visibility:
+                                                            e.target.value,
+                                                    })
+                                                }
+                                            />
+                                            <Form.Text className="text-mutes"></Form.Text>
                                         </Form.Group>
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="text" placeholder="Event Type"
-                                                onChange={e => setNewEvent({ ...newEvent, type: e.target.value })} />
-                                            <Form.Text className="text-mutes">
-                                            </Form.Text>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Event Type"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        type: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                            <Form.Text className="text-mutes"></Form.Text>
                                         </Form.Group>
 
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="datetime-local" name='event-start-date'
-                                                onChange={(e) => setNewEvent({ ...newEvent, start: new Date(e.target.value) })}
+                                            <Form.Control
+                                                type="datetime-local"
+                                                name="event-start-date"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        start: new Date(
+                                                            e.target.value
+                                                        ),
+                                                    })
+                                                }
                                             />
                                         </Form.Group>
 
                                         <Form.Group controlId="formEventTitle">
-                                            <Form.Control type="datetime-local" name='event-end-date'
-                                                onChange={(e) => setNewEvent({ ...newEvent, end: new Date(e.target.value) })}
+                                            <Form.Control
+                                                type="datetime-local"
+                                                name="event-end-date"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        end: new Date(
+                                                            e.target.value
+                                                        ),
+                                                    })
+                                                }
                                             />
                                         </Form.Group>
                                     </Form>
                                 </Modal.Body>
 
                                 <Modal.Footer>
-                                    <Button variant="secondary" onClick={handleClose}>
+                                    <Button
+                                        variant="secondary"
+                                        onClick={handleClose}
+                                    >
                                         Close
                                     </Button>
-                                    <Button variant="primary" onClick={handleSubmit}>
+                                    <Button
+                                        variant="primary"
+                                        onClick={handleSubmit}
+                                    >
                                         Add event
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
+
+                            {/* new modal here */}
+
                         </div>
                         <div class="big-calendar-component">
+                            <Modal
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                                show={show2}
+                                onHide={handleClose2}
+                                style={{ marginTup: "2vh" }}
+                            >
+                                {customerModal}
+                            </Modal>
                             <Calendar
                                 selectable
+                                // popup
                                 localizer={localizer}
                                 events={allEventss}
                                 // defaultView='week'
@@ -266,13 +411,34 @@ function EventPopup(props) {
                                 startAccessor="start"
                                 endAccessor="end"
                                 style={{ height: 460, margin: "50px" }}
-                                onSelectEvent={allEventss => alert(allEventss.title)}
-                                eventPropGetter={(allEventss) => { const backgroundColor = allEventss.allDay ? '#8a083e' : '#e4d6d6'; return { style: { backgroundColor } } }}
+                                onSelectEvent={
+                                    (singleEvent) => {
+                                        <poptest data = {singleEvent}/>
+                                    }
+                                }
+                                components = {{event:
+                                    poptest}}
+                                // alert(allEventss.title)
+
+
+
+                                // onClick = {(allEventss) =>
+                                //     alert(allEventss.title)
+                                // }
+                                eventPropGetter={(allEventss) => {
+                                    const backgroundColor = allEventss.allDay
+                                        ? "#8a083e"
+                                        : "#e4d6d6";
+                                    return { style: { backgroundColor } };
+                                }}
                             />
                         </div>
                     </div>
 
-                    <div class='customerList'> <CustomerList data={props}></CustomerList> </div>
+                    <div class="customerList">
+                        {" "}
+                        <CustomerList data={props}></CustomerList>{" "}
+                    </div>
                 </div>
             </div>
         </>

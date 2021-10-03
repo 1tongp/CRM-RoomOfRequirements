@@ -21,6 +21,7 @@ const customer = require('./routes/customer');
 const order = require('./routes/order');
 const team = require('./routes/team');
 const calendar = require('./routes/calendar');
+const history = require('./routes/history');
 
 // functions for chat update
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
@@ -131,6 +132,7 @@ app.use('/customer',customer);
 app.use('/order', order);
 app.use('/team', team);
 app.use('/calendar', calendar);
+app.use('/history', history);
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use(express.static('customer/build'));

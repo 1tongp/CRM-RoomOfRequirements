@@ -1,78 +1,34 @@
 import "./TeamList.css";
+import axios from "../API/axios.js";
+import React, { useState, setState, useEffect } from "react";
+import Render from "./MemberRender.js";
 
-function TeamListRender() {
+function TeamListRender(props) {
+    console.log(props)
+
+    const [member, setMember] = useState([])
+    useEffect(() => {
+        axios.get("/staff/member/" + props.data.location.state.staff.team).then((response) => {
+            if (response.data.success) {
+                console.log(response);
+                setMember(response.data.members);
+            }
+        });
+
+    }, []);
+    console.log(member)
+
     return (
         <div className="Team">
-            <div className="listcontent"> 
-            <span className="Title">Team members</span>
-            <ul className="TeamMemberList">
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />
-                    <span className="membername">Anna Keller</span>
+            <div className="listcontent">
+                <span className="Title">Team members</span>
+                {(member.length > 0) ? member.map((singleMember) => (
+                <Render data = {singleMember}></Render>
 
-                </li>
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                    
-                    <span className="membername">Anna Keller</span>   
-
-                </li>
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                    
-                    <span className="membername">Anna Keller</span>
-                        
-                </li>
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                   
-                    <span className="membername">Anna Keller</span>
-                        
-                </li> 
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                   
-                    <span className="membername">Anna Keller</span>
-                        
-                </li> 
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                    
-                    <span className="membername">Anna Keller</span>                       
-
-                </li> 
-                <li className="memberItem">
-                    <img
-                        src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        alt=""
-                        className="Image"
-                    />                    
-                    <span className="membername">Anna Keller</span>          
-                </li> 
-            </ul>
+            )):<p>no members</p>}
             </div>
-
         </div>
     );
-  }
+}
 
 export default TeamListRender;

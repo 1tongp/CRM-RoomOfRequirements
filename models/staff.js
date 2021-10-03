@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 var StaffSchema = new Schema({
     team: {
         type: Schema.Types.ObjectId,
+        default: null,
         ref: 'Team'
     },
     givenName:{
@@ -47,7 +48,11 @@ var StaffSchema = new Schema({
             type: [Number]
         }
     },
+    address:{
+        type: String,
+        require: true
 
+    },
 
 });
 

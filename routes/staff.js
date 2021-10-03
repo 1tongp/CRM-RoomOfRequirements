@@ -17,4 +17,7 @@ StaffRouter.post('/login', staffController.staffLoginPost);
 
 // POST request to login without hash 
 StaffRouter.post('/login/unhash', staffController.staffLoginUnhashPost);
+
+// GET request to get team members
+StaffRouter.get('/member/:teamId', staffController.teamMemberGet);
 module.exports = StaffRouter;

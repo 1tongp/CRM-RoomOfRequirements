@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import './Join.css';
-
-export default function SignIn() {
+import axios from "../../API/axios.js";
+import { Button, Modal, Form } from "react-bootstrap";
+export default function SignIn(props) {
+  console.log(props)
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+
+  const onSignIn = () =>{
+    // if(!name && !room){
+    //   console.log(name)
+    //   console.log(room)
+    //   console.log('/chat?name='+name + '&room=' + room)
+      props.data.history.push({pathname:'/chat?name='+name + '&room=' + room ,state:{props}})
+    // }
+  }
 
   return (
     <div className="JoinGroupchatPage">

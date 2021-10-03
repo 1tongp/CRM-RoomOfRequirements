@@ -17,4 +17,7 @@ CalendarRouter.get('/show/:staffId', calendarController.eventListGet);
 
 // GET request to get the all Public events
 CalendarRouter.get('/public/:teamId', calendarController.eventTeamGet);
+
+// GET request to get the all Public events
+CalendarRouter.get('/delete/:id', calendarController.eventDeleteGet);
 module.exports = CalendarRouter;

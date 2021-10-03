@@ -1,13 +1,13 @@
 // import axios from '../API/axios';
-import Navigation from '../components/Navigation';
-import CustomerList from '../components/CustomerList';
-import '../components/component.css'
+import Navigation from "../components/Navigation";
+import CustomerList from "../components/CustomerList";
+import "../components/component.css";
 import React from "react";
 
 class Customer extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props)
+        console.log(this.props);
     }
 
     state = {
@@ -22,15 +22,13 @@ class Customer extends React.Component {
 
     render() {
         return (
-            <div className='div'>
-                <div className='navigationBar'>
+            <div className="div">
+                <div className="navigationBar">
                     <Navigation data={this.props}></Navigation>
                 </div>
-                <div className='customerList'>
-                    <CustomerList data = {this.props} />
+                <div className="customerList">
+                    <CustomerList data={this.props} />
                 </div>
-
-
             </div>
         );
     }
