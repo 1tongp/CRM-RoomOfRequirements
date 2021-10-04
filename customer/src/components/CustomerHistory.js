@@ -85,7 +85,7 @@ function CustomerHistory(props) {
         },
     ];
     const handleCallback = (childData) =>{
-        childData.date = childData.date.format();
+        childData.date = childData.date.format().substring(0,10);;
         console.log(childData);
         
         historyData.push(childData);

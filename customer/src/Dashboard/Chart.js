@@ -37,24 +37,6 @@ export function Chart(props) {
 };
 
 
-    const config = {
-        data,
-        height: 400,
-        xField: "year",
-        yField: "value",
-        point: {
-            size: 5,
-            shape: "diamond",
-        },
-        label: {
-            style: {
-                fill: "#aaa",
-            },
-        },
-    };
-    return <Line {...config} />;
-
-
 
 export function DemoBar(props) {
   console.log(props)
