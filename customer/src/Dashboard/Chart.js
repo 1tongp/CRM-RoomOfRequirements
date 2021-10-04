@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Line } from '@ant-design/charts';
 import { Bar } from '@ant-design/charts';
@@ -34,6 +35,25 @@ export function Chart(props) {
   };
   return <Line {...config} />;
 };
+
+
+    const config = {
+        data,
+        height: 400,
+        xField: "year",
+        yField: "value",
+        point: {
+            size: 5,
+            shape: "diamond",
+        },
+        label: {
+            style: {
+                fill: "#aaa",
+            },
+        },
+    };
+    return <Line {...config} />;
+
 
 
 export function DemoBar(props) {
@@ -90,3 +110,4 @@ export function DemoBar(props) {
   };
   return <Bar {...config} />;
 };
+
