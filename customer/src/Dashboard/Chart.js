@@ -1,8 +1,10 @@
 import React from 'react';
 import { Line } from '@ant-design/charts';
 import { Bar } from '@ant-design/charts';
+import {useState, useEffect} from 'react';
 
-export function Chart() {
+export function Chart(props) {
+  console.log(props)
   const data = [
     { year: '1991', value: 3 },
     { year: '1992', value: 4 },
@@ -34,7 +36,29 @@ export function Chart() {
 };
 
 
-export function DemoBar() {
+export function DemoBar(props) {
+  console.log(props)
+
+  
+  // useEffect(() =>{
+        
+  //   axios.get('/customer/list/' + props.data.location.state.staff.id).then(response => {
+  //       console.log(props);
+  //       console.log(response);
+  //       if (response.data.success) {
+  //           setCus(response.data.customers.length)
+  //       }   
+  //   })
+
+  //   axios.get('/order/' + props.data.location.state.staff.id).then(response => {
+  //       console.log(props);
+  //       console.log(response);
+  //       if (response.data.success) {
+  //           setOrd(response.data.orders.length)
+  //       }
+        
+  //   })
+  // }, [])
   var data = [
     {
       year: '1951',

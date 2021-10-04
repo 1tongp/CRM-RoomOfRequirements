@@ -2,7 +2,7 @@ const Calendar = require('../models/calendar');
 
 // POST request to create an event
 exports.eventCreatePost = function(req, res){
-    const{staff, event, type, visibility, startTime, endTime, team} = req.body;
+    const{staff, event, type, visibility, startTime, endTime, team, name} = req.body;
 
     const newEvent = new Calendar({
         staff,
@@ -11,7 +11,8 @@ exports.eventCreatePost = function(req, res){
         visibility,
         startTime,
         endTime,
-        team
+        team,
+        name
     });
 
     newEvent.save(function(err, eve){
@@ -78,7 +79,10 @@ exports.eventListGet = function(req, res){
                     "visibility": eventsList[i].visibility,
                     "staff":eventsList[i].staff,
                     "id": eventsList[i].id,
-                    "staffName":''
+                    "creator":eventsList[i].name,
+                    "staffName":"",
+                    "firstName":"",
+                    "lastName":""
                 })
             }
             res.status(200).json({success: true, events: eventsLists})
@@ -103,7 +107,10 @@ exports.eventTeamGet = function(req, res){
                     "visibility": eventsList[i].visibility,
                     "staff":eventsList[i].staff,
                     "id": eventsList[i].id,
-                    "staffName":''
+                    "creator":eventsList[i].name,
+                    "staffName":"",
+                    "firstName":"",
+                    "lastName":""
                 })
             }
             res.status(200).json({success: true, events: eventsLists})

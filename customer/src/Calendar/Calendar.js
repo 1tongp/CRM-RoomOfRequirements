@@ -72,7 +72,10 @@ function EventPopup(props) {
         axios.get("staff/" + allEvents[i].staff).then((response) => {
             if(response.data.success){
                 console.log(response)
-                allEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+                allEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName;
+                allEvents[i].firstName = response.data.staff.givenName;
+                allEvents[i].lastName = response.data.staff.familyName;
+
             }
         });
         allEventss.push(allEvents[i]);
@@ -84,7 +87,9 @@ function EventPopup(props) {
         axios.get("staff/" + publicEvents[i].staff).then((response) => {
             if(response.data.success){
                 console.log(response)
-                publicEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName
+                publicEvents[i].staffName = response.data.staff.givenName + " " + response.data.staff.familyName;
+                publicEvents[i].firstName = response.data.staff.givenName;
+                publicEvents[i].lastName = response.data.staff.familyName;
             }
         });
         allEventss.push(publicEvents[i]);
@@ -143,7 +148,7 @@ function EventPopup(props) {
     const handleUpdateShow = () => setShowUpdate(true);
 
 
-    const [newEvent, setNewEvent] = useState({ title: "", visibility: "", type: "", start: new Date().toLocaleDateString, end: new Date().toLocaleDateString })
+    const [newEvent, setNewEvent] = useState({ name:"", title: "", visibility: "", type: "", start: new Date().toLocaleDateString, end: new Date().toLocaleDateString })
     const [allEvent, setAllEvent] = useState(events)
 
     // console.log(allEvent)
@@ -166,6 +171,7 @@ function EventPopup(props) {
             {
                 staff: props.location.state.staff.id,
                 team: props.location.state.staff.team,
+                name: newEvent.name,
                 event: newEvent.title,
                 startTime: newEvent.start,
                 endTime: newEvent.end,
@@ -228,41 +234,41 @@ function EventPopup(props) {
     const handleClose2 = () => setShow2(false);
 
     const handleShow2 = () => setShow2(true);
-    const customerModal = (singleEvent) => {
-        return(
+//     const customerModal = (singleEvent) => {
+//         return(
 
         
-        <>
-            <Button
-                onClick={handleShow2}>
+//         <>
+//             <Button
+//                 onClick={handleShow2}>
                 
-            </Button>
-            <Modal
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                show={show2}
-                onHide={handleClose2}
-                style={{ marginTup: "2vh" }}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Sign In</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
+//             </Button>
+//             <Modal
+//                 aria-labelledby="contained-modal-title-vcenter"
+//                 centered
+//                 show={show2}
+//                 onHide={handleClose2}
+//                 style={{ marginTup: "2vh" }}
+//             >
+//                 <Modal.Header closeButton>
+//                     <Modal.Title>Sign In</Modal.Title>
+//                 </Modal.Header>
+//                 <Modal.Body>
+//                     <Form>
 
-                        {
-                            singleEvent.title
-                        }
+//                         {
+//                             singleEvent.title
+//                         }
 
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
+//                     </Form>
+//                 </Modal.Body>
+//                 <Modal.Footer>
 
-                </Modal.Footer>
-            </Modal>
-        </>
-        )
-}
+//                 </Modal.Footer>
+//             </Modal>
+//         </>
+//         )
+// }
 
 
 
@@ -298,10 +304,23 @@ function EventPopup(props) {
 
                                 <Modal.Body>
                                     <Form>
+                                    <Form.Group controlId="formEventTitle">
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Event Creator"
+                                                onChange={(e) =>
+                                                    setNewEvent({
+                                                        ...newEvent,
+                                                        name: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                            <Form.Text className="text-mutes"></Form.Text>
+                                        </Form.Group>
                                         <Form.Group controlId="formEventTitle">
                                             <Form.Control
                                                 type="text"
-                                                placeholder="Event Event Title"
+                                                placeholder="Event Title"
                                                 onChange={(e) =>
                                                     setNewEvent({
                                                         ...newEvent,
@@ -391,15 +410,7 @@ function EventPopup(props) {
 
                         </div>
                         <div class="big-calendar-component">
-                            <Modal
-                                aria-labelledby="contained-modal-title-vcenter"
-                                centered
-                                show={show2}
-                                onHide={handleClose2}
-                                style={{ marginTup: "2vh" }}
-                            >
-                                {customerModal}
-                            </Modal>
+        
                             <Calendar
                                 selectable
                                 // popup

@@ -34,7 +34,7 @@ function DashboardContent(props) {
             }
             
         })
-      })
+      }, [])
 
 
 
@@ -61,44 +61,12 @@ function DashboardContent(props) {
                             valueStyle={{ color: "blue" }}
                         />
                     </Card>
-                    {/* <Card>
-                        <Statistic
-                            title="Total Payment"
-                            value={310000}
-                            valueStyle={{ color: "green" }}
-                        />
-                    </Card>
-                    <Card>
-                        <Statistic
-                            title="type of products"
-                            value={32}
-                            valueStyle={{ color: "yellow" }}
-                        />
-                    </Card> */}
+                    
                 </Row>
-                {/* <br />
-                <p>Customer Contact</p>
-                    <Row>
-                        <Card>
-                            <Statistic
-                                title="Visiting Record"
-                                value={108}
-                                valueStyle={{ color: "red" }}
-                            />
-                        </Card>
-                        <Card>
-                            <Statistic
-                                title="Ongoing contact"
-                                value={21}
-                                valueStyle={{ color: "blue" }}
-                            />
-                        </Card>
-                    </Row>
-                <br /> */}
                 <br />
 
                 <p>Staff Selling Ranking</p>
-                <DemoBar />
+                <DemoBar data={props}></DemoBar>
             </div>
             <div>
                 <p>Monthly trading volume</p>

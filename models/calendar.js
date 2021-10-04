@@ -36,10 +36,9 @@ var CalendarSchema = new Schema({
         type:String,
     },
 
-    // MM/DD/YYYY
-    // dateYear:{
-    //     type: Date,
-    // }
+    name:{
+        type:String,
+    }
 
 });
 

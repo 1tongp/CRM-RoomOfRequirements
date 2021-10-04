@@ -18,8 +18,7 @@ const ENDPOINT = 'http://localhost:8080';
 
 let socket;
 
-const Chat = ({ props, location }) => {
-  console.log(props)
+const Chat = ({location }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');
@@ -65,7 +64,7 @@ const Chat = ({ props, location }) => {
       <div className='TeamList'> <TeamList></TeamList> </div> 
       <div className="chatWhole">
         <div className="Chatbox">
-            <InfoBar data = {props} room={room} />
+            <InfoBar  room={room} />
             <Messages messages={messages} name={name} />
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </div>
