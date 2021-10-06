@@ -59,9 +59,6 @@ const Chat = ({location }) => {
   }
 
   return (
-    <div className="GroupPageInChat">
-      <div className='NavBar'> <Navigation></Navigation> </div>
-      <div className='TeamList'> <TeamList></TeamList> </div> 
       <div className="chatWhole">
         <div className="Chatbox">
             <InfoBar  room={room} />
@@ -69,8 +66,6 @@ const Chat = ({location }) => {
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </div>
       </div>
-      <div className='UploadFile'> <UploadFile></UploadFile> </div> 
-    </div>
   );
 }
 
