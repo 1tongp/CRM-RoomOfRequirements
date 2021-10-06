@@ -23,4 +23,6 @@ orderRouter.get('/customerorder/:customerId', orderController.OrderCustomerGet);
 
 orderRouter.get('/customertype/:customerId', orderController.OrderCustomerTypeGet);
 
+orderRouter.get('/num/:staffId', orderController.OrderNumGet);
+
 module.exports = orderRouter;

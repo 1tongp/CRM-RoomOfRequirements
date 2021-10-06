@@ -41,6 +41,7 @@ exports.OrderListGet = function(req, res){
                     "customer":orders[i].customer,
                     "status":orders[i].status,
                     "updateTime":orders[i].updateTime,
+                    "createTime":orders[i].createTime,
                     "staff":orders[i].staff,
                     "_v":orders[i]._v,
                     "_id":orders[i]._id,
@@ -125,6 +126,7 @@ exports.OrderCustomerGet = function(req, res){
                     "customer":orders[i].customer,
                     "status":orders[i].status,
                     "updateTime":orders[i].updateTime,
+                    "createTime":orders[i].createTime,
                     "staff":orders[i].staff,
                     "_v":orders[i]._v,
                     "_id":orders[i]._id,
@@ -146,6 +148,14 @@ exports.OrderCustomerTypeGet = function(req, res){
         else{
             res.status(200).json({success: true, orderDetail: orders})
         }
+    })
+
+};
+
+// Get request for staff to get the number of orders
+exports.OrderNumGet = function(req, res){
+    Order.find({staff: req.params.staffId}, function(err, orders){
+        res.status(200).json({success: true, num: orders.length})
     })
 
 };
