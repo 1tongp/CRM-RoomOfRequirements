@@ -66,12 +66,12 @@ function CustomerHistory(props) {
                     value: "Travel",
                 },
             ],
-            onFilter: (value, record) => record.orderType.indexOf(value) === 0,
+            onFilter: (value, record) => record.insuranceType.indexOf(value) === 0,
         },
         {
             title: "Staff",
             dataIndex: "staff",
-            sorter: (a, b) => a.operator.localeCompare(b.operator),
+            sorter: (a, b) => a.staff.localeCompare(b.staff),
             sortDirections: ["descend"],
         },
         {
@@ -96,7 +96,7 @@ function CustomerHistory(props) {
     // search functionality
     var nameArray = [];
     for (let i = 0; i < historyData.length; i++) {
-        nameArray.push(historyData[i].operator);
+        nameArray.push(historyData[i].staff);
         nameArray.push(historyData[i].date); // remember to string
     }
 
@@ -115,7 +115,7 @@ function CustomerHistory(props) {
 
     var filteredData = historyData.filter(function (el) {
         return (
-            result.includes(el.operator) || result.includes(el.date.toString())
+            result.includes(el.staff) || result.includes(el.date.toString())
         );
     });
 

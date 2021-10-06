@@ -162,7 +162,8 @@ function CustomerList(props) {
                     value: "Melbourne",
                 },
             ],
-            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+            // debug
+            onFilter: (value, record) => record.region.indexOf(value) === 0,
         },
         {
             title: "Insurance Type",
@@ -213,6 +214,7 @@ function CustomerList(props) {
                     data={data[i]}
                 ></CustomerHistory>
             );
+            data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
             data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
         }
     }
@@ -263,11 +265,13 @@ function CustomerList(props) {
             <CustomerAssign
                 className="button"
                 staff={props.data.location.state.staff.id}
+                staffDetails={props.data.location.state.staff}
                 data={data2[i]}
             >
                 Assign
             </CustomerAssign>
         );
+        data2[i].email = <a href = "https://mail.google.com/">{data2[i].email}</a>
     }
 
     // search functionality
