@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Line } from '@ant-design/charts';
 import { Bar } from '@ant-design/charts';
@@ -61,6 +62,7 @@ export function Chart(props) {
 };
 
 
+
 export function DemoBar(props) {
   console.log(props)
 
@@ -86,3 +88,4 @@ export function DemoBar(props) {
   };
   return <Bar {...config} />;
 };
+
