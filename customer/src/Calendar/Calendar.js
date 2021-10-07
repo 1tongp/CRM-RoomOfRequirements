@@ -461,7 +461,7 @@ function EventPopup(props) {
                         </div>
                     </div>
 
-                    <div class="customerList">
+                    <div class="ExpiredcustomerList">
                         {" "}
                         <CustomerList data={props}></CustomerList>{" "}
                     </div>

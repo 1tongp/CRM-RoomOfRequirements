@@ -24,11 +24,13 @@ function ExpireList(props) {
                     Customer with insurance be about to expire
                 </span>
             </div>
-        
-            {(orders.length > 0) ? orders.map((singleOrder) => (
-                <Render data = {singleOrder}></Render>
 
-            )):<p>no orders</p>}
+            <div className='ListOfCustomer'>     
+                {(orders.length > 0) ? orders.map((singleOrder) => (
+                    <Render data = {singleOrder}></Render>
+
+                )):<p>no orders</p>}
+            </div>
         </>
     );
 }

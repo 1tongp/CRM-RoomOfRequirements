@@ -17,7 +17,7 @@
     grid-gap: 1rem;
     grid-template-areas:
         "Navibar calendar"
-        "Navibar customerlist";
+        "Navibar ExpiredcustomerList";
 }
 
 .NavBar {
@@ -26,8 +26,8 @@
 .full-calendar-wrapper {
     grid-area: calender;
 }
-.customerList {
-    grid-area: customerlist;
+.ExpiredcustomerList {
+    grid-area: ExpiredcustomerList;
 }
 
 .pageContent {

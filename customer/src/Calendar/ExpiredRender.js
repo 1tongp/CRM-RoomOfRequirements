@@ -1,6 +1,7 @@
-import "./CustomerExpired.css";
+//import "./CustomerExpired.css";
 import axios from "../API/axios.js";
 import React, { useState, setState, useEffect } from "react";
+import "./ExpiredRender.css";
 
 
 function Render(props) {
@@ -25,7 +26,7 @@ function Render(props) {
                 <img
                         src="https://y.qichejiashi.com/tupian/upload/246852168.jpg"
                         alt=""
-                        className="Image"
+                        className="CustomerImage"
                     />
                 <div className="Customer">
                     <span className="Customername">{name}</span>
