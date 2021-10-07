@@ -66,8 +66,8 @@ function CustomerHistory(props) {
                     value: "Travel",
                 },
             ],
-            onFilter: (value, record) =>
-                record.insuranceType.indexOf(value) === 0,
+            onFilter: (value, record) => record.insuranceType.indexOf(value) === 0,
+
         },
         {
             title: "Staff",
@@ -114,6 +114,7 @@ function CustomerHistory(props) {
 
     var filteredData = historyData.filter(function (el) {
         return (
+
             result.includes(el.staff) ||
             result.includes(el.date.toString()) ||
             result.includes(el.note)

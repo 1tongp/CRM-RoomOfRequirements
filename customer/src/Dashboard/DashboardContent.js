@@ -44,7 +44,9 @@ function DashboardContent(props) {
         <div className='dashboardContainer'>
             <div>
                 <h3>Dashboard</h3>
-            
+                <br />
+                <br />
+                {/* resize */}
                 <p>Insurance Summary</p>
                 <Row>
                     <Card>
@@ -64,13 +66,17 @@ function DashboardContent(props) {
                     
                 </Row>
                 <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
                 <p>Staff Selling Ranking</p>
                 <DemoBar data={props}></DemoBar>
             </div>
             <div>
                 <p>Monthly trading volume</p>
-                <Chart />
+                <Chart data = {props}/>
                 <br />
                 <br />
                 <br />

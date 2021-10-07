@@ -1,4 +1,5 @@
 const Staff = require('../models/staff');
+const Order = require('../models/order');
 const bcrypt = require('bcryptjs');
 
 // POST request for staff register 
@@ -155,7 +156,8 @@ exports.staffLoginPost = function (req, res) {
                             photoPath: staff.photoPath,
                             team: staff.team,
                             address: staff.address,
-                            companysuburb: staff.companysuburb
+                            companysuburb: staff.companysuburb,
+                            orderNum: staff.orderNum
                         },
                     });
                 }
@@ -192,7 +194,8 @@ exports.staffLoginUnhashPost = function (req, res) {
                             photoPath: staff.photoPath,
                             team: staff.team,
                             address: staff.address,
-                            companysuburb: staff.companysuburb
+                            companysuburb: staff.companysuburb,
+                            orderNum: staff.orderNum
                     },
                 });
             }
@@ -213,6 +216,62 @@ exports.teamMemberGet = function(req, res){
         }
         else{
             res.status(200).json({success: true, members: team})   
+        }
+    })
+}
+
+// // GET request to get the team members based on the 'team ObjectID'
+// exports.staffRankingGet = function(req, res){
+
+//     // check validation of the order id
+//     Staff.find({team: req.params.teamId}, function(err, team){
+//         if(!team){
+//             res.status(404).json({success: false, message: "team is not found!"})
+//         }
+//         else{
+//             var info = [[]]
+//             for(i = 0; i< team.length; i++){
+//                 Order.find({staff: team[i]._id}, function(err, order){
+//                     if(!order){
+//                         info[i].push({
+//                             "member": order.givenName + " " + order.familyName,
+//                             "orders": 0
+//                         })
+//                     }
+//                     else{
+//                         info[i].push({
+//                             "member": order.givenName + " " + order.familyName,
+//                             "orders": order.length
+//                         })
+//                     }
+//                 })
+//             }
+//             res.status(200).json({success: true, statistic: info})   
+//         }
+//     })
+// }
+
+// POST request to update the number of orders for a particular staff
+exports.orderNumUpdate = function (req, res) {
+    const { orderNum } = req.body;
+    Staff.findById(req.params.id, function (err, detail) {
+        if (!detail) {
+            res.status(404).send("staff is not found!")
+        }
+        else {
+            Staff.findByIdAndUpdate(
+                req.params.id,
+                req.body,
+                { new: true },
+                function(err, staffNew) {
+                    if (err) {
+                        res.status(404).json({ success: false, err })
+                    }
+                    else {
+                        res.status(200).json({ success: true, staffDetail: staffNew })
+                    }
+                }
+            )
         }
     })
 }

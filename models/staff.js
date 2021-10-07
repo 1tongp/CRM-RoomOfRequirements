@@ -53,6 +53,10 @@ var StaffSchema = new Schema({
         require: true
 
     },
+    orderNum:{
+        type: Number,
+        default: 0
+    }
 
 });
 

@@ -29,8 +29,14 @@ function CustomerAssign(props) {
                 console.log(response);
                 if (response.data.success) {
                     console.log("yes");
-                    alert("Assigned Successfully");
-                    window.location.reload(false);
+                    axios.post("/staff/number/" + props.staff, { orderNum: props.staffDetails.orderNum + 1 })
+                        .then((response) => {
+                            console.log(response);
+                            if (response.data.success) {
+                                alert("Assigned Successfully");
+                                window.location.reload(false);
+                            }
+                        })
                 } else {
                     alert("Failed to assign");
                     // message.error(response.data.error)
