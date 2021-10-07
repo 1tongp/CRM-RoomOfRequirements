@@ -330,6 +330,8 @@ function EventPopup(props) {
                                             />
                                             <Form.Text className="text-mutes"></Form.Text>
                                         </Form.Group>
+
+                                        {/* commrnt out the text from for visibility
                                         <Form.Group controlId="formEventTitle">
                                             <Form.Control
                                                 type="text"
@@ -343,7 +345,20 @@ function EventPopup(props) {
                                                 }
                                             />
                                             <Form.Text className="text-mutes"></Form.Text>
-                                        </Form.Group>
+                                        </Form.Group> 
+                                        */}
+                                        <Form.Group controlId="formEventTitle">
+                                            <Form.Control 
+                                                as = 'select'
+                                                onChange={(e) => setNewEvent({...newEvent, visibility: e.target.value,})}
+                                            >
+                                                <option>Visibility</option>
+                                                <option value="Public">Public</option>
+                                                <option value="Private">Private</option>
+                                            </Form.Control>
+                                        </Form.Group> 
+
+
                                         <Form.Group controlId="formEventTitle">
                                             <Form.Control
                                                 type="text"
