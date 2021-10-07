@@ -1,24 +1,52 @@
+
 import React from 'react';
 import { Line } from '@ant-design/charts';
 import { Bar } from '@ant-design/charts';
+import {useState, useEffect} from 'react';
+import axios from '../API/axios.js';
 
-export function Chart() {
+export function Chart(props) {
+  console.log(props)
+
+  const [orders, setOrders] = useState([])
+  useEffect(() =>{
+        
+    axios.get('/order/' + props.data.data.location.state.staff.id).then(response => {
+        console.log(props);
+        console.log(response);
+        if (response.data.success) {
+            setOrders(response.data.orders)
+        }   
+    })
+  }, [])
+
   const data = [
-    { year: '1991', value: 3 },
-    { year: '1992', value: 4 },
-    { year: '1993', value: 3.5 },
-    { year: '1994', value: 5 },
-    { year: '1995', value: 4.9 },
-    { year: '1996', value: 6 },
-    { year: '1997', value: 7 },
-    { year: '1998', value: 9 },
-    { year: '1999', value: 13 },
+    { month: '01', value: 0 },
+    { month: '02', value: 0 },
+    { month: '03', value: 0 },
+    { month: '04', value: 0 },
+    { month: '05', value: 0 },
+    { month: '06', value: 0 },
+    { month: '07', value: 0 },
+    { month: '08', value: 0 },
+    { month: '09', value: 0 },
+    { month: '10', value: 0 },
+    { month: '11', value: 0 },
+    { month: '12', value: 0 },
   ];
+
+  for(let i = 0; i < orders.length; i++){
+    for(let j = 0; j < 12; j++){
+      if(orders[i].createTime.slice(5,7) == data[j].month){
+        data[j].value += 1
+      }
+    }
+  }
 
   const config = {
     data,
     height: 400,
-    xField: 'year',
+    xField: 'month',
     yField: 'value',
     point: {
       size: 5,
@@ -34,35 +62,30 @@ export function Chart() {
 };
 
 
-export function DemoBar() {
-  var data = [
-    {
-      year: '1951',
-      value: 38,
-    },
-    {
-      year: '1952',
-      value: 52,
-    },
-    {
-      year: '1956',
-      value: 61,
-    },
-    {
-      year: '1957',
-      value: 145,
-    },
-    {
-      year: '1958',
-      value: 48,
-    },
-  ];
+
+export function DemoBar(props) {
+  console.log(props)
+
+  const [members, setMembers] = useState([])
+  useEffect(() =>{
+        
+    axios.get('/staff/member/' + props.data.data.location.state.staff.team).then(response => {
+        console.log(props);
+        console.log(response);
+        if (response.data.success) {
+            setMembers(response.data.members)
+        }   
+    })
+
+  }, [])
+  console.log(members)
   var config = {
-    data: data,
-    xField: 'value',
-    yField: 'year',
-    seriesField: 'year',
+    data: members,
+    xField: 'orderNum',
+    yField: 'givenName',
+    seriesField: 'givenName',
     legend: { position: 'top-left' },
   };
   return <Bar {...config} />;
 };
+

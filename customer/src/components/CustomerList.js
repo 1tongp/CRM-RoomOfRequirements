@@ -81,7 +81,7 @@ function CustomerList(props) {
                     value: "Melbourne",
                 },
             ],
-            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+            onFilter: (value, record) => record.region.indexOf(value) === 0,
         },
         {
             title: "Insurance Type",
@@ -116,86 +116,6 @@ function CustomerList(props) {
         },
     ];
     
-    const columns2 = [
-        {
-            title: "First Name",
-            dataIndex: "firstName",
-            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
-            sortDirections: ["descend"],
-        },
-        {
-            title: "Last Name",
-            dataIndex: "lastName",
-            sorter: (a, b) => a.lastName.localeCompare(b.lastName),
-            sortDirections: ["descend"],
-        },
-        {
-            title: "Contact Number",
-            dataIndex: "contactNumber",
-        },
-        {
-            title: "Email Address",
-            dataIndex: "email",
-        },
-        {
-            title: "Region",
-            dataIndex: "region",
-            filters: [
-                {
-                    text: "Box Hill",
-                    value: "Box Hill",
-                },
-                {
-                    text: "Carlton",
-                    value: "Carlton",
-                },
-                {
-                    text: "Caulfield",
-                    value: "Caulfield",
-                },
-                {
-                    text: "Glen Waverley",
-                    value: "Glen Waverley",
-                },
-                {
-                    text: "Melbourne",
-                    value: "Melbourne",
-                },
-            ],
-            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
-        },
-        {
-            title: "Insurance Type",
-            dataIndex: "insurance",
-            filters: [
-                {
-                    text: "Car",
-                    value: "Car",
-                },
-                {
-                    text: "Landlord",
-                    value: "Landlord",
-                },
-                {
-                    text: "Home",
-                    value: "Home",
-                },
-                {
-                    text: "Travel",
-                    value: "Travel",
-                },
-            ],
-            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
-        },
-        {
-            title: "Details",
-            dataIndex: "details",
-        },
-        {
-            title: "Assign",
-            dataIndex: "assign",
-        },
-    ];
 
     console.log(data)
     // adding the customer detail button to the columns
@@ -213,6 +133,7 @@ function CustomerList(props) {
                     data={data[i]}
                 ></CustomerHistory>
             );
+            data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
             data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
         }
     }
@@ -223,7 +144,7 @@ function CustomerList(props) {
         nameArray.push(data[i].firstName);
         nameArray.push(data[i].lastName);
         nameArray.push(data[i].contactNumber.toString());
-        nameArray.push(data[i].email);
+        nameArray.push(data[i].email.toString());
     }
 
     function onChange(pagination, filters, sorter, extra) {
@@ -248,7 +169,7 @@ function CustomerList(props) {
             result.includes(el.firstName) ||
             result.includes(el.lastName) ||
             result.includes(el.contactNumber.toString()) ||
-            result.includes(el.email)
+            result.includes(el.email.toString())
         );
     });
 
@@ -263,11 +184,13 @@ function CustomerList(props) {
             <CustomerAssign
                 className="button"
                 staff={props.data.location.state.staff.id}
+                staffDetails={props.data.location.state.staff}
                 data={data2[i]}
             >
                 Assign
             </CustomerAssign>
         );
+        data2[i].email = <a href = "https://mail.google.com/">{data2[i].email}</a>
     }
 
     // search functionality
@@ -276,7 +199,7 @@ function CustomerList(props) {
         nameArray2.push(data2[i].firstName);
         nameArray2.push(data2[i].lastName);
         nameArray2.push(data2[i].contactNumber.toString());
-        nameArray2.push(data2[i].email);
+        nameArray2.push(data2[i].email.toString());
     }
 
     const [SearchTerm2, setSearchTerm2] = useState("");
@@ -297,7 +220,7 @@ function CustomerList(props) {
             result2.includes(el.firstName) ||
             result2.includes(el.lastName) ||
             result2.includes(el.contactNumber.toString()) ||
-            result2.includes(el.email)
+            result2.includes(el.email.toString())
         );
     });
 
@@ -345,7 +268,7 @@ function CustomerList(props) {
                     <Table
                         size="small"
                         className="table"
-                        columns={columns2}
+                        columns={columns}
                         dataSource={filteredData2}
                         onChange={onChange}
                     />

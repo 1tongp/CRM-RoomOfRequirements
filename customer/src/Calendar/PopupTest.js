@@ -41,26 +41,27 @@ class MyEvent extends React.Component {
         }
     }
 
-    
+
 
     menu = (
         <>
             <Menu>
-                <Menu.Item>               
-                        <a target="_blank">
-                            <p>Event: {this.props.event.title}</p>
-                        </a>
+                <Menu.Item>
+                    <a target="_blank">
+                        <p>Creator: {this.props.event.creator}</p>
+                    </a>
+                </Menu.Item>
+                
+                <Menu.Item>
+                    <a target="_blank">
+                        <p>Event: {this.props.event.title}</p>
+                    </a>
 
                 </Menu.Item>
                 <Menu.Item>
-                        <a target="_blank">
-                            <p>Visibility: {this.props.event.visibility}</p>
-                        </a>
-                </Menu.Item>
-                <Menu.Item>
-                        <a target="_blank">
-                            <p>Creator: {this.props.event.staffName}</p>
-                        </a>         
+                    <a target="_blank">
+                        <p>Visibility: {this.props.event.visibility}</p>
+                    </a>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={this.onDelete}>
@@ -74,7 +75,7 @@ class MyEvent extends React.Component {
     render() {
         return (
             <div>
-               
+
                 <div className="custom_event_content"
                     data-toggle="popover"
                     data-placement="top"
@@ -83,13 +84,13 @@ class MyEvent extends React.Component {
                 >
                     {/* {props.event.title} */}
                     <Dropdown overlay={this.menu} placement="bottomCenter" arrow>
-                        <Button>{this.props.event.title}</Button>
+                        <p>{this.props.event.title}</p>
                     </Dropdown>
-                    
+
 
                 </div>
 
-              
+
             </div>
         );
     }
