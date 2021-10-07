@@ -4,12 +4,12 @@ let URLs = {};
 if (process.env.NODE_ENV === "production") {
     URLs = {
         baseURL: "/api",
-        socketURL: "https://frontend-keepitsimple.herokuapp.com/",
+        socketURL: "https://room-of-requirement-crm.herokuapp.com/"
     };
 } else {
     URLs = {
-        baseURL: "http://localhost:8080/api",
-        socketURL: "http://localhost:8080/api",
+        baseURL: "http://localhost:5000/api",
+        socketURL: "http://localhost:5000/api",
     };
 }
 
