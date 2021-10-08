@@ -19,6 +19,7 @@ const ENDPOINT = 'http://localhost:8080';
 let socket;
 
 const Chat = ({location }) => {
+
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');
@@ -59,9 +60,6 @@ const Chat = ({location }) => {
   }
 
   return (
-    <div className="GroupPageInChat">
-      <div className='NavBar'> <Navigation></Navigation> </div>
-      <div className='TeamList'> <TeamList></TeamList> </div> 
       <div className="chatWhole">
         <div className="Chatbox">
             <InfoBar  room={room} />
@@ -69,8 +67,6 @@ const Chat = ({location }) => {
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </div>
       </div>
-      <div className='UploadFile'> <UploadFile></UploadFile> </div> 
-    </div>
   );
 }
 

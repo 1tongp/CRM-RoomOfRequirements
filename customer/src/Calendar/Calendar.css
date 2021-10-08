@@ -9,7 +9,7 @@
   flex-direction: row;
 }
 */
-
+/*
 .CalendarPage {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -17,17 +17,23 @@
     grid-gap: 1rem;
     grid-template-areas:
         "Navibar calendar"
-        "Navibar customerlist";
+        "Navibar ExpiredcustomerList";
 }
+*/
 
 .NavBar {
-    grid-area: Navibar;
+    /*grid-area: Navibar;*/
+    position: fixed; 
+    z-index: 1; /* Stay on top */
+    top: 0;
+
 }
+/*
 .full-calendar-wrapper {
     grid-area: calender;
 }
-.customerList {
-    grid-area: customerlist;
+.ExpiredcustomerList {
+    grid-area: ExpiredcustomerList;
 }
 
 .pageContent {
@@ -35,9 +41,14 @@
     flex-direction: column;
     margin-left: 20px;
 }
+*/
 
 .CalendarPage .NavBar {
     height: 100%;
+}
+
+.pagecontent {
+    margin-left: 280px;
 }
 
 .full-calendar-wrapper .AddEvent-buttom {

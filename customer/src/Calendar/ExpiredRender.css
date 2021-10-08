@@ -1,0 +1,40 @@
+.CustomerImage {
+    width: 80px;
+    height: 80px;
+    /*padding: 20px;*/
+    border-radius: 50%; /*makes the images round */
+    object-fit: cover;
+}
+
+.CustomerList {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    padding-right: 25px;
+    /*padding: 20px;*/
+}
+
+.ListItem {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; /* switch off bullet-points */
+    /*box-sizing: border-box;*/
+    /*padding: 20px;*/
+}
+
+.Customer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.Customername {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.expiration {
+    font-size: 12px;
+    font-weight: 300;
+}
