@@ -23,10 +23,10 @@ import axios from "../../API/axios.js";
 
 function InfoBar (props){
   console.log(props)
-  // const onClose = (props) => {
-  //   console.log(props)
-  //   props.data.history.push('/group', {staff: props.data.location.state.staff, key: '3'});
-  // }
+  const onClose = (props) => {
+    console.log(props)
+    props.data.history.push('/group', {staff: props.data.location.state.staff, key: '3'});
+  }
 
   return(
     <div className="infoBar">
