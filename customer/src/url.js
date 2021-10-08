@@ -4,7 +4,7 @@ let URLs = {};
 if (process.env.NODE_ENV === "production") {
     URLs = {
         baseURL: "/api",
-        socketURL: "https://room-of-requirement-crm.herokuapp.com/"
+        socketURL: "https://crm-room-of-requirement.herokuapp.com/"
     };
 } else {
     URLs = {
