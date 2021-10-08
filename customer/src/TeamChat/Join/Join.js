@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from "react-router-dom";
-import {Link} from"dva/router"
+import { Link } from "react-router-dom";
 
 import './Join.css';
 import axios from "../../API/axios.js";
@@ -19,7 +18,9 @@ export default function SignIn(props) {
     //   console.log(name)
     //   console.log(room)
     //   console.log('/chat?name='+name + '&room=' + room)
+    if(!name && !room){
       props.data.history.push({pathname:'/chat?name='+name + '&room=' + room ,state:{props}})
+    }
     // }
   }
 
