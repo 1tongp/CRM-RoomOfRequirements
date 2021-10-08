@@ -19,6 +19,7 @@ const ENDPOINT = 'http://localhost:8080';
 let socket;
 
 const Chat = ({location }) => {
+
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');

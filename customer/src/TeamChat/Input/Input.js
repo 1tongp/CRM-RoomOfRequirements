@@ -3,9 +3,9 @@ import React from 'react';
 import './Input.css';
 
 const Input = ({ setMessage, sendMessage, message }) => (
-  <form className="form">
+  <div className="chatform">
     <input
-      className="input"
+      className="chatinput"
       type="text"
       placeholder="Type a message..."
       value={message}
@@ -13,7 +13,7 @@ const Input = ({ setMessage, sendMessage, message }) => (
       onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
     />
     <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
-  </form>
+  </div>
 )
 
 export default Input;

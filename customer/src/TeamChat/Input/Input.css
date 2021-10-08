@@ -1,26 +1,40 @@
-.form {
+.chatform {
   display: flex;
+  flex-direction: row;
+  height: 85px;
   border-top: 2px solid #D3D3D3;
 }
 
-.input {
+.chatinput {
+  border: none;
+  border-radius: 0;
+  width: 80%;
+  font-size: 1.3em;
+}
+
+/*
+.chatinput {
   border: none;
   border-radius: 0;
   padding: 5%;
+  height:50px;
   width: 80%;
-  font-size: 1.2em;
+  font-size: 2em;
 }
+*/
 
+/*
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
+*/
 
 .sendButton {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
   background: #c58080;
-  padding: 20px;
+  /*padding: 20px;*/
   display: inline-block;
   border: none;
   width: 20%;
