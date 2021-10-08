@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import {Link} from"dva/router"
 
 import './Join.css';
 import axios from "../../API/axios.js";

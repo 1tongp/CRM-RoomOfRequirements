@@ -14,7 +14,7 @@ const io = require('socket.io')(server, {
     }
 });
 // const io = require("socket.io")(server);
-// const path = require('path');
+const path = require('path');
 // lead routes in
 const staff = require('./routes/staff');
 const customer = require('./routes/customer');
