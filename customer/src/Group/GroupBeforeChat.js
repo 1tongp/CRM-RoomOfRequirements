@@ -18,17 +18,19 @@ function GroupRender(props) {
                     {" "}
                     <Navigation data={props}></Navigation>{" "}
                 </div>
-                <div className="TeamList">
-                    {" "}
-                    <TeamList data = {props}></TeamList>{" "}
-                </div>
-                <div className="Chat-Join">
-                    {" "}
-                    <Join data={props}></Join>{" "}
-                </div>
-                <div className="UploadFile">
-                    {" "}
-                    <UploadFile></UploadFile>{" "}
+                <div className="pagecontent">
+                    <div className="TeamList">
+                        {" "}
+                        <TeamList data = {props}></TeamList>{" "}
+                    </div>
+                    <div className="Chat-Join">
+                        {" "}
+                        <Join data={props}></Join>{" "}
+                    </div>
+                    <div className="UploadFile">
+                        {" "}
+                        <UploadFile></UploadFile>{" "}
+                    </div>
                 </div>
             </div>
         </>

@@ -1,3 +1,4 @@
+/*
 .GroupBeforeChatPage {
     display: grid;
     grid-template-columns: 0.8fr 2.8fr 4.5fr 2.2fr;
@@ -7,6 +8,32 @@
 
 .NavBar {
     grid-area: Navibar;
+}
+.TeamList {
+    grid-area: TeamList;
+}
+.Chat-Join {
+    grid-area: Chat-Join;
+}
+.UploadFile {
+    grid-area: UploadFile;
+}
+*/
+
+
+.NavBar {
+    /*grid-area: Navibar;*/
+    position: fixed; 
+    z-index: 1; /* Stay on top */
+    top: 0;
+}
+
+.pagecontent {
+    margin-left: 280px;
+    display: grid;
+    grid-template-columns: 2.8fr 4.5fr 2.2fr;
+    grid-gap: 1rem;
+    grid-template-areas: "TeamList Chat-Join UploadFile";   
 }
 .TeamList {
     grid-area: TeamList;
