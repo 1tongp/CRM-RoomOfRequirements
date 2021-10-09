@@ -1,4 +1,4 @@
-/*
+
 .GroupPageInChat {
   display: grid;
   grid-template-columns: 0.8fr 2.8fr 4.5fr 2.2fr;
@@ -11,7 +11,7 @@
 .TeamList {grid-area: TeamList;}
 .chatWhole {grid-area: chatWhole;}
 .UploadFile {grid-area: UploadFile;}
-*/
+
 
 .chatWhole {
   display: flex;
