@@ -8,8 +8,8 @@ if (process.env.NODE_ENV === "production") {
     };
 } else {
     URLs = {
-        baseURL: "http://localhost:3000/api",
-        socketURL: "http://localhost:3000/api",
+        baseURL: "http://localhost:8080/api",
+        socketURL: "http://localhost:8080/api",
     };
 }
 
