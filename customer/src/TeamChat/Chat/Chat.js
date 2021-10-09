@@ -13,12 +13,13 @@ import UploadFile from '../../Group/UploadFile.js';
 
 
 import './Chat.css';
+import axios from "../../API/axios";
 
 const ENDPOINT = 'http://localhost:8080';
 
 let socket;
 
-const Chat = ({location }) => {
+const Chat = ({ location }) => {
   console.log(location)
 
   const [name, setName] = useState('');
@@ -36,38 +37,40 @@ const Chat = ({location }) => {
     setName(name)
 
     socket.emit('join', { name, room }, (error) => {
-      if(error) {
+      if (error) {
         alert(error);
       }
     });
   }, [ENDPOINT, location.search]);
-  
+
   useEffect(() => {
     socket.on('message', message => {
-      setMessages(messages => [ ...messages, message ]);
+      setMessages(messages => [...messages, message]);
     });
-    
+
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
-}, []);
+  }, []);
+
+
 
   const sendMessage = (event) => {
     event.preventDefault();
 
-    if(message) {
+    if (message) {
       socket.emit('sendMessage', message, () => setMessage(''));
     }
   }
 
   return (
-      <div className="chatWhole">
-        <div className="Chatbox">
-            <InfoBar  room={room} />
-            <Messages messages={messages} name={name} />
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
-        </div>
+    <div className="chatWhole">
+      <div className="Chatbox">
+        <InfoBar room={room} data={location}/>
+        <Messages messages={messages} name={name} />
+        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
+    </div>
   );
 }
 
