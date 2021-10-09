@@ -19,7 +19,6 @@ const ENDPOINT = 'http://localhost:8080';
 
 let socket;
 
-
 const Chat = ({ location }) => {
   console.log(location)
 
