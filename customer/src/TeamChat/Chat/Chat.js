@@ -15,7 +15,7 @@ import UploadFile from '../../Group/UploadFile.js';
 import './Chat.css';
 import axios from "../../API/axios";
 
-const ENDPOINT = 'http://localhost:8080';
+const ENDPOINT = "https://crm-room-of-requirement.herokuapp.com/" || "http://localhost:8080";
 
 let socket;
 
