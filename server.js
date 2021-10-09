@@ -28,9 +28,9 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
 var cors = require('cors')
 app.use(cors());
-app.get('/', (req, res) => {
-    res.status(200).send("Welcome to CRM Web App!")
-})
+// app.get('/', (req, res) => {
+//     res.status(200).send("Welcome to CRM Web App!")
+// })
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
