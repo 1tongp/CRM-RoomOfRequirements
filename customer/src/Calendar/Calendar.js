@@ -281,7 +281,7 @@ function EventPopup(props) {
                     <Navigation data={props}></Navigation>{" "}
                 </div>
 
-                <div class="pagecontent">
+                <div class="calendarpagecontent">
                     <div class="full-calendar-wrapper">
                         <div class="AddEvent-buttom">
                             <Button
