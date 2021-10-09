@@ -25,6 +25,7 @@
     "bootstrap": "^5.1.0",
     "concurrently": "^6.0.2",
     "cors": "^2.8.5",
+    "dva-no-router": "^1.2.1",
     "express": "^4.17.1",
     "leaflet": "^1.7.1",
     "mongoose": "^5.12.4",

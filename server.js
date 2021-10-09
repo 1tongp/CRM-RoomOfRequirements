@@ -14,7 +14,7 @@ const io = require('socket.io')(server, {
     }
 });
 // const io = require("socket.io")(server);
-// const path = require('path');
+const path = require('path');
 // lead routes in
 const staff = require('./routes/staff');
 const customer = require('./routes/customer');
@@ -28,9 +28,9 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
 var cors = require('cors')
 app.use(cors());
-app.get('/', (req, res) => {
-    res.status(200).send("Welcome to CRM Web App!")
-})
+// app.get('/', (req, res) => {
+//     res.status(200).send("Welcome to CRM Web App!")
+// })
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
@@ -134,13 +134,13 @@ app.use('/team', team);
 app.use('/calendar', calendar);
 app.use('/history', history);
 
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static('customer/build'));
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('customer/build'));
 
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, 'customer', 'build', 'index.html'));
-//     });
-// }
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'customer', 'build', 'index.html'));
+    });
+}
 
 server.listen(process.env.PORT || 8080,() => {
     console.log(`App now listening at http://localhost:8080`)
