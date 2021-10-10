@@ -29,7 +29,7 @@ function GroupRender(props) {
                     </div>
                     <div className="UploadFile">
                         {" "}
-                        <UploadFile></UploadFile>{" "}
+                        <UploadFile data={props}></UploadFile>{" "}
                     </div>
                 </div>
             </div>
