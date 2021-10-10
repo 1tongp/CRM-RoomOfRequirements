@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button } from "antd";
 import React from "react";
 
 class ManagerAccess extends React.Component {
@@ -12,14 +12,16 @@ class ManagerAccess extends React.Component {
     };
 
     redirect = () => {
-        this.props.data.data.history.push("/manager", { 
+        this.props.data.data.history.push("/manager", {
             staff: this.props.data.data.location.state.staff,
         });
     };
 
     render() {
         return (
-            <Button className="iconManager" onClick={() => this.redirect()}>Manager Priority Access</Button>
+            <Button className="iconManager" onClick={() => this.redirect()}>
+                Manager Priority Access
+            </Button>
             // <button type="button" class="btn btn-secondary">Manager Priority Access</button>
         );
     }

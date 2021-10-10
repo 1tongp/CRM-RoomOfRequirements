@@ -21,7 +21,7 @@ function GroupRender(props) {
                 <div className="pagecontent">
                     <div className="TeamList">
                         {" "}
-                        <TeamList data = {props}></TeamList>{" "}
+                        <TeamList data={props}></TeamList>{" "}
                     </div>
                     <div className="Chat-Join">
                         {" "}

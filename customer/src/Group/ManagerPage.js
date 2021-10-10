@@ -41,7 +41,6 @@ function ManagerPage(Props) {
         nameArray.push(data[i].email.toString());
     }
 
-
     const [SearchTerm, setSearchTerm] = useState("");
     const searchHandler = (event) => {
         setSearchTerm(event.currentTarget.value);
