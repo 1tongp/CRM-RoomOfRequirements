@@ -144,261 +144,252 @@ function Register(props) {
             >
                 Register
             </button>
-            <Modal
-                className="registerpop"
-                visible={visible}
-                title="Register a new staff"
-                onOk={() => setVisible(false)}
-                onCancel={() => setVisible(false)}
-                footer={[
-                    <Button key="back" onClick={() => setVisible(false)}>
-                        Cancel
-                    </Button>,
-                    // <Button
-                    //     key="submit"
-                    //     type="primary"
-                    //     loading={loading}
-                    //     onClick={() => setVisible(false)}
-                    // >
-                    //     Save
-                    // </Button>,
-                ]}
-            >
-                <Form
-                    {...formItemLayout}
-                    form={form}
-                    name="register"
-                    onFinish={onFinish}
-                    initialValues={{
-                        residence: ["zhejiang", "hangzhou", "xihu"],
-                        prefix: "86",
-                    }}
-                    scrollToFirstError
+                <Modal
+                    visible={visible}
+                    title="Register a new staff"
+                    onOk={() => setVisible(false)}
+                    onCancel={() => setVisible(false)}
+                    footer={[
+                        <Button key="back" onClick={() => setVisible(false)}>
+                            Cancel
+                        </Button>,
+                    ]}
                 >
-                    <Form.Item
-                        name="email"
-                        label="E-mail"
-                        rules={[
-                            {
-                                type: "email",
-                                message: "The input is not valid E-mail!",
-                            },
-                            {
-                                required: true,
-                                message: "Please input your E-mail!",
-                            },
-                        ]}
+                    <Form
+                        {...formItemLayout}
+                        form={form}
+                        name="register"
+                        onFinish={onFinish}
+                        initialValues={{
+                            residence: ["zhejiang", "hangzhou", "xihu"],
+                            prefix: "86",
+                        }}
+                        scrollToFirstError
                     >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="password"
-                        label="Password"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your password!",
-                            },
-                        ]}
-                        hasFeedback
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="confirm"
-                        label="Confirm Password"
-                        dependencies={["password"]}
-                        hasFeedback
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please confirm your password!",
-                            },
-                            ({ getFieldValue }) => ({
-                                validator(_, value) {
-                                    if (
-                                        !value ||
-                                        getFieldValue("password") === value
-                                    ) {
-                                        return Promise.resolve();
-                                    }
-
-                                    return Promise.reject(
-                                        new Error(
-                                            "The two passwords that you entered do not match!"
-                                        )
-                                    );
+                        <Form.Item
+                            name="email"
+                            label="E-mail"
+                            rules={[
+                                {
+                                    type: "email",
+                                    message: "The input is not valid E-mail!",
                                 },
-                            }),
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="firstname"
-                        label="First Name"
-                        // tooltip="What do you want others to call you?"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your first name!",
-                                whitespace: true,
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="lastname"
-                        label="Last Name"
-                        // tooltip="What do you want others to call you?"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your last name!",
-                                whitespace: true,
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="staffid"
-                        label="Staff Id"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input Staff ID!",
-                            },
-                        ]}
-                    >
-                        <InputNumber
-                            addonAfter={suffixSelector}
-                            style={{
-                                width: "100%",
-                            }}
-                        />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="teamid"
-                        label="Team ID"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input the Team ID!",
-                            },
-                        ]}
-                    >
-                        <InputNumber
-                            addonAfter={suffixSelector}
-                            style={{
-                                width: "100%",
-                            }}
-                        />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="phone"
-                        label="Phone Number"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your phone number!",
-                            },
-                        ]}
-                    >
-                        <Input
-                            addonBefore={prefixSelector}
-                            style={{
-                                width: "100%",
-                            }}
-                        />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="region"
-                        label="Region"
-                        rules={[
-                            {
-                                type: "array",
-                                required: true,
-                                message: "Please select the region!",
-                            },
-                        ]}
-                    >
-                        <Cascader options={residences} />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="address"
-                        label="Address"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input address!",
-                            },
-                        ]}
-                    >
-                        <AutoComplete
-                            options={websiteOptions}
-                            onChange={onWebsiteChange}
-                            placeholder="website"
+                                {
+                                    required: true,
+                                    message: "Please input your E-mail!",
+                                },
+                            ]}
                         >
                             <Input />
-                        </AutoComplete>
-                    </Form.Item>
+                        </Form.Item>
 
-                    <Form.Item
-                        name="role"
-                        label="Role"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please select role!",
-                            },
-                        ]}
-                    >
-                        <Select placeholder="Select the role for the staff">
-                            <Option value="member">Member</Option>
-                            <Option value="teamleader">Team Leader</Option>
-                            <Option value="other">Other</Option>
-                        </Select>
-                    </Form.Item>
+                        <Form.Item
+                            name="password"
+                            label="Password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input your password!",
+                                },
+                            ]}
+                            hasFeedback
+                        >
+                            <Input.Password />
+                        </Form.Item>
 
-                    <Form.Item
-                        name="checking"
-                        valuePropName="checked"
-                        rules={[
-                            {
-                                validator: (_, value) =>
-                                    value
-                                        ? Promise.resolve()
-                                        : Promise.reject(
-                                              new Error(
-                                                  "Should double check deatils"
-                                              )
-                                          ),
-                            },
-                        ]}
-                        {...tailFormItemLayout}
-                    >
-                        <Checkbox>
-                            I have check the <a href="">details</a>
-                        </Checkbox>
-                    </Form.Item>
-                    <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
-                            Register
-                        </Button>
-                    </Form.Item>
-                </Form>
-            </Modal>
+                        <Form.Item
+                            name="confirm"
+                            label="Confirm Password"
+                            dependencies={["password"]}
+                            hasFeedback
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please confirm your password!",
+                                },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (
+                                            !value ||
+                                            getFieldValue("password") === value
+                                        ) {
+                                            return Promise.resolve();
+                                        }
+
+                                        return Promise.reject(
+                                            new Error(
+                                                "The two passwords that you entered do not match!"
+                                            )
+                                        );
+                                    },
+                                }),
+                            ]}
+                        >
+                            <Input.Password />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="firstname"
+                            label="First Name"
+                            // tooltip="What do you want others to call you?"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input your first name!",
+                                    whitespace: true,
+                                },
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="lastname"
+                            label="Last Name"
+                            // tooltip="What do you want others to call you?"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input your last name!",
+                                    whitespace: true,
+                                },
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="staffid"
+                            label="Staff Id"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input Staff ID!",
+                                },
+                            ]}
+                        >
+                            <InputNumber
+                                addonAfter={suffixSelector}
+                                style={{
+                                    width: "100%",
+                                }}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="teamid"
+                            label="Team ID"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input the Team ID!",
+                                },
+                            ]}
+                        >
+                            <InputNumber
+                                addonAfter={suffixSelector}
+                                style={{
+                                    width: "100%",
+                                }}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="phone"
+                            label="Phone Number"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input your phone number!",
+                                },
+                            ]}
+                        >
+                            <Input
+                                addonBefore={prefixSelector}
+                                style={{
+                                    width: "100%",
+                                }}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="region"
+                            label="Region"
+                            rules={[
+                                {
+                                    type: "array",
+                                    required: true,
+                                    message: "Please select the region!",
+                                },
+                            ]}
+                        >
+                            <Cascader options={residences} />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="address"
+                            label="Address"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please input address!",
+                                },
+                            ]}
+                        >
+                            <AutoComplete
+                                options={websiteOptions}
+                                onChange={onWebsiteChange}
+                                placeholder="website"
+                            >
+                                <Input />
+                            </AutoComplete>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="role"
+                            label="Role"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Please select role!",
+                                },
+                            ]}
+                        >
+                            <Select placeholder="Select the role for the staff">
+                                <Option value="member">Member</Option>
+                                <Option value="teamleader">Team Leader</Option>
+                                <Option value="other">Other</Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="checking"
+                            valuePropName="checked"
+                            rules={[
+                                {
+                                    validator: (_, value) =>
+                                        value
+                                            ? Promise.resolve()
+                                            : Promise.reject(
+                                                new Error(
+                                                    "Should double check deatils"
+                                                )
+                                            ),
+                                },
+                            ]}
+                            {...tailFormItemLayout}
+                        >
+                            <Checkbox>
+                                I have check the <a href="">details</a>
+                            </Checkbox>
+                        </Form.Item>
+                        <Form.Item {...tailFormItemLayout}>
+                            <Button type="primary" htmlType="submit">
+                                Register
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Modal>
         </>
     );
 }

@@ -11,12 +11,9 @@
 
 .registerpop {
     position: relative;
-    width: 50px;
-    height: 80px;
+    width: 50vw;
+    height: 60vh;
     margin-top: 10vh;
     background-color: #f7f7f7;
 }
 
-/* .ant-modal-content {
-    width: 100vw;
-} */
