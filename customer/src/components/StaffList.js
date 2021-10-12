@@ -5,7 +5,7 @@ import "./Customer.css";
 import { useEffect } from "react";
 import axios from "../API/axios.js";
 import { SearchOutlined } from "@ant-design/icons";
-import StaffDetail from "./CustomerDetail";
+import StaffDetail from "./StaffDetail";
 
 const { Search } = Input;
 function StaffList(props) {
@@ -81,7 +81,7 @@ function StaffList(props) {
         
         {
             title: "Update Team",
-            dataIndex: "updateTeam",
+            dataIndex: "update",
         },
 
     ];
@@ -89,25 +89,26 @@ function StaffList(props) {
   
     
 
-    // console.log(data)
-    // for (let i = 0; i < data.length; i++) {
-    //     if (data[i].details.length == 0) {
-    //         data[i].details.push(
-    //             <StaffDetail
-    //                 className="button"
-    //                 data={data[i]}
-    //             ></StaffDetail>
-    //         );
-    //         // data[i].history.push(
-    //         //     <CustomerHistory
-    //         //         className="button"
-    //         //         data={data[i]}
-    //         //     ></CustomerHistory>
-    //         // );
-    //         //data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
-    //         // data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
-    //     }
-    // }
+    console.log(data)
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].update.length == 0) {
+            data[i].update.push(
+                <StaffDetail
+                    className="button"
+                    data={data[i]}
+                ></StaffDetail>
+            );
+            // data[i].history.push(
+            //     <CustomerHistory
+            //         className="button"
+            //         data={data[i]}
+            //     ></CustomerHistory>
+            // );
+            //data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
+            // data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
+        }
+    }
+    console.log(data)
 
     // search functionality
     var nameArray = [];

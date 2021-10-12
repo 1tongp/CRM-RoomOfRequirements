@@ -108,33 +108,33 @@ exports.staffChangeDetailsPost = function (req, res) {
     })
 }
 
-// exports.staffChangeNamePost = function (req, res) {
-//     const { givenName, familyName } = req.body;
-//     Staff.findById(req.params.id, function (err, staffId) {
+exports.staffChangeTeamPost = function (req, res) {
+    const { teamId, teamNumber } = req.body;
+    Staff.findById(req.params.id, function (err, staffId) {
 
-//         // if staff id not exist in database, return the error message
-//         if (!staffId) {
-//             res.status(404).json({ success: false, message: "changeNameDetail staff is not found" })
-//         }
+        // if staff id not exist in database, return the error message
+        if (!staffId) {
+            res.status(404).json({ success: false, message: "changeDetail staff is not found" })
+        }
 
-//         // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
-//         else {
-//             if (err) throw err;
-//             Staff.findByIdAndUpdate(
-//                 req.params.id,
-//                 { givenName, familyName },
-//                 { new: true },
-//                 function (err, changeName) {
-//                     if (err) {
-//                         res.status(404).json({ success: false, error: err })
-//                     }
-//                     else {
-//                         res.status(200).json({ success: true, changeName: changeName })
-//                     }
-//                 })
-//         }
-//     })
-// }
+        // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
+        else {
+            if (err) throw err;
+            Staff.findByIdAndUpdate(
+                req.params.id,
+                { teamId, teamNumber },
+                { new: true },
+                function (err, change) {
+                    if (err) {
+                        res.status(404).json({ success: false, error: err })
+                    }
+                    else {
+                        res.status(200).json({ success: true, change: change })
+                    }
+                })
+        }
+    })
+}
 
 exports.staffLoginPost = function (req, res) {
     const { loginEmail, password } = req.body;
@@ -305,6 +305,7 @@ exports.staffGet = function (req, res) {
                         "teamId":staffList[i].team,
                         "id":staffList[i]._id,
                         "region":staffList[i].companysuburb,
+                        "update": [],
                     })
                 
             }
