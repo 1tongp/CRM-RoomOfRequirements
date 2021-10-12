@@ -23,6 +23,7 @@ function Profile(props) {
 
         
     }, []);
+    console.log(team)
     return (
         <div className="div">
             <div className="navigationBar">
