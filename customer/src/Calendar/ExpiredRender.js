@@ -2,7 +2,8 @@
 import axios from "../API/axios.js";
 import React, { useState, setState, useEffect } from "react";
 import "./ExpiredRender.css";
-
+//import CustomerHistory from "./ExpCusHistory";
+import CustomerHistory from "../components/CustomerHistory";
 
 function Render(props) {
     console.log(props)
@@ -33,6 +34,7 @@ function Render(props) {
                     <span className="expiration">
                         {props.data.expireDate.slice(0,10)}
                     </span>
+                    <CustomerHistory className="button" data={props.data.expireDate.slice(0,10)}> </CustomerHistory>
                 </div>
             </li>
         </ul>
