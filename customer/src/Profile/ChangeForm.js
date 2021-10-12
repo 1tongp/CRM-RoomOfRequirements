@@ -100,7 +100,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.team}
+                                value = {this.props.data.location.state.staff.teamNumber}
                             />
                         </Form.Group>
                     </Col>

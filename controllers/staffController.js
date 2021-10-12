@@ -163,7 +163,8 @@ exports.staffLoginPost = function (req, res) {
                             team: staff.team,
                             address: staff.address,
                             companysuburb: staff.companysuburb,
-                            orderNum: staff.orderNum
+                            orderNum: staff.orderNum,
+                            teamNumber: staff.teamNumber
                         },
                     });
                 }
@@ -201,7 +202,8 @@ exports.staffLoginUnhashPost = function (req, res) {
                             team: staff.team,
                             address: staff.address,
                             companysuburb: staff.companysuburb,
-                            orderNum: staff.orderNum
+                            orderNum: staff.orderNum,
+                            teamNumber: staff.teamNumber
                     },
                 });
             }
