@@ -64,11 +64,18 @@ const Chat = ({ location }) => {
   }
 
   return (
-    <div className="chatWhole">
-      <div className="Chatbox">
-        <InfoBar room={room} data={location}/>
-        <Messages messages={messages} name={name} />
-        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+    <div className="GroupPageInChat">
+      <div className='chatNavBar'> <Navigation></Navigation> </div>
+      <div classNane='chatothercontent'>
+        <div className='TeamList'> <TeamList></TeamList> </div> 
+        <div className="chatWhole">
+          <div className="Chatbox">
+            <InfoBar room={room} data={location}/>
+            <Messages messages={messages} name={name} />
+            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+          </div>
+        </div>
+        <div className='UploadFile'> <UploadFile></UploadFile> </div> 
       </div>
     </div>
   );
