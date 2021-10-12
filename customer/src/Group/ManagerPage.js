@@ -3,9 +3,12 @@ import "./Manager.css";
 import Register from "./ManagerRegister";
 import { SearchOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 
 const { Search } = Input;
 function ManagerPage(props) {
+    let history = useHistory();
     console.log(props);
     const { Column, ColumnGroup } = Table;
     const data = [
@@ -67,7 +70,7 @@ function ManagerPage(props) {
     return (
         <>
             <Space size="small">
-                <button className="register">Back</button>
+                <button className="register" onClick={history.goBack}>Back</button>
                 <Register data = {props} className="register">Register</Register>
             </Space>
 
