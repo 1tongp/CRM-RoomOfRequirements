@@ -47,7 +47,7 @@ function InfoBar (props){
       <h3>Room: {props.room}</h3>
     </div>
     <div className="rightInnerContainer">
-      <Button onClick={onClose}>
+      <Button className="closeIcon" onClick={onClose}>
         <img src={closeIcon} alt="close icon" />
       </Button>
     </div>

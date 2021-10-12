@@ -21,10 +21,23 @@
   top: 0;
 }
 
-chatothercontent {
+.chatothercontent {
   margin-left: 280px;
-  display:flex;
-  flex-direction: column;
+  display:grid;
+  flex-direction: row;
+  grid-template-columns: 2.8fr 4.5fr 2.2fr;
+  grid-gap: 1rem;
+  grid-template-areas: "TeamList Chatting UploadFile";
+}
+
+.chatTeamList {
+  grid-area: TeamList;
+}
+.Chatbox {
+  grid-area: Chatting;
+}
+.UploadFile {
+  grid-area: UploadFile;
 }
 
 
@@ -42,6 +55,6 @@ chatothercontent {
   justify-content: space-between;
   background: #FFFFFF;
   border-radius: 8px;
-  height: 90%;
-  width: 90%;
+  height: 95%;
+  width: 95%;
 }
