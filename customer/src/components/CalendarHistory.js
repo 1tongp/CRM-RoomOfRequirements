@@ -12,16 +12,23 @@ function CustomerHistory(props) {
     const [historyData, setHistory] = useState([]);
     const [insurance, setIns] = useState("");
     const [staffLast, setLast] = useState("");
+    const [staffName, setSN] = useState("");
+
     useEffect(() => {
-        axios.get("/history/list/" + props.data.id).then((response) => {
+        axios.get("/history/list/" + props.data.data.customer).then((response) => {
             if (response.data.success) {
                 setHistory(response.data.history);
             }
         });
+        axios.get("staff/" + props.data.data.staff).then((response) => {
+            if(response.data.success){
+                setSN(response.data.staff.givenName + " " + response.data.staff.familyName)
+            } 
+        })
     }, []);
 
     for (let i = 0; i < historyData.length; i++) {
-        historyData[i].staff = props.data.staff;
+        historyData[i].staff = staffName;
     }
     console.log("history data: ");
     console.log(historyData);

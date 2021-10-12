@@ -3,18 +3,19 @@ import axios from "../API/axios.js";
 import React, { useState, setState, useEffect } from "react";
 import "./ExpiredRender.css";
 //import CustomerHistory from "./ExpCusHistory";
-import CustomerHistory from "../components/CustomerHistory";
+import CustomerHistory from "../components/CalendarHistory";
 
 function Render(props) {
     console.log(props)
     const [name, setName] = useState('')
     const [date, setDate] = useState('')
+    const [detail, setDetail] = useState('')
     useEffect(() => {
         axios.get("/customer/" + props.data.customer).then((response) => {
             if (response.data.success) {
                 console.log(response);
                 setName(response.data.customer.givenName + " " + response.data.customer.familyName);
-                
+                setDetail(response.data.customer)           
             }
         });
 
@@ -34,7 +35,7 @@ function Render(props) {
                     <span className="expiration">
                         {props.data.expireDate.slice(0,10)}
                     </span>
-                    <CustomerHistory className="button" data={props.data.expireDate.slice(0,10)}> </CustomerHistory>
+                    <CustomerHistory className="button" data={props}> </CustomerHistory>
                 </div>
             </li>
         </ul>
