@@ -5,7 +5,7 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import ManagerAccess from "./ManagerAccess";
 
 function uploadRender(props) {
-    console.log(props);
+    console.log(props.data.location.state.staff.role);
     return (
         <div className="UploadFile">
             <h1 className="fileheading">Upload File</h1>
@@ -21,7 +21,8 @@ function uploadRender(props) {
                     {/* <p className="icontext"> Upload Files</p> */}
                 </div>
                 <div>
-                    <ManagerAccess data={props}/>
+                {(props.data.location.state.staff.role ==="Manager") ? <ManagerAccess data={props}/> : <></>}
+                    {/* <ManagerAccess data={props}/> */}
                 </div>
             </div>
         </div>
