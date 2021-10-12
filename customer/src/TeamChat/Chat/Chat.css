@@ -13,6 +13,21 @@
 .UploadFile {grid-area: UploadFile;}
 */
 
+/*fix the postion for scroll*/
+.chatNavBar {
+  /*grid-area: Navibar;*/
+  position: fixed; 
+  z-index: 1; /* Stay on top */
+  top: 0;
+}
+
+chatothercontent {
+  margin-left: 280px;
+  display:flex;
+  flex-direction: column;
+}
+
+
 .chatWhole {
   display: flex;
   justify-content: center;
