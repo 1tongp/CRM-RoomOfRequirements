@@ -123,7 +123,7 @@ function Register(props) {
         else {
             if (reg.test(password)) {
                 console.log("222");
-                axios.post('/staff/register', { team: teamId, givenName: firstName, familyName: lastName, loginEmail: loginEmail, password: password, role: "Staff", phone: phone, address: address, companysuburb: region, teamNumber: teamNum}).then(response => {
+                axios.post('/staff/register', { team: teamId, givenName: firstName, familyName: lastName, loginEmail: loginEmail, password: password, role: role, phone: phone, address: address, companysuburb: region, teamNumber: teamNum}).then(response => {
                     console.log("111");
                     if (response.data.success) {
                         console.log("success");
@@ -199,7 +199,7 @@ function Register(props) {
     };
 
     const onRoleChange = value => {
-        console.log(value.label);
+        console.log(value);
         setRole(value);
     };
 
@@ -440,8 +440,8 @@ function Register(props) {
                             ]}
                         >
                             <Select placeholder="Select the role for the staff" onChange={onRoleChange}>
-                                <Option value="member">Member</Option>
-                                <Option value="teamleader">Manager</Option>
+                                <Option value="Staff">Staff</Option>
+                                <Option value="Manager">Manager</Option>
                                 <Option value="other">Other</Option>
                                 
                             </Select>
