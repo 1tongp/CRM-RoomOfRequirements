@@ -5,7 +5,8 @@ import { SearchOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 
 const { Search } = Input;
-function ManagerPage(Props) {
+function ManagerPage(props) {
+    console.log(props);
     const { Column, ColumnGroup } = Table;
     const data = [
         {
@@ -67,7 +68,7 @@ function ManagerPage(Props) {
         <>
             <Space size="small">
                 <button className="register">Back</button>
-                <Register className="register">Register</Register>
+                <Register data = {props} className="register">Register</Register>
             </Space>
 
             <div>
