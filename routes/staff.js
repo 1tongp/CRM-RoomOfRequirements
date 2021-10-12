@@ -26,4 +26,6 @@ StaffRouter.get('/member/:teamId', staffController.teamMemberGet);
 
 // GET request to get team members
 StaffRouter.post('/number/:id', staffController.orderNumUpdate);
+
+StaffRouter.get('/', staffController.staffGet);
 module.exports = StaffRouter;

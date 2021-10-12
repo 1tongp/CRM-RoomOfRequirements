@@ -1,6 +1,7 @@
 import { Table, Tag, Space, Button, Input } from "antd";
 import "./Manager.css";
 import Register from "./ManagerRegister";
+import StaffList from "../components/StaffList";
 import { SearchOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -10,6 +11,8 @@ const { Search } = Input;
 function ManagerPage(props) {
     let history = useHistory();
     console.log(props);
+    console.log(props.location.state.staff);
+    
     const { Column, ColumnGroup } = Table;
     const data = [
         {
@@ -74,7 +77,7 @@ function ManagerPage(props) {
                 <Register data = {props} className="register">Register</Register>
             </Space>
 
-            <div>
+            {/* <div>
                 <Search
                     className="searchBar"
                     placeholder="input search text"
@@ -112,7 +115,10 @@ function ManagerPage(props) {
                         </Space>
                     )}
                 />
-            </Table>
+            </Table> */}
+            <div>
+                    <StaffList data={props.location.state.staff} />
+            </div>
         </>
     );
 }
