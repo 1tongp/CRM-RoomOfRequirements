@@ -26,14 +26,15 @@ function Register(props) {
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [teamId, setTeamId] = useState(1);
+    const [teamId, setTeamId] = useState('');
+    const [teamNum, setTeamNum] = useState(1);
     const [phone, setphone] = useState('');
     const [region, setRegion] = useState('');
     const [address, setAddress] = useState('');
     const [role, setRole] = useState('');
 
     useEffect(() => {
-        axios.get('/team/' + teamId).then(response => {
+        axios.get('/team/' + teamNum).then(response => {
             console.log(response)
             setTeamId(response.data.team._id)
         })
@@ -122,7 +123,7 @@ function Register(props) {
         else {
             if (reg.test(password)) {
                 console.log("222");
-                axios.post('/staff/register', { team: teamId, givenName: firstName, familyName: lastName, loginEmail: loginEmail, password: password, role: "Staff", phone: phone, address: address, companysuburb: region}).then(response => {
+                axios.post('/staff/register', { team: teamId, givenName: firstName, familyName: lastName, loginEmail: loginEmail, password: password, role: "Staff", phone: phone, address: address, companysuburb: region, teamNumber: teamNum}).then(response => {
                     console.log("111");
                     if (response.data.success) {
                         console.log("success");
@@ -192,6 +193,15 @@ function Register(props) {
         label: website,
         value: website,
     }));
+
+    const onRegionChange = value => {
+        setRegion(value);
+    };
+
+    const onRoleChange = value => {
+        console.log(value.label);
+        setRole(value);
+    };
 
     return (
         <>
@@ -341,8 +351,8 @@ function Register(props) {
                         </Form.Item> */}
 
                         <Form.Item
-                            name="teamid"
-                            label="Team ID"
+                            name="teamnum"
+                            label="Team Number"
                             rules={[
                                 {
                                     required: true,
@@ -350,7 +360,7 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Input onChange={e => setLastName(e.target.value)}/>
+                            <Input onChange={e => setTeamNum(e.target.value)}/>
                             {/* <InputNumber
                                 // addonAfter={suffixSelector}
                                 style={{
@@ -387,15 +397,15 @@ function Register(props) {
                             label="Region"
                             rules={[
                                 {
-                                    type: "array",
+                                    // type: "array",
                                     required: true,
                                     message: "Please select the region!",
                                 },
                             ]}
                         >
-                            <Cascader options={residences} onChange={e => setRegion(e.target)}/>
+                            {/* <Cascader options={residences} onChange={onRegionChange}/> */}
                         
-                            {/* <Input onChange={e => setRegion(e.target.value)} /> */}
+                            <Input onChange={e => setRegion(e.target.value)} />
                         </Form.Item>
 
                         <Form.Item
@@ -429,7 +439,7 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Select placeholder="Select the role for the staff" onChange={e => setRole(e.target)}>
+                            <Select placeholder="Select the role for the staff" onChange={onRoleChange}>
                                 <Option value="member">Member</Option>
                                 <Option value="teamleader">Manager</Option>
                                 <Option value="other">Other</Option>
