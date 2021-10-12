@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import "./Manager.css";
-import React, { useState } from "react";
+import axios from "../API/axios.js";
+import React, { useState,useEffect } from "react";
 import {
     Modal,
     Form,
@@ -16,8 +17,30 @@ import {
 } from "antd";
 
 function Register(props) {
+    console.log(props);
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
+
+    const [loginEmail, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [teamId, setTeamId] = useState('');
+    const [teamNum, setTeamNum] = useState(1);
+    const [phone, setphone] = useState('');
+    const [region, setRegion] = useState('');
+    const [address, setAddress] = useState('');
+    const [role, setRole] = useState('');
+
+    useEffect(() => {
+        axios.get('/team/' + teamNum).then(response => {
+            console.log(response)
+            setTeamId(response.data.team._id)
+        })
+    }, [])
+
+    console.log(region);
     const { Option } = Select;
     const residences = [
         {
@@ -89,6 +112,43 @@ function Register(props) {
     };
     const [form] = Form.useForm();
 
+
+    const onSignUp = () => {
+
+        // required password format
+        var reg = /^(?=.*[a-zA-Z])(?=.*\d)[\s\S]{8,}$/
+        if (password != passwordConfirm) {
+            alert("Password Inconsistent!");
+        }
+        else {
+            if (reg.test(password)) {
+                console.log("222");
+                axios.post('/staff/register', { team: teamId, givenName: firstName, familyName: lastName, loginEmail: loginEmail, password: password, role: "Staff", phone: phone, address: address, companysuburb: region, teamNumber: teamNum}).then(response => {
+                    console.log("111");
+                    if (response.data.success) {
+                        console.log("success");
+                        console.log(response);
+                        alert("Staff has been successfully added");
+                        // props.history.push('/customer', {
+                        //     staff: response.data.staff,
+                        //     vendors: vendors,
+                        //     position: [lat, lng]
+                        // }); 
+                    }                        
+                    else {
+                        alert("Sign Up Fail: This email has already been registered! Please change another one")
+                    }
+                }).catch(error => {
+                    console.log(error.response)
+                    alert(error.response)
+                })
+            }
+            else {
+                alert("Password should have at least one alphabet character, one numerical digit with length no less than 8 characters")
+            }
+        }
+    }
+
     const onFinish = (values) => {
         console.log("Received values of form: ", values);
     };
@@ -133,6 +193,15 @@ function Register(props) {
         label: website,
         value: website,
     }));
+
+    const onRegionChange = value => {
+        setRegion(value);
+    };
+
+    const onRoleChange = value => {
+        console.log(value.label);
+        setRole(value);
+    };
 
     return (
         <>
@@ -180,7 +249,8 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input onChange={e => setEmail(e.target.value)}/>
+                            {/* <Form.Control onChange={e => setEmail(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -194,7 +264,8 @@ function Register(props) {
                             ]}
                             hasFeedback
                         >
-                            <Input.Password />
+                            <Input onChange={e => setPassword(e.target.value)}/>
+                            {/* <Form.Control onChange={e => setPassword(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -225,7 +296,8 @@ function Register(props) {
                                 }),
                             ]}
                         >
-                            <Input.Password />
+                            <Input onChange={e => setPasswordConfirm(e.target.value)}/>
+                            {/* <Form.Control onChange={e => setPasswordConfirm(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -240,7 +312,8 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input onChange={e => setFirstName(e.target.value)}/>
+                            {/* <Form.Control onChange={e => setFirstName(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -255,10 +328,11 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input onChange={e => setLastName(e.target.value)}/>
+                            {/* <Form.Control onChange={e => setLastName(e.target.value)} /> */}
                         </Form.Item>
 
-                        <Form.Item
+                        {/* <Form.Item
                             name="staffid"
                             label="Staff Id"
                             rules={[
@@ -274,11 +348,11 @@ function Register(props) {
                                     width: "100%",
                                 }}
                             />
-                        </Form.Item>
+                        </Form.Item> */}
 
                         <Form.Item
-                            name="teamid"
-                            label="Team ID"
+                            name="teamnum"
+                            label="Team Number"
                             rules={[
                                 {
                                     required: true,
@@ -286,12 +360,15 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <InputNumber
-                                addonAfter={suffixSelector}
+                            <Input onChange={e => setTeamNum(e.target.value)}/>
+                            {/* <InputNumber
+                                // addonAfter={suffixSelector}
                                 style={{
                                     width: "100%",
                                 }}
-                            />
+                                // onChange={onChange}
+                            /> */}
+                            {/* <Form.Control onChange={e => setTeamId(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -305,11 +382,14 @@ function Register(props) {
                             ]}
                         >
                             <Input
-                                addonBefore={prefixSelector}
+                                // addonBefore={prefixSelector}
                                 style={{
                                     width: "100%",
                                 }}
+                                onChange={e => setphone(e.target.value)}
                             />
+
+                            {/* <Form.Control onChange={e => setphone(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -317,13 +397,15 @@ function Register(props) {
                             label="Region"
                             rules={[
                                 {
-                                    type: "array",
+                                    // type: "array",
                                     required: true,
                                     message: "Please select the region!",
                                 },
                             ]}
                         >
-                            <Cascader options={residences} />
+                            {/* <Cascader options={residences} onChange={onRegionChange}/> */}
+                        
+                            <Input onChange={e => setRegion(e.target.value)} />
                         </Form.Item>
 
                         <Form.Item
@@ -341,8 +423,10 @@ function Register(props) {
                                 onChange={onWebsiteChange}
                                 placeholder="website"
                             >
-                                <Input />
+                                <Input onChange={e => setAddress(e.target.value)}/>
                             </AutoComplete>
+
+                            {/* <Input onChange={e => setAddress(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -355,11 +439,14 @@ function Register(props) {
                                 },
                             ]}
                         >
-                            <Select placeholder="Select the role for the staff">
+                            <Select placeholder="Select the role for the staff" onChange={onRoleChange}>
                                 <Option value="member">Member</Option>
-                                <Option value="teamleader">Team Leader</Option>
+                                <Option value="teamleader">Manager</Option>
                                 <Option value="other">Other</Option>
+                                
                             </Select>
+
+                            {/* <Input onChange={e => setRole(e.target.value)} /> */}
                         </Form.Item>
 
                         <Form.Item
@@ -384,7 +471,7 @@ function Register(props) {
                             </Checkbox>
                         </Form.Item>
                         <Form.Item {...tailFormItemLayout}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" onClick = {onSignUp}>
                                 Register
                             </Button>
                         </Form.Item>

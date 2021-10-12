@@ -281,3 +281,32 @@ exports.orderNumUpdate = function (req, res) {
         }
     })
 }
+
+exports.staffGet = function (req, res) {
+    Staff.find({ role: req.query.role }, function (err, staffList) {
+        if (staffList.length === 0) {
+            res.status(200).json({ success: false, message: "No staff exist" })
+        }
+        else {
+            var staffLists = []
+            var key = 1;
+            for (i = 0; i < staffList.length; i++) {
+
+                
+                    staffLists.push({
+                        "key": key++,
+                        "firstName": staffList[i].givenName,
+                        "lastName": staffList[i].familyName,
+                        "contactNumber": staffList[i].phone,
+                        "email": staffList[i].loginEmail,
+                        "teamNumber": staffList[i].teamNumber,
+                        "teamId":staffList[i].team,
+                        "id":staffList[i]._id,
+                        "region":staffList[i].companysuburb,
+                    })
+                
+            }
+            res.status(200).json({ success: true, staff: staffLists })
+        }
+    })
+}
