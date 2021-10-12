@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 import "./Profile.css";
+import axios from "../API/axios.js";
 
 class ChangeForm extends React.Component {
     constructor(props) {
@@ -11,7 +12,37 @@ class ChangeForm extends React.Component {
     state = {
         modal1Visible: false,
         redirect: null,
+        firstName: this.props.data.location.state.staff.givenName,
+        lastName: this.props.data.location.state.staff.familyName,
+        phone: this.props.data.location.state.staff.phone,
+        address: this.props.data.location.state.staff.addresss,
     };
+
+    setModal1Visible(modal1Visible) {
+        this.setState({ modal1Visible });
+    }
+
+    // handleChange = e => {
+    //     this.setState({ [e.target.name]: e.target.value });
+    // };
+
+    NameFirstChange = e => {
+        this.setState({ firstName : e.target.value });
+    };
+
+    NameLastChange = e => {
+        this.setState({ lastName : e.target.value });
+    };
+
+    phoneChange = e => {
+        this.setState({ phone : e.target.value });
+    };
+
+    addressChange = e => {
+        this.setState({ address : e.target.value });
+    };
+    
+    
 
     redirect = () => {
         this.props.data.history.push("/profileShow", {
@@ -19,6 +50,27 @@ class ChangeForm extends React.Component {
             key: "6",
         });
     };
+
+    onUpdate = () => {
+        var id = this.props.data.location.state.staff.id
+        console.log(this.state.firstName);
+        axios.post('/staff/changeInfo/' + id, {
+            givenName: this.state.firstName,
+            familyName:this.state.lastName,
+            phone:this.state.phone,
+            address: this.state.address,
+        }).then(response => {
+            console.log(response);
+            if (response.data.success) {
+                alert('Information has been updated')
+                this.setModal1Visible(false);
+            }
+            else {
+                alert("Information updating errored!")
+            }
+        })
+
+    }
 
     render() {
         return (
@@ -33,13 +85,34 @@ class ChangeForm extends React.Component {
                                 // class="col-sm-2 col-form-label col-form-label-lg"
                             >
                                 {" "}
-                                Name
+                                First Name
                             </Form.Label>
                             <Form.Control
                                 size="lg"
                                 type="text"
-                                placeholder="Enter Name"
-                                value = {this.props.data.location.state.staff.givenName +" "+ this.props.data.location.state.staff.familyName}
+                                name="firstname"
+                                placeholder= {this.props.data.location.state.staff.givenName}
+                                onChange={this.NameFirstChange}
+                                // value = {this.props.data.location.state.staff.givenName}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group as={Col} controlId="formGridName">
+                            <Form.Label
+                                // for="colFormLabelLg"
+                                // class="col-sm-2 col-form-label col-form-label-lg"
+                            >
+                                {" "}
+                                Last Name
+                            </Form.Label>
+                            <Form.Control
+                                size="lg"
+                                type="text"
+                                name="lastname"
+                                placeholder= {this.props.data.location.state.staff.familyName}
+                                onChange={this.NameLastChange}
+                                // value = {this.props.data.location.state.staff.familyName}
                             />
                         </Form.Group>
                     </Col>
@@ -88,8 +161,10 @@ class ChangeForm extends React.Component {
                             <Form.Control
                                 size="lg"
                                 type="text"
-                                placeholder="Enter Phone Number"
-                                value = {this.props.data.location.state.staff.phone}
+                                name="phone"
+                                placeholder= {this.props.data.location.state.staff.phone}
+                                onChange={this.phoneChange}
+                                // value = {this.props.data.location.state.staff.phone}
                             />
                         </Form.Group>
                     </Col>
@@ -113,8 +188,10 @@ class ChangeForm extends React.Component {
                             <Form.Control
                                 size="lg"
                                 type="text"
-                                placeholder="Enter Address"
-                                value = {this.props.data.location.state.staff.address}
+                                name="address"
+                                placeholder= {this.props.data.location.state.staff.address}
+                                onChange={this.addressChange}
+                                // value = {this.props.data.location.state.staff.address}
                             />
                         </Form.Group>
                     </Col>
@@ -136,7 +213,7 @@ class ChangeForm extends React.Component {
                         className="saveRight"
                         variant="primary"
                         type="button"
-                        onClick={() => this.redirect()}
+                        onClick={() => this.onUpdate()}
                     >
                         Save
                     </Button>

@@ -145,7 +145,7 @@ class UnchangedForm extends React.Component {
                     >
                         Edit Profile
                     </Button>
-                    <Popup2>Change Password</Popup2>
+                    <Popup2 data={this.props.data}>Change Password</Popup2>
                     </Space>
                 </Row>
             </Form>

@@ -99,11 +99,42 @@ exports.staffChangeDetailsPost = function (req, res) {
                                 res.status(404).json({ err })
                             }
                             else {
-                                res.status(200).json({ changeDetails: changeDetails })
+                                res.status(200).json({success: true, changeDetails: changeDetails })
                             }
                         })
                 })
             })
+        }
+    })
+}
+
+// Post request for staff to change their details
+exports.staffChangeInfoPost = function (req, res) {
+    //const { givenName, familyName, password, phone, photoPath} = req.body;
+    Staff.findById(req.params.id, function (err, staffId) {
+
+        // if staff id not exist in database, return the error message
+        if (!staffId) {
+            res.status(404).json({ success: false, message: "changeDetail staff is not found" })
+        }
+
+        // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
+        // special case: email address and role cannot be updated.
+        else {
+            if (err) throw err;
+                    Staff.findByIdAndUpdate(
+                        req.params.id,
+                        req.body,
+                        //{ givenName, familyName, password: hash, phone, photoPath},
+                        { new: true },
+                        function (err, changeDetails) {
+                            if (err) {
+                                res.status(404).json({ err })
+                            }
+                            else {
+                                res.status(200).json({ success: true, changeDetails: changeDetails })
+                            }
+                        })
         }
     })
 }
