@@ -7,8 +7,8 @@ import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 
 
-import Navigation from '../../components/Navigation';
-import TeamList from '../../Group/TeamList.js';
+import Navigation from '../../components/NavigationChat';
+import TeamList from '../../Group/TeamListPro.js';
 import UploadFile from '../../Group/UploadFile.js';
 
 
@@ -65,9 +65,9 @@ const Chat = ({ location }) => {
 
   return (
     <div className="GroupPageInChat">
-      <div className='chatNavBar'> <Navigation></Navigation> </div>
+      <div className='chatNavBar'> <Navigation data = {location}></Navigation> </div>
       <div classNane='chatothercontent'>
-        <div className='TeamList'> <TeamList></TeamList> </div> 
+        <div className='TeamList'> <TeamList data = {location}></TeamList> </div> 
         <div className="chatWhole">
           <div className="Chatbox">
             <InfoBar room={room} data={location}/>
