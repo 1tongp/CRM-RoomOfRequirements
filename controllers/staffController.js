@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 // POST request for staff register 
 exports.staffRegisterPost = function (req, res) {
-    const { givenName, familyName, loginEmail, password, role, phone, address} = req.body;
+    const { companysuburb, givenName, familyName, loginEmail, password, role, phone, address, team, teamNumber} = req.body;
     Staff.findOne({ loginEmail: loginEmail }).then((emailExist) => {
 
         // for the case when email is already registered
@@ -21,7 +21,10 @@ exports.staffRegisterPost = function (req, res) {
                 password,
                 role,
                 phone,
-                address
+                address,
+                team,
+                teamNumber,
+                companysuburb
             });
 
             // hash the password
@@ -42,7 +45,10 @@ exports.staffRegisterPost = function (req, res) {
                                 password: staff.password,
                                 role: staff.role,
                                 phone: staff.phone,
-                                address: staff.address
+                                address: staff.address,
+                                team: staff.team,
+                                teamNumber: staff.teamNumber,
+                                companysuburb: staff.companysuburb,
                             },
                         })
                     })

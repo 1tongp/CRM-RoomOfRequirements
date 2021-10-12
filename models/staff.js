@@ -56,6 +56,10 @@ var StaffSchema = new Schema({
     orderNum:{
         type: Number,
         default: 0
+    },
+    teamNumber: {
+        type: String,
+        require: true
     }
 
 });
