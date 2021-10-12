@@ -14,7 +14,7 @@ function Profile(props) {
             <div className="navigationBar">
                 <Navigation data={props}></Navigation>
             </div>
-            <div>
+            <div className='profilePage'>
                 <Avatar
                     className="lay1"
                     size={200}
@@ -22,7 +22,7 @@ function Profile(props) {
                     src={<Image src="./tutu.png" />}
                     srcSet=""
                     alt="Change profile photo"
-                ></Avatar>
+                />
                 {/* <Test className="Upload" />  */}
                 {/* <ChangeImage /> */}
                 <div className="lay2">

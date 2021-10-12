@@ -20,10 +20,9 @@
 }
 */
 
-
 .NavBar {
     /*grid-area: Navibar;*/
-    position: fixed; 
+    position: fixed;
     z-index: 1; /* Stay on top */
     top: 0;
 }
@@ -33,7 +32,7 @@
     display: grid;
     grid-template-columns: 2.8fr 4.5fr 2.2fr;
     grid-gap: 1rem;
-    grid-template-areas: "TeamList Chat-Join UploadFile";   
+    grid-template-areas: "TeamList Chat-Join UploadFile";
 }
 .TeamList {
     grid-area: TeamList;

@@ -29,8 +29,8 @@ class ChangeForm extends React.Component {
                     <Col>
                         <Form.Group as={Col} controlId="formGridName">
                             <Form.Label
-                                for="colFormLabelLg"
-                                class="col-sm-2 col-form-label col-form-label-lg"
+                                // for="colFormLabelLg"
+                                // class="col-sm-2 col-form-label col-form-label-lg"
                             >
                                 {" "}
                                 Name
@@ -39,6 +39,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 type="text"
                                 placeholder="Enter Name"
+                                value = {this.props.data.location.state.staff.givenName +" "+ this.props.data.location.state.staff.familyName}
                             />
                         </Form.Group>
                     </Col>
@@ -49,7 +50,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="Staff"
+                                value = {this.props.data.location.state.staff.role}
                             />
                         </Form.Group>
                     </Col>
@@ -63,7 +64,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="xxxx@hsbc.com"
+                                value = {this.props.data.location.state.staff.loginEmail}
                             />
                         </Form.Group>
                     </Col>
@@ -74,7 +75,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="1234567"
+                                value = {this.props.data.location.state.staff.id}
                             />
                         </Form.Group>
                     </Col>
@@ -88,6 +89,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 type="text"
                                 placeholder="Enter Phone Number"
+                                value = {this.props.data.location.state.staff.phone}
                             />
                         </Form.Group>
                     </Col>
@@ -98,7 +100,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="12"
+                                value = {this.props.team}
                             />
                         </Form.Group>
                     </Col>
@@ -112,6 +114,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 type="text"
                                 placeholder="Enter Address"
+                                value = {this.props.data.location.state.staff.address}
                             />
                         </Form.Group>
                     </Col>
@@ -122,7 +125,7 @@ class ChangeForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                defaultValue="Melbourne"
+                                value = {this.props.data.location.state.staff.companysuburb}
                             />
                         </Form.Group>
                     </Col>
@@ -137,6 +140,7 @@ class ChangeForm extends React.Component {
                     >
                         Save
                     </Button>
+                    
                     <Button
                         className="cancelRight"
                         variant="primary"

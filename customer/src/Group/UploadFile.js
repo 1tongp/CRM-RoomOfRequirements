@@ -2,8 +2,10 @@ import "./UploadFile.css";
 
 import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import ManagerAccess from "./ManagerAccess";
 
-function uploadRender() {
+function uploadRender(props) {
+    console.log(props);
     return (
         <div className="UploadFile">
             <h1 className="fileheading">Upload File</h1>
@@ -17,6 +19,9 @@ function uploadRender() {
                     <CloudUploadIcon></CloudUploadIcon>
                     <a className="icontext" href="https://drive.google.com/drive/folders/1oUcY7o3mam4mgCmdPGTQuV02HudniyWC?usp=sharing">Upload Files</a>
                     {/* <p className="icontext"> Upload Files</p> */}
+                </div>
+                <div>
+                    <ManagerAccess data={props}/>
                 </div>
             </div>
         </div>

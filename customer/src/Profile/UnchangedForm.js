@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Space } from "antd";
 import "./Profile.css";
 import Popup2 from "./PasswordPopup";
 
@@ -29,7 +30,6 @@ class UnchangedForm extends React.Component {
         return (
             <Form>
                 <br />
-
                 <Row className="mb-3">
                     <Col>
                         <Form.Group as={Col} controlId="formGridName">
@@ -136,6 +136,7 @@ class UnchangedForm extends React.Component {
                 </Row>
 
                 <Row className="mb-3">
+                    <Space>
                     <Button
                         className="editRight"
                         variant="primary"
@@ -144,15 +145,8 @@ class UnchangedForm extends React.Component {
                     >
                         Edit Profile
                     </Button>
-                    {/* <div className="popup" onclick="myFunction()">Click me!
-                            <span class="popuptext" id="myPopup">Popup text...</span>
-                        </div> */}
-                    {/* <Button className="passRight" variant="primary" type="button" onClick={() => this.setModal1Visible(true)}>
-                            Change Password
-                        </Button>
-                        <Popup2 visible={this.state.modal1Visible}>  
-                        </Popup2> */}
                     <Popup2>Change Password</Popup2>
+                    </Space>
                 </Row>
             </Form>
         );

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./Profile.css";
-import { Form, Row, Col } from "react-bootstrap";
-import { Modal, Button } from "antd";
+import {  Button, Form, Row, Col } from "react-bootstrap";
+import { Modal } from "antd";
 import React, { useState } from "react";
 
 // function PasswordPopup(props) {
