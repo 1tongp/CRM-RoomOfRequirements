@@ -66,8 +66,8 @@ const Chat = ({ location }) => {
   return (
     <div className="GroupPageInChat">
       <div className='chatNavBar'> <Navigation data = {location}></Navigation> </div>
-      <div classNane='chatothercontent'>
-        <div className='TeamList'> <TeamList data = {location}></TeamList> </div> 
+      <div className='chatothercontent'>
+        <div className='chatTeamList'> <TeamList data = {location}></TeamList> </div> 
         <div className="chatWhole">
           <div className="Chatbox">
             <InfoBar room={room} data={location}/>
