@@ -5,10 +5,12 @@
     margin-bottom: 20px;
     color: black;
 }
+
 .table {
     height: 100vh;
     width: 80vw;
 }
+
 .detailButton {
     background-color: #ff5858;
     color: white;

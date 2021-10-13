@@ -7,6 +7,7 @@ import axios from "../API/axios.js";
 import { SearchOutlined } from "@ant-design/icons";
 import StaffDetail from "./StaffDetail";
 
+
 const { Search } = Input;
 function StaffList(props) {
     console.log(props);
