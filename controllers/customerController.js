@@ -194,6 +194,7 @@ exports.customerNoStaffGet = function (req, res) {
                         "assign":[],
                         "staff":"",
                         "region":cusList[i].region,
+                        "staffID":""
                     })
                 }
             }
@@ -237,7 +238,8 @@ exports.customerPartialGet = function (req, res) {
                         "details":[],
                         "history":[],
                         "region":cusList[i].region,
-                        "staff":""
+                        "staff":"",
+                        "staffID":""
                     })
                 }
             }
