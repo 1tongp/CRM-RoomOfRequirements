@@ -29,7 +29,7 @@ function InfoBar (props){
   console.log(props)
   const onClose = () => {
     console.log(props)
-    axios.post('/staff/login/unhash', { loginEmail: props.data.state.email , password: props.data.state.password }).then(response =>{
+    axios.post('/staff/login/unhash', { loginEmail: props.data.state.staff.loginEmail , password: props.data.state.staff.password }).then(response =>{
       console.log(response);
       if(!response.data.success){
         props.data.query.history.push('/group', {staff: response.data.staff, key:'3'})
