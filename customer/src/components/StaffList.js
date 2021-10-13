@@ -98,14 +98,6 @@ function StaffList(props) {
                     data={data[i]}
                 ></StaffDetail>
             );
-            // data[i].history.push(
-            //     <CustomerHistory
-            //         className="button"
-            //         data={data[i]}
-            //     ></CustomerHistory>
-            // );
-            //data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
-            // data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
         }
     }
     console.log(data)
@@ -148,12 +140,12 @@ function StaffList(props) {
  
     return (
         <>
-            <div className="total">
+            <div className="total2">
                 <div>
                     <h2>Staff</h2>
                     <Search
                         className="searchBar"
-                        placeholder="input search text"
+                        placeholder="Name/Contact Number/Email"
                         onChange={searchHandler}
                         value={SearchTerm}
                         icon={<SearchOutlined />}
@@ -173,8 +165,6 @@ function StaffList(props) {
                         }}
                     />
                 </div>
-                {/* apply this to the table */}
-                {/* <CustomerHistory></CustomerHistory> */}
 
             </div>
         </>

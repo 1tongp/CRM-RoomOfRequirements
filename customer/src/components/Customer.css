@@ -1,8 +1,8 @@
 .searchBar {
     float: right;
     width: 300px;
-    margin-right: 50px;
-    margin-bottom: 10px;
+    margin-right: 70px;
+    margin-bottom: 20px;
     color: black;
 }
 .table {
@@ -29,3 +29,6 @@ h2 {
     background-color: #ff5858;
 }
 
+.total2 {
+    margin-left: 10vw;
+}
