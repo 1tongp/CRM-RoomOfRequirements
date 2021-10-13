@@ -216,6 +216,7 @@ function CustomerList(props) {
             );
             data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
             data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
+            data[i].staffID = props.data.location.state.staff.id
         }
     }
 
@@ -271,6 +272,7 @@ function CustomerList(props) {
                 Assign
             </CustomerAssign>
         );
+        data2[i].staffID = props.data.location.state.staff.id
         data2[i].email = <a href = "https://mail.google.com/">{data2[i].email}</a>
     }
 

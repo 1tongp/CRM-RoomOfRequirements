@@ -19,10 +19,6 @@ function CustomerHistory(props) {
             }
         });
     }, []);
-
-    for (let i = 0; i < historyData.length; i++) {
-        historyData[i].staff = props.data.staff;
-    }
     console.log("history data: ");
     console.log(historyData);
 
@@ -87,6 +83,14 @@ function CustomerHistory(props) {
     const handleCallback = (childData) =>{
         childData.date = childData.date.format().substring(0,10);;
         console.log(childData);
+        axios.post("/history/create", {customer: props.data.id, staff: props.data.staffID, insuranceType: childData.insuranceType, note: childData.note, date: childData.date, staffName: childData.staff}).then((response) => {
+            console.log(response);
+            if(response.data.success){
+                alert("success");
+                window.location.reload(false);
+            }
+        })
+
         
         historyData.push(childData);
         console.log(historyData);
