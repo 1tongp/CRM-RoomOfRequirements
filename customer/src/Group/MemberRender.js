@@ -34,7 +34,7 @@ function Render(props) {
             <ul className="TeamMemberList">
                 <li className="memberItem">
                     <img
-                        src="https://wx4.sinaimg.cn/large/005SXcCcly1gme0xhksaoj30rs0rse81.jpg"
+                        src={props.data.photoPath}
                         alt=""
                         className="Image"
                     />
