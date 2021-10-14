@@ -18,6 +18,7 @@ var StaffSchema = new Schema({
     },
     photoPath:{
         type: String,
+        defaul: "",
     },
     loginEmail:{
         type: String,
