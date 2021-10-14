@@ -74,14 +74,13 @@ function DashboardContent(props) {
                 <p>Staff Selling Ranking</p>
                 <DemoBar data={props}></DemoBar>
             </div>
-            <div>
+            <div >
+                <div className='brDiv'/>
+
                 <p>Monthly trading volume</p>
-                <Chart data = {props}/>
-                <br />
-                <br />
-                <br />
-                <br />
-                <DashboardTable data={props} numCus = {numCustomer}/>
+                <Chart className='chart' data = {props}/>
+             
+                {/* <DashboardTable data={props} numCus = {numCustomer}/> */}
             </div>
 
             

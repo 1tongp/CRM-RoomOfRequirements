@@ -314,7 +314,7 @@ function CustomerList(props) {
                     <h2>Customers</h2>
                     <Search
                         className="searchBar"
-                        placeholder="input search text"
+                        placeholder="Name/Contact Number/Email"
                         onChange={searchHandler}
                         value={SearchTerm}
                         icon={<SearchOutlined />}
@@ -340,7 +340,7 @@ function CustomerList(props) {
                 <div>
                     <Search
                         className="searchBar"
-                        placeholder="input search text"
+                        placeholder="Name/Contact Number/Email"
                         onChange={searchHandler2}
                         value={SearchTerm2}
                         icon={<SearchOutlined />}

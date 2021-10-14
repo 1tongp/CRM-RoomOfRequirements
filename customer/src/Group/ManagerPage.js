@@ -6,13 +6,12 @@ import { SearchOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-
 const { Search } = Input;
 function ManagerPage(props) {
     let history = useHistory();
     console.log(props);
     console.log(props.location.state.staff);
-    
+
     const { Column, ColumnGroup } = Table;
     const data = [
         {
@@ -73,8 +72,12 @@ function ManagerPage(props) {
     return (
         <>
             <Space size="small">
-                <button className="register" onClick={history.goBack}>Back</button>
-                <Register data = {props} className="register">Register</Register>
+                <button className="register" onClick={history.goBack}>
+                    Back
+                </button>
+                <Register data={props} className="register">
+                    Register
+                </Register>
             </Space>
 
             {/* <div>
@@ -117,8 +120,9 @@ function ManagerPage(props) {
                 />
             </Table> */}
             <div>
-                    <StaffList data={props.location.state.staff} />
+                <StaffList data={props.location.state.staff} />
             </div>
+            
         </>
     );
 }

@@ -1,6 +1,7 @@
 
 .dashboardContainer{
     display: flex;
+    flex-direction: row;
 }
 
 .dashboardContainer > div {
@@ -8,3 +9,16 @@
     width: 35vw;
   }
 
+body {
+    background-color: #fbfbfd;
+}
+
+.chart {
+    background-color: white;
+    border: 1px;
+    border-color: black;
+}
+
+.brDiv {
+    height: 364px;
+}

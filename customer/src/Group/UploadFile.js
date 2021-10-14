@@ -21,7 +21,7 @@ function uploadRender(props) {
                     {/* <p className="icontext"> Upload Files</p> */}
                 </div>
                 <div>
-                {/* {(props.data.location.state.staff.role ==="Manager") ? <ManagerAccess data={props}/> : <></>} */}
+                {(props.data.location.state.staff.role ==="Manager") ? <ManagerAccess data={props}/> : <></>}
                     {/* <ManagerAccess data={props}/> */}
                 </div>
             </div>

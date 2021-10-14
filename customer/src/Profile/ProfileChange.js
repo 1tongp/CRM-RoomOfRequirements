@@ -4,8 +4,9 @@ import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 import "../components/component.css";
 import "./Profile.css";
 import ChangeForm from "./ChangeForm.js";
-import Test from "./UploadImage.js";
-import ChangeImage from "./UploadImage2.js";
+import UploadImage from "./UploadImage.js";
+import UploadImage2 from "./UploadImage2.js";
+
 
 function Profile(props) {
     console.log(props);
@@ -15,14 +16,16 @@ function Profile(props) {
                 <Navigation data={props}></Navigation>
             </div>
             <div className='profilePage'>
-                <Avatar
+                {/* <Avatar
                     className="lay1"
                     size={200}
                     icon={<AntDesignOutlined />}
                     src={<Image src="./tutu.png" />}
                     srcSet=""
                     alt="Change profile photo"
-                />
+                /> */}
+                <UploadImage />
+                {/* <UploadImage2 /> */}
                 {/* <Test className="Upload" />  */}
                 {/* <ChangeImage /> */}
                 <div className="lay2">
