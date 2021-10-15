@@ -4,10 +4,18 @@
     flex-direction: row;
 }
 
+/*
 .dashboardContainer > div {
-    margin: 50px;
-    width: 35vw;
-  }
+    margin: 30px;
+    width: 30vw;
+}
+*/
+
+.cardrow {
+    width: 30vw;
+    display: flex;
+    flex-wrap: nowrap;
+}
 
 body {
     background-color: #fbfbfd;
@@ -19,6 +27,59 @@ body {
     border-color: black;
 }
 
-.brDiv {
-    height: 364px;
+
+
+.rankingchart {
+    width: 32vw;
+    height: 55vh;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
 }
+
+
+
+.rightdash {
+    margin-left: 4.5vh;
+    margin-top: 5vh;
+    display: flex;
+    /*margin-top: 10vh;*/
+    flex-direction: column;
+}
+
+.trading {
+    /*margin-top: 10vh;*/
+    margin-left: 1vw;
+    width: 35vw;
+    height: 50vh;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.brDiv {
+    width: 40vw;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+/*
+.dashboardContainer {
+    margin-left: 280px;
+    display: grid;
+    grid-template-columns: 2.8fr 4.5fr 2.2fr;
+    grid-gap: 1rem;
+    grid-template-areas: "TeamList Chat-Join UploadFile";
+}
+.TeamList {
+    grid-area: TeamList;
+}
+.Chat-Join {
+    grid-area: Chat-Join;
+}
+.UploadFile {
+    grid-area: UploadFile;
+}
+*/
