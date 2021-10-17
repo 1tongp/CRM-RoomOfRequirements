@@ -28,7 +28,18 @@ export default function SignIn(props) {
     pathname: '/chat',
     search: `?name=${name}&room=${room}`,
     query: {history: props.data.history},
-    state: { email: props.data.location.state.staff.loginEmail, password: props.data.location.state.staff.password, key: "3" }
+    state: { staff: {id: props.data.location.state.staff.id, 
+             loginEmail: props.data.location.state.staff.loginEmail, 
+             password: props.data.location.state.staff.password, 
+             key: "3",
+             address: props.data.location.state.staff.address,
+             companysuburb: props.data.location.state.staff.companysuburb,
+             familyName: props.data.location.state.staff.familyName,
+             givenName: props.data.location.state.staff.givenName,
+             orderNum: props.data.location.state.staff.orderNum,
+             phone: props.data.location.state.staff.phone,
+             role: props.data.location.state.staff.role,
+             team: props.data.location.state.staff.team}}
   }
   return (
     <div className="JoinGroupchatPage">

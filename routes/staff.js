@@ -12,6 +12,12 @@ StaffRouter.get('/:id', staffController.staffDetailGet);
 // POST request to change the customer details
 StaffRouter.post('/changeDetails/:id', staffController.staffChangeDetailsPost);
 
+// POST request to change the customer details
+StaffRouter.post('/changeInfo/:id', staffController.staffChangeInfoPost);
+
+// POST request to change the customer details
+StaffRouter.post('/changeTeam/:id', staffController.staffChangeTeamPost);
+
 // POST request to login as customer
 StaffRouter.post('/login', staffController.staffLoginPost);
 
@@ -26,4 +32,6 @@ StaffRouter.get('/member/:teamId', staffController.teamMemberGet);
 
 // GET request to get team members
 StaffRouter.post('/number/:id', staffController.orderNumUpdate);
+
+StaffRouter.get('/', staffController.staffGet);
 module.exports = StaffRouter;

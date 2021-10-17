@@ -1,0 +1,19 @@
+.info {
+    margin-top: 5vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.register {
+    margin-top: 8vh;
+    margin-left: 10vw;
+}
+
+.registerpop {
+    position: relative;
+    width: 50vw;
+    height: 60vh;
+    margin-top: 10vh;
+    background-color: #f7f7f7;
+}
+

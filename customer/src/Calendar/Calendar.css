@@ -47,8 +47,10 @@
     height: 100%;
 }
 
-.pagecontent {
+.calendarpagecontent {
     margin-left: 280px;
+    display:flex;
+    flex-direction: column;
 }
 
 .full-calendar-wrapper .AddEvent-buttom {

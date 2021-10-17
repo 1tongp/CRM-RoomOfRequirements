@@ -13,6 +13,34 @@
 .UploadFile {grid-area: UploadFile;}
 */
 
+/*fix the postion for scroll*/
+.chatNavBar {
+  /*grid-area: Navibar;*/
+  position: fixed; 
+  z-index: 1; /* Stay on top */
+  top: 0;
+}
+
+.chatothercontent {
+  margin-left: 280px;
+  display:grid;
+  flex-direction: row;
+  grid-template-columns: 2.8fr 4.5fr 2.2fr;
+  grid-gap: 1rem;
+  grid-template-areas: "TeamList Chatting UploadFile";
+}
+
+.chatTeamList {
+  grid-area: TeamList;
+}
+.Chatbox {
+  grid-area: Chatting;
+}
+.UploadFile {
+  grid-area: UploadFile;
+}
+
+
 .chatWhole {
   display: flex;
   justify-content: center;
@@ -27,6 +55,6 @@
   justify-content: space-between;
   background: #FFFFFF;
   border-radius: 8px;
-  height: 90%;
-  width: 90%;
+  height: 95%;
+  width: 95%;
 }

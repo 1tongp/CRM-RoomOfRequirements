@@ -2,7 +2,7 @@ const History = require('../models/history');
 
 // POST request to create/record customer history
 exports.customerHistoryCreatePost = function(req, res){
-    const{customer, staff, insuranceType, date, note} = req.body;
+    const{customer, staff, insuranceType, date, note, staffName} = req.body;
 
     // create the history
     const newHistory = new History({
@@ -10,7 +10,8 @@ exports.customerHistoryCreatePost = function(req, res){
         staff,
         insuranceType,
         date,
-        note 
+        note,
+        staffName,
     });
 
     // save data
@@ -19,7 +20,7 @@ exports.customerHistoryCreatePost = function(req, res){
             res.status(400).json({err});
         }
         else {
-            res.status(200).json({message:"created a new history", history: result});
+            res.status(200).json({success: true, history: result});
 
         }
     })   
@@ -49,8 +50,8 @@ exports.historyListGet = function(req, res){
             var newHis = []
             for(i = 0; i < his.length; i++){
                 newHis.push({
-                    "staff": "",
-                    "orderId": his[i].order,
+                    "staff": his[i].staffName,
+                    // "orderId": his[i].order,
                     "customerId": his[i].customer,
                     "insuranceType": his[i].insuranceType,
                     "staffId": his[i].staff,

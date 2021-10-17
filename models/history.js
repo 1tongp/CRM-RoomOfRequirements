@@ -26,6 +26,12 @@ var HistorySchema = new Schema({
         require: true
     },
 
+    staffName:{
+        type: String,
+        default: "",
+        require: true
+    }
+
 
 
 

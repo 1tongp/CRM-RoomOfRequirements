@@ -115,6 +115,87 @@ function CustomerList(props) {
             dataIndex: "history",
         },
     ];
+
+    const columns2 = [
+        {
+            title: "First Name",
+            dataIndex: "firstName",
+            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Last Name",
+            dataIndex: "lastName",
+            sorter: (a, b) => a.lastName.localeCompare(b.lastName),
+            sortDirections: ["descend"],
+        },
+        {
+            title: "Contact Number",
+            dataIndex: "contactNumber",
+        },
+        {
+            title: "Email Address",
+            dataIndex: "email",
+        },
+        {
+            title: "Region",
+            dataIndex: "region",
+            filters: [
+                {
+                    text: "Box Hill",
+                    value: "Box Hill",
+                },
+                {
+                    text: "Carlton",
+                    value: "Carlton",
+                },
+                {
+                    text: "Caulfield",
+                    value: "Caulfield",
+                },
+                {
+                    text: "Glen Waverley",
+                    value: "Glen Waverley",
+                },
+                {
+                    text: "Melbourne",
+                    value: "Melbourne",
+                },
+            ],
+            onFilter: (value, record) => record.region.indexOf(value) === 0,
+        },
+        {
+            title: "Insurance Type",
+            dataIndex: "insurance",
+            filters: [
+                {
+                    text: "Car",
+                    value: "Car",
+                },
+                {
+                    text: "Landlord",
+                    value: "Landlord",
+                },
+                {
+                    text: "Home",
+                    value: "Home",
+                },
+                {
+                    text: "Travel",
+                    value: "Travel",
+                },
+            ],
+            onFilter: (value, record) => record.insurance.indexOf(value) === 0,
+        },
+        {
+            title: "Details",
+            dataIndex: "details",
+        },
+        {
+            title: "Assign",
+            dataIndex: "assign",
+        },
+    ];
     
 
     console.log(data)
@@ -135,6 +216,7 @@ function CustomerList(props) {
             );
             data[i].email = <a href = "https://mail.google.com/">{data[i].email}</a>
             data[i].staff = props.data.location.state.staff.givenName + " " + props.data.location.state.staff.familyName
+            data[i].staffID = props.data.location.state.staff.id
         }
     }
 
@@ -176,13 +258,13 @@ function CustomerList(props) {
     // second no staff list
     for (let i = 0; i < data2.length; i++) {
         data2[i].details.push(
-            <CustomerDetail className="button" data={data2[i]}>
+            <CustomerDetail className="detailButton" data={data2[i]}>
                 Details
             </CustomerDetail>
         );
         data2[i].assign.push(
             <CustomerAssign
-                className="button"
+                className="detailButton"
                 staff={props.data.location.state.staff.id}
                 staffDetails={props.data.location.state.staff}
                 data={data2[i]}
@@ -190,6 +272,7 @@ function CustomerList(props) {
                 Assign
             </CustomerAssign>
         );
+        data2[i].staffID = props.data.location.state.staff.id
         data2[i].email = <a href = "https://mail.google.com/">{data2[i].email}</a>
     }
 
@@ -231,7 +314,7 @@ function CustomerList(props) {
                     <h2>Customers</h2>
                     <Search
                         className="searchBar"
-                        placeholder="input search text"
+                        placeholder="Name/Contact Number/Email"
                         onChange={searchHandler}
                         value={SearchTerm}
                         icon={<SearchOutlined />}
@@ -257,7 +340,7 @@ function CustomerList(props) {
                 <div>
                     <Search
                         className="searchBar"
-                        placeholder="input search text"
+                        placeholder="Name/Contact Number/Email"
                         onChange={searchHandler2}
                         value={SearchTerm2}
                         icon={<SearchOutlined />}
@@ -268,7 +351,7 @@ function CustomerList(props) {
                     <Table
                         size="small"
                         className="table"
-                        columns={columns}
+                        columns={columns2}
                         dataSource={filteredData2}
                         onChange={onChange}
                     />

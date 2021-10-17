@@ -9,6 +9,7 @@ import Calendar from "./Calendar/Calendar.js";
 //import Chat from './Chat/Chat.js';
 import Chat from "./TeamChat/Chat/Chat.js";
 import GroupBeforeChat from "./Group/GroupBeforeChat.js";
+import ManagerPage from "./Group/ManagerPage.js";
 
 class Router extends React.Component {
     render() {
@@ -37,6 +38,11 @@ class Router extends React.Component {
                         path="/group"
                         exact
                         component={GroupBeforeChat}
+                    ></Route>
+                    <Route
+                        path="/manager"
+                        exact
+                        component={ManagerPage}
                     ></Route>
                     <Route path="/chat" exact component={Chat}></Route>
                 </Switch>

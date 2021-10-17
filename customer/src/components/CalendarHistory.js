@@ -12,13 +12,24 @@ function CustomerHistory(props) {
     const [historyData, setHistory] = useState([]);
     const [insurance, setIns] = useState("");
     const [staffLast, setLast] = useState("");
+    const [staffName, setSN] = useState("");
+
     useEffect(() => {
-        axios.get("/history/list/" + props.data.id).then((response) => {
+        axios.get("/history/list/" + props.data.data.customer).then((response) => {
             if (response.data.success) {
                 setHistory(response.data.history);
             }
         });
+        axios.get("staff/" + props.data.data.staff).then((response) => {
+            if(response.data.success){
+                setSN(response.data.staff.givenName + " " + response.data.staff.familyName)
+            } 
+        })
     }, []);
+
+    for (let i = 0; i < historyData.length; i++) {
+        historyData[i].staff = staffName;
+    }
     console.log("history data: ");
     console.log(historyData);
 
@@ -83,14 +94,6 @@ function CustomerHistory(props) {
     const handleCallback = (childData) =>{
         childData.date = childData.date.format().substring(0,10);;
         console.log(childData);
-        axios.post("/history/create", {customer: props.data.id, staff: props.data.staffID, insuranceType: childData.insuranceType, note: childData.note, date: childData.date, staffName: childData.staff}).then((response) => {
-            console.log(response);
-            if(response.data.success){
-                alert("success");
-                window.location.reload(false);
-            }
-        })
-
         
         historyData.push(childData);
         console.log(historyData);

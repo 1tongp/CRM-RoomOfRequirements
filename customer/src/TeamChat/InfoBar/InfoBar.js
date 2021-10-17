@@ -6,6 +6,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import './InfoBar.css';
 import { useHistory } from "react-router-dom";
 import axios from "../../API/axios.js";
+import io from "socket.io-client";
 
 // const InfoBar = ({ props, room }) => (
 //   <div className="infoBar">
@@ -22,10 +23,13 @@ import axios from "../../API/axios.js";
 // );
 
 function InfoBar (props){
+  const ENDPOINT = "https://crm-room-of-requirement.herokuapp.com/" || "http://localhost:8080";
+  let socket;
+  socket = io(ENDPOINT);
   console.log(props)
   const onClose = () => {
     console.log(props)
-    axios.post('/staff/login/unhash', { loginEmail: props.data.state.email , password: props.data.state.password }).then(response =>{
+    axios.post('/staff/login/unhash', { loginEmail: props.data.state.staff.loginEmail , password: props.data.state.staff.password }).then(response =>{
       console.log(response);
       if(!response.data.success){
         props.data.query.history.push('/group', {staff: response.data.staff, key:'3'})
@@ -43,7 +47,7 @@ function InfoBar (props){
       <h3>Room: {props.room}</h3>
     </div>
     <div className="rightInnerContainer">
-      <Button onClick={onClose}>
+      <Button className="closeIcon" onClick={onClose}>
         <img src={closeIcon} alt="close icon" />
       </Button>
     </div>

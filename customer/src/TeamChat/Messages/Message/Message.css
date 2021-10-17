@@ -11,7 +11,8 @@
   width: 100%;
   letter-spacing: 0;
   float: left;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  margin-bottom: 3px;
   word-wrap: break-word;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .backgroundBlue {
-  background: #c58080;
+  background: #c4a9a9;
 }
 
 .backgroundLight {

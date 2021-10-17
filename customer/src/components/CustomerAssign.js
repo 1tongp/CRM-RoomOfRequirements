@@ -49,7 +49,7 @@ function CustomerAssign(props) {
 
     return (
         <>
-            <Button className="button" onClick={showModal}>
+            <Button className="detailButton" onClick={showModal}>
                 Assign
             </Button>
             <Modal

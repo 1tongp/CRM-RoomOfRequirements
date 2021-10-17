@@ -1,46 +1,53 @@
-/* eslint no-console:0 */
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Avatar from 'react-avatar-edit'
+import { Image } from "antd";
+import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 
-import React from "react";
-import Upload from "rc-upload";
+class UploadImage extends React.Component {
 
-const props = {
-    action: "/upload.do",
-    multiple: true,
-    onStart(file) {
-        console.log("onStart", file, file.name);
-    },
-    onSuccess(ret) {
-        console.log("onSuccess", ret);
-    },
-    onError(err) {
-        console.log("onError", err);
-    },
-    beforeUpload(file, fileList) {
-        console.log(file, fileList);
-        return new Promise((resolve) => {
-            console.log("start check");
-            setTimeout(() => {
-                console.log("check finshed");
-                resolve(file);
-            }, 3000);
-        });
-    },
-};
+  constructor(props) {
+    super(props)
+    const src = <Image src="./tutu.png" />
+    this.state = {
+      preview: null,
+      src
+    }
+    this.onCrop = this.onCrop.bind(this)
+    this.onClose = this.onClose.bind(this)
+    this.onImageLoad = this.onImageLoad(this)
+  }
 
-const Test = () => {
+  onClose() {
+    this.setState({preview: null})
+  }
+
+  onCrop(preview) {
+    this.setState({preview})
+  }
+
+  onImageLoad(image) {
+    this.setState({src: image})
+  }
+
+
+  render () {
     return (
-        <div
-            style={{
-                margin: 100,
-            }}
-        >
-            <div>
-                <Upload {...props}>
-                    <a>Upload</a>
-                </Upload>
-            </div>
-        </div>
-    );
-};
-
-export default Test;
+      <div>
+        <Avatar
+          className="lay1"
+          width={390}
+          height={295}
+          onCrop={this.onCrop}
+        //   onClose={this.onClose}
+          onImageLoad={this.onImageLoad}
+          src={this.state.src}
+          label="Change profile photo"
+        />
+        <img src={this.state.preview} alt="Preview" />
+        <img src={this.state.src} />
+      </div>
+    )
+  }
+}
+export default UploadImage;

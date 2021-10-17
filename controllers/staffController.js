@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 // POST request for staff register 
 exports.staffRegisterPost = function (req, res) {
-    const { givenName, familyName, loginEmail, password, role, phone, address} = req.body;
+    const { photoPath,companysuburb, givenName, familyName, loginEmail, password, role, phone, address, team, teamNumber} = req.body;
     Staff.findOne({ loginEmail: loginEmail }).then((emailExist) => {
 
         // for the case when email is already registered
@@ -21,7 +21,11 @@ exports.staffRegisterPost = function (req, res) {
                 password,
                 role,
                 phone,
-                address
+                address,
+                team,
+                teamNumber,
+                companysuburb,
+                photoPath,
             });
 
             // hash the password
@@ -42,7 +46,10 @@ exports.staffRegisterPost = function (req, res) {
                                 password: staff.password,
                                 role: staff.role,
                                 phone: staff.phone,
-                                address: staff.address
+                                address: staff.address,
+                                team: staff.team,
+                                teamNumber: staff.teamNumber,
+                                companysuburb: staff.companysuburb,
                             },
                         })
                     })
@@ -93,7 +100,7 @@ exports.staffChangeDetailsPost = function (req, res) {
                                 res.status(404).json({ err })
                             }
                             else {
-                                res.status(200).json({ changeDetails: changeDetails })
+                                res.status(200).json({success: true, changeDetails: changeDetails })
                             }
                         })
                 })
@@ -102,33 +109,64 @@ exports.staffChangeDetailsPost = function (req, res) {
     })
 }
 
-// exports.staffChangeNamePost = function (req, res) {
-//     const { givenName, familyName } = req.body;
-//     Staff.findById(req.params.id, function (err, staffId) {
+// Post request for staff to change their details
+exports.staffChangeInfoPost = function (req, res) {
+    //const { givenName, familyName, password, phone, photoPath} = req.body;
+    Staff.findById(req.params.id, function (err, staffId) {
 
-//         // if staff id not exist in database, return the error message
-//         if (!staffId) {
-//             res.status(404).json({ success: false, message: "changeNameDetail staff is not found" })
-//         }
+        // if staff id not exist in database, return the error message
+        if (!staffId) {
+            res.status(404).json({ success: false, message: "changeDetail staff is not found" })
+        }
 
-//         // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
-//         else {
-//             if (err) throw err;
-//             Staff.findByIdAndUpdate(
-//                 req.params.id,
-//                 { givenName, familyName },
-//                 { new: true },
-//                 function (err, changeName) {
-//                     if (err) {
-//                         res.status(404).json({ success: false, error: err })
-//                     }
-//                     else {
-//                         res.status(200).json({ success: true, changeName: changeName })
-//                     }
-//                 })
-//         }
-//     })
-// }
+        // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
+        // special case: email address and role cannot be updated.
+        else {
+            if (err) throw err;
+                    Staff.findByIdAndUpdate(
+                        req.params.id,
+                        req.body,
+                        //{ givenName, familyName, password: hash, phone, photoPath},
+                        { new: true },
+                        function (err, changeDetails) {
+                            if (err) {
+                                res.status(404).json({ err })
+                            }
+                            else {
+                                res.status(200).json({ success: true, changeDetails: changeDetails })
+                            }
+                        })
+        }
+    })
+}
+
+exports.staffChangeTeamPost = function (req, res) {
+    const { teamId, teamNumber } = req.body;
+    Staff.findById(req.params.id, function (err, staffId) {
+
+        // if staff id not exist in database, return the error message
+        if (!staffId) {
+            res.status(404).json({ success: false, message: "changeDetail staff is not found" })
+        }
+
+        // if id for perticular staff exist, based on the staff's id to update the personal detail for staff
+        else {
+            if (err) throw err;
+            Staff.findByIdAndUpdate(
+                req.params.id,
+                { teamId, teamNumber },
+                { new: true },
+                function (err, change) {
+                    if (err) {
+                        res.status(404).json({ success: false, error: err })
+                    }
+                    else {
+                        res.status(200).json({ success: true, change: change })
+                    }
+                })
+        }
+    })
+}
 
 exports.staffLoginPost = function (req, res) {
     const { loginEmail, password } = req.body;
@@ -157,7 +195,8 @@ exports.staffLoginPost = function (req, res) {
                             team: staff.team,
                             address: staff.address,
                             companysuburb: staff.companysuburb,
-                            orderNum: staff.orderNum
+                            orderNum: staff.orderNum,
+                            teamNumber: staff.teamNumber
                         },
                     });
                 }
@@ -195,7 +234,8 @@ exports.staffLoginUnhashPost = function (req, res) {
                             team: staff.team,
                             address: staff.address,
                             companysuburb: staff.companysuburb,
-                            orderNum: staff.orderNum
+                            orderNum: staff.orderNum,
+                            teamNumber: staff.teamNumber
                     },
                 });
             }
@@ -272,6 +312,36 @@ exports.orderNumUpdate = function (req, res) {
                     }
                 }
             )
+        }
+    })
+}
+
+exports.staffGet = function (req, res) {
+    Staff.find({ role: req.query.role }, function (err, staffList) {
+        if (staffList.length === 0) {
+            res.status(200).json({ success: false, message: "No staff exist" })
+        }
+        else {
+            var staffLists = []
+            var key = 1;
+            for (i = 0; i < staffList.length; i++) {
+
+                
+                    staffLists.push({
+                        "key": key++,
+                        "firstName": staffList[i].givenName,
+                        "lastName": staffList[i].familyName,
+                        "contactNumber": staffList[i].phone,
+                        "email": staffList[i].loginEmail,
+                        "teamNumber": staffList[i].teamNumber,
+                        "teamId":staffList[i].team,
+                        "id":staffList[i]._id,
+                        "region":staffList[i].companysuburb,
+                        "update": [],
+                    })
+                
+            }
+            res.status(200).json({ success: true, staff: staffLists })
         }
     })
 }

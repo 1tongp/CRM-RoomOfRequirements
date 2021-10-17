@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const bodyParser  = require('body-parser');
 const app = require('express')()
 const server = require('http').createServer(app);
+const cors = require('cors')
 const io = require('socket.io')(server, {
     cors: {
       origin: '*',
@@ -26,7 +27,6 @@ const history = require('./routes/history');
 // functions for chat update
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
-var cors = require('cors')
 app.use(cors());
 // app.get('/', (req, res) => {
 //     res.status(200).send("Welcome to CRM Web App!")
@@ -63,7 +63,7 @@ io.on('connect', (socket) => {
     const user = removeUser(socket.id);
 
     if(user) {
-      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+      io.to(user.room).emit('message', { user: 'admin', text: `${user.name} has left.` });
       io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
     }
   })

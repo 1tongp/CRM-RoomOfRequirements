@@ -28,40 +28,38 @@
 }
 
 .saveRight {
-    position: absolute;
+    position: static;
     bottom: 0;
     right: 0;
-
-    margin-right: 200px;
-    margin-bottom: 50px;
+    margin-left: 70vw;
+    margin-bottom: 10vh;
 }
 
 .cancelRight {
-    position: absolute;
+    position: static;
     bottom: 0;
     right: 0;
-
-    margin-right: 300px;
-    margin-bottom: 50px;
+    margin-left: 1vw;
+    margin-bottom: 10vh;
 }
 
 .editRight {
-    position: absolute;
+    position: static;
     bottom: 0;
     right: 0;
-    margin-right: 5vw;
-    margin-bottom: 8vh;
+    margin-left:60vw;
+    /* margin-bottom: 8vh; */
     color: #000000;
     font-family: Reem Kufi;
     background-color: #c4c4c4;
 }
 
 .passRight {
-    position: absolute;
+    position: static;
     bottom: 0;
     right: 0;
-    margin-right: 15vw;
-    margin-bottom: 8vh;
+    /* margin-left: 60vw; */
+    /* margin-bottom:; */
     color: #000000;
     font-family: Reem Kufi;
     background-color: #c4c4c4;
