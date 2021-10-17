@@ -9,6 +9,13 @@
     margin-left: 10vw;
 }
 
+.registerButton {
+    margin-top: 8vh;
+    margin-left: 10vw;
+    background-color: #ff5858;
+    color: white;
+}
+
 .registerpop {
     position: relative;
     width: 50vw;
