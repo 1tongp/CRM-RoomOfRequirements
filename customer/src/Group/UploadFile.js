@@ -19,11 +19,7 @@ function uploadRender(props) {
                     <CloudUploadIcon></CloudUploadIcon>
                     <a className="icontext" href="https://drive.google.com/drive/folders/1oUcY7o3mam4mgCmdPGTQuV02HudniyWC?usp=sharing">Upload Files</a>
                     {/* <p className="icontext"> Upload Files</p> */}
-                </div>
-                <div>
-                {(props.data.location.state.staff.role ==="Manager") ? <ManagerAccess data={props}/> : <></>}
-                    {/* <ManagerAccess data={props}/> */}
-                </div>
+                </div> 
             </div>
         </div>
     );

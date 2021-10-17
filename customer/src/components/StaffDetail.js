@@ -38,7 +38,8 @@ function StaffDetail(props) {
                 //     staff: response.data.staff,
                 //     vendors: vendors,
                 //     position: [lat, lng]
-                // }); 
+                // });
+                window.location.reload(false); 
             }                        
             else {
                 alert("Fail: Error exist")
