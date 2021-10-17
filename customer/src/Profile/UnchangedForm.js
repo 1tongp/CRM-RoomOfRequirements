@@ -3,6 +3,7 @@ import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 import { Space } from "antd";
 import "./Profile.css";
 import Popup2 from "./PasswordPopup";
+import ManagerAccess from "../Group/ManagerAccess.js";
 
 class UnchangedForm extends React.Component {
     constructor(props) {
@@ -52,6 +53,10 @@ class UnchangedForm extends React.Component {
                                 value = {this.props.data.location.state.staff.role}
                             />
                         </Form.Group>
+                        <div>
+                            <ManagerAccess /> 
+                                {/* <ManagerAccess data={props}/> */}
+                        </div>
                     </Col>
                 </Row>
 

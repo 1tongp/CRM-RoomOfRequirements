@@ -13,8 +13,8 @@ class ManagerAccess extends React.Component {
     };
 
     redirect = () => {
-        this.props.data.data.history.push("/manager", {
-            staff: this.props.data.data.location.state.staff,
+        this.props.history.push("/manager", {
+            staff: this.props.location.state.staff,
         });
     };
 
