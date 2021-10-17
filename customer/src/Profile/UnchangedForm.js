@@ -54,7 +54,7 @@ class UnchangedForm extends React.Component {
                             />
                         </Form.Group>
                         <div>
-                            <ManagerAccess /> 
+                            <ManagerAccess data={this.props.data}/> 
                                 {/* <ManagerAccess data={props}/> */}
                         </div>
                     </Col>

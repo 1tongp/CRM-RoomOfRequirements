@@ -134,6 +134,7 @@ function Register(props) {
                         //     vendors: vendors,
                         //     position: [lat, lng]
                         // }); 
+                        window.location.reload(false);
                     }                        
                     else {
                         alert("Sign Up Fail: This email has already been registered! Please change another one")
