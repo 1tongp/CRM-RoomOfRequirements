@@ -87,7 +87,7 @@ function DashboardContent(props) {
                         }>
                         <Statistic
                             title="Order"
-                            value={numOrder}
+                            value={props.data.location.state.staff.orderNum}
                             valueStyle={{ color: "blue" }}
                         />
                     </Card>

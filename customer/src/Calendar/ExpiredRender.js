@@ -21,7 +21,7 @@ function Render(props) {
         });
 
     }, []);
-    console.log(date)
+    console.log(detail)
     // setDate(props.data.expireDate.slice(0,9))
 
     const info = (
@@ -55,7 +55,7 @@ function Render(props) {
                 <Dropdown overlay={info} placement="bottomCenter" arrow>
                     <span >
                         <img
-                            src="https://y.qichejiashi.com/tupian/upload/246852168.jpg"
+                            src={detail.photo}
                             alt=""
                             className="CustomerImage"
                         />
@@ -65,7 +65,10 @@ function Render(props) {
                 <div className="Customer">
                     <span className="Customername">{name}</span>
                     <span className="expiration">
-                        {props.data.expireDate.slice(0, 10)}
+                        Insurance Type: {props.data.type}
+                    </span>
+                    <span className="expiration">
+                        Expire Date: {props.data.expireDate.slice(0, 10)}
                     </span>
                     <CustomerHistory className="button" data={props}> </CustomerHistory>
                 </div>
