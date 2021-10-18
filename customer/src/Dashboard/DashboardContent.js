@@ -98,14 +98,13 @@ function DashboardContent(props) {
 
                 <h4>Staff Selling Ranking</h4>
                 <div className='rankingchart'>
-                    
                     <DemoBar data={props}></DemoBar>
                 </div>
 
             </div>
 
             <div className='rightdash'>
-                <h4>Main Insurance</h4>
+                <h4>Main Insurances</h4>
                 <div className='brDiv'>
                 <Card 
                 style={{ height: 300, marginRight: 12 }}
@@ -155,6 +154,7 @@ function DashboardContent(props) {
                 />
                 </Card> 
                 </div>
+                <br />
                 <br />
 
                 <h4>Monthly trading volume</h4>
