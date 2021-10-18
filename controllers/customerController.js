@@ -6,7 +6,7 @@ const Order = require('../models/order');
 
 // POST request for customer create
 exports.customerCreatePost = function (req, res) {
-    const { givenName, familyName, email, gender, age, dateOfBirth, phone, address, region, insurance } = req.body;
+    const { givenName, familyName, email, gender, age, dateOfBirth, phone, address, region, insurance, photo } = req.body;
     Customer.findOne({ email: email }).then((emailExist) => {
 
         // for the case when email is already registered
@@ -27,6 +27,7 @@ exports.customerCreatePost = function (req, res) {
                 address,
                 region,
                 insurance,
+                photo,
 
             });
 
@@ -45,7 +46,8 @@ exports.customerCreatePost = function (req, res) {
                         phone: customer.phone,
                         address: customer.address,
                         region: customer.region,
-                        insurance: customer.insurance
+                        insurance: customer.insurance,
+                        photo: customer.photo,
                     },
                 })
             })
@@ -98,7 +100,8 @@ exports.customerListGet = function (req, res) {
                     "createTime": customers[i]._id,
                     "updateTime": customers[i].updateTime,
                     "region": customers[i].region,
-                    "insurance": customers[i].insurance
+                    "insurance": customers[i].insurance,
+                    "photo":customers[i].photo
                 })
             }
             sortedCustomer = sortedCustomer.sort(({ updateTime: a }, { updateTime: b }) => b - a)
@@ -194,7 +197,8 @@ exports.customerNoStaffGet = function (req, res) {
                         "assign":[],
                         "staff":"",
                         "region":cusList[i].region,
-                        "staffID":""
+                        "staffID":"",
+                        "photo":cusList[i].photo
                     })
                 }
             }
@@ -239,7 +243,8 @@ exports.customerPartialGet = function (req, res) {
                         "history":[],
                         "region":cusList[i].region,
                         "staff":"",
-                        "staffID":""
+                        "staffID":"",
+                        "photo": cusList[o].photo
                     })
                 }
             }

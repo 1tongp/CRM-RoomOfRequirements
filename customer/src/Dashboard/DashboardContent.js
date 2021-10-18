@@ -87,7 +87,7 @@ function DashboardContent(props) {
                         }>
                         <Statistic
                             title="Order"
-                            value={numOrder}
+                            value={props.data.location.state.staff.orderNum}
                             valueStyle={{ color: "blue" }}
                         />
                     </Card>
@@ -98,14 +98,13 @@ function DashboardContent(props) {
 
                 <h4>Staff Selling Ranking</h4>
                 <div className='rankingchart'>
-                    
                     <DemoBar data={props}></DemoBar>
                 </div>
 
             </div>
 
             <div className='rightdash'>
-                <h4>Main Insurance</h4>
+                <h4>Main Insurances</h4>
                 <div className='brDiv'>
                 <Card 
                 style={{ height: 300, marginRight: 12 }}
@@ -134,7 +133,7 @@ function DashboardContent(props) {
                     }>
     
                 <Meta
-                    title={<a href="https://www.hsbc.com.au/insurance/products/landlord/">Lanlord Insurance</a>}
+                    title={<a href="https://www.hsbc.com.au/insurance/products/landlord/">Landlord Insurance</a>}
                     description="A residential investment property needs to be appropriately protected."
                 />
 
@@ -155,6 +154,7 @@ function DashboardContent(props) {
                 />
                 </Card> 
                 </div>
+                <br />
                 <br />
 
                 <h4>Monthly trading volume</h4>

@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 
+
 class ManagerAccess extends React.Component {
     constructor(props) {
         super(props);
@@ -21,10 +22,13 @@ class ManagerAccess extends React.Component {
 
     render() {
         return (
-            <Button className="iconManager" onClick={() => this.redirect()}>
+            <>
+            {( this.props.data.location.state.staff.role === "Manager") ? <Button className="iconManager" onClick={() => this.redirect()}>
                 Manager Priority Access
-            </Button>
-            // <button type="button" class="btn btn-secondary">Manager Priority Access</button>
+            </Button> : <></>}
+            
+            {/* <button type="button" class="btn btn-secondary">Manager Priority Access</button> */}
+            </>
         );
     }
 }

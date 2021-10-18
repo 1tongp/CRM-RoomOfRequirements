@@ -62,6 +62,10 @@ var CustomerSchema = new Schema({
     insurance:{
         type: Array,
         required: true,
+    },
+    photo:{
+        type:String,
+        default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpddaAqIioNaVv7FrCvZj5m-6PFoLwlQKIhA&usqp=CAU"
     }
 }, { timestamps: {createdAt: 'createTime', updateAt: 'updateTime'}});
 

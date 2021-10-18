@@ -39,7 +39,13 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.givenName +" "+ this.props.data.location.state.staff.familyName}
+                                value={
+                                    this.props.data.location.state.staff
+                                        .givenName +
+                                    " " +
+                                    this.props.data.location.state.staff
+                                        .familyName
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -50,12 +56,14 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.role}
+                                value={
+                                    this.props.data.location.state.staff.role
+                                }
                             />
                         </Form.Group>
                         <div>
-                            <ManagerAccess data={this.props.data}/> 
-                                {/* <ManagerAccess data={props}/> */}
+                            <ManagerAccess data={this.props.data} />
+                            {/* <ManagerAccess data={props}/> */}
                         </div>
                     </Col>
                 </Row>
@@ -68,7 +76,10 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.loginEmail}
+                                value={
+                                    this.props.data.location.state.staff
+                                        .loginEmail
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -79,7 +90,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.id}
+                                value={this.props.data.location.state.staff.id}
                             />
                         </Form.Group>
                     </Col>
@@ -93,7 +104,9 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.phone}
+                                value={
+                                    this.props.data.location.state.staff.phone
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -104,7 +117,10 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.teamNumber}
+                                value={
+                                    this.props.data.location.state.staff
+                                        .teamNumber
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -123,7 +139,9 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.address}
+                                value={
+                                    this.props.data.location.state.staff.address
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -134,7 +152,10 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
-                                value = {this.props.data.location.state.staff.companysuburb}
+                                value={
+                                    this.props.data.location.state.staff
+                                        .companysuburb
+                                }
                             />
                         </Form.Group>
                     </Col>
@@ -142,15 +163,13 @@ class UnchangedForm extends React.Component {
 
                 <Row className="mb-3">
                     <Space>
-                    <Button
-                        className="editRight"
-                        variant="primary"
-                        type="button"
-                        onClick={() => this.redirect()}
-                    >
-                        Edit Profile
-                    </Button>
-                    <Popup2 data={this.props.data}>Change Password</Popup2>
+                        <Button
+                            className="editRight"
+                            onClick={() => this.redirect()}
+                        >
+                            Edit Profile
+                        </Button>
+                        <Popup2 data={this.props.data}>Change Password</Popup2>
                     </Space>
                 </Row>
             </Form>
