@@ -26,8 +26,9 @@
 .iconManager {
     display: flex;
     flex-direction: row;
-    margin-top: 6vh;
-    background-color: #c4c4c4;
+    margin-top: 10px;
+    background-color: #ff5858;
     font-family: 'Comic Sans MS'; 
-    color: black; 
+    color: white;
+    width: auto;
 }

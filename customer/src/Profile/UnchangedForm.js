@@ -165,8 +165,6 @@ class UnchangedForm extends React.Component {
                     <Space>
                         <Button
                             className="editRight"
-                            variant="primary"
-                            type="button"
                             onClick={() => this.redirect()}
                         >
                             Edit Profile

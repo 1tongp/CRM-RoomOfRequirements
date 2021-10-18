@@ -75,7 +75,7 @@ class Navigation extends React.Component {
       <Menu 
         onClick={this.handleClick}
         className='menu'
-        // selectedKeys={[this.props.data.location.state.key]}
+        selectedKeys={[this.props.data.location.state.key]}
         mode="inline"
       >
         <img className='logo' src={'../logo.jpg'} alt="logo image"></img>
