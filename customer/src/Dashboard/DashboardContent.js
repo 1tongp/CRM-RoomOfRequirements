@@ -134,7 +134,7 @@ function DashboardContent(props) {
                     }>
     
                 <Meta
-                    title={<a href="https://www.hsbc.com.au/insurance/products/landlord/">Lanlord Insurance</a>}
+                    title={<a href="https://www.hsbc.com.au/insurance/products/landlord/">Landlord Insurance</a>}
                     description="A residential investment property needs to be appropriately protected."
                 />
 
