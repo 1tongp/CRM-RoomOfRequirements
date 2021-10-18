@@ -2,7 +2,7 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import "./Manager.css";
 import Register from "./ManagerRegister";
 import StaffList from "../components/StaffList";
-import { SearchOutlined } from "@ant-design/icons";
+import { LeftOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -72,9 +72,9 @@ function ManagerPage(props) {
     return (
         <>
             <Space size="small">
-                <button className="register" onClick={history.goBack}>
+                <Button size='large' className="register" onClick={history.goBack} icon={<LeftOutlined />} type='text'>
                     Back
-                </button>
+                </Button>
                 <Register data={props} className="register">
                     Register
                 </Register>
