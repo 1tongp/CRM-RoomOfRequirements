@@ -6,11 +6,13 @@ const baseUrl = "http://localhost:8080/staff"
 
 const testStaffSignup = {
     vaildBody: {
+        "team": "6124fd21b6cf2337a831eee4",
+	    "teamNumber": "1",
         "givenName": "Kerry1",
         "familyName": "liu1",
         "loginEmail": "testnew1@test",
         "password": "365",
-        "role": "manager",
+        "role": "Manager",
         "phone": 13580807979,
         "address": "Uni melb West House",
         "companysuburb": "Box Hill"
