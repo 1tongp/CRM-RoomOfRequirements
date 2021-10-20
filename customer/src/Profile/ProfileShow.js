@@ -39,7 +39,7 @@ function Profile(props) {
                     alt="Change profile photo"
                 />
                 <div className="lay2">
-                    <div>
+                    <div className="row">
                         <UnChangedForm data={props} team = {team}/>
                     </div>
                 </div>

@@ -7,8 +7,9 @@ import axios from "../API/axios.js";
 function StaffDetail(props) {
     console.log(props)
     const [detail, setData] = useState([]);
-    const [teamId, setTeamId] = useState(props.data.teamId);
-    const [teamNum, setTeamNum] = useState(props.data.teamNumber);
+    const [teamId, setTeamId] = useState('');
+    const [teamNum, setTeamNum] = useState(1);
+
     useEffect(() => {
         // axios.get(
         //         "/staff" +
@@ -21,18 +22,28 @@ function StaffDetail(props) {
         //     });
 
         axios.get('/team/' + teamNum).then(response => {
-                console.log(response)
+                console.log(response.data.team._id)
                 setTeamId(response.data.team._id)
-        });
-    }, []);
+        })
+    }, [teamId,teamNum]);
 
 
     const onUpdate = () => {
-        axios.post('/staff/changeTeam/'+ props.data.id, { teamId: teamId, teamNumber: teamNum}).then(response => {
+        console.log(teamId);
+        console.log(teamNum);
+
+        // axios.get('/team/' + teamNum).then(response => {
+        //     console.log(response.data.team._id)
+        //     setTeamId(response.data.team._id)
+        //     console.log(teamId);
+        // });
+        axios.post('/staff/changeInfo/'+ props.data.id, {teamNumber: teamNum, team: teamId }).then(response => {
             console.log("111");
+            console.log(response.data.success);
+            alert("Team has been successfully Updated");
+            window.location.reload(false); 
             if (response.data.success) {
-                console.log("success");
-                console.log(response);
+                console.log(response.data.change.team);
                 alert("Team has been successfully Updated");
                 // props.history.push('/customer', {
                 //     staff: response.data.staff,
@@ -45,12 +56,13 @@ function StaffDetail(props) {
                 alert("Fail: Error exist")
             }
         }).catch(error => {
-            console.log(error.response)
-            alert(error.response)
+            // console.log(error.response)
+            // alert(error.response)
         })
 
 
     }
+
     console.log(detail)
 
     const tailFormItemLayout = {
@@ -105,9 +117,9 @@ function StaffDetail(props) {
                     Staff Name: {props.data.firstName} {props.data.lastName}
                 </p>
                 <p>Staff ID: {props.data.id}</p>
-
+                <Form>
                 <Form.Item
-                            name="teamnum"
+                            name="teamNum"
                             label="Team Number"
                             rules={[
                                 {
@@ -124,6 +136,7 @@ function StaffDetail(props) {
                                 Update
                             </Button>
                 </Form.Item>
+                </Form>
 
             </Modal>
         </>

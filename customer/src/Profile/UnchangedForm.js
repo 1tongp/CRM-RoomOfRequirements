@@ -29,8 +29,8 @@ class UnchangedForm extends React.Component {
 
     render() {
         return (
-            <Form>
-                <br />
+            <>
+            <Form font-family="Comic Sans MS">
                 <Row className="mb-3">
                     <Col>
                         <Form.Group as={Col} controlId="formGridName">
@@ -39,6 +39,7 @@ class UnchangedForm extends React.Component {
                                 size="lg"
                                 plaintext
                                 readOnly
+                                font-family="Comic Sans MS"
                                 value={
                                     this.props.data.location.state.staff
                                         .givenName +
@@ -52,6 +53,7 @@ class UnchangedForm extends React.Component {
                     <Col>
                         <Form.Group as={Col} controlId="formGridRole">
                             <Form.Label>Role</Form.Label>
+                            
                             <Form.Control
                                 size="lg"
                                 plaintext
@@ -59,13 +61,14 @@ class UnchangedForm extends React.Component {
                                 value={
                                     this.props.data.location.state.staff.role
                                 }
+                                
                             />
+                            
+                        
                         </Form.Group>
-                        <div>
-                            <ManagerAccess data={this.props.data} />
-                            {/* <ManagerAccess data={props}/> */}
-                        </div>
+                        
                     </Col>
+                    
                 </Row>
 
                 <Row className="mb-3">
@@ -126,12 +129,12 @@ class UnchangedForm extends React.Component {
                     </Col>
                 </Row>
 
-                <Row className="mb-3">
+                <Row className="lastLine">
                     <Col>
                         <Form.Group as={Col} controlId="formGridAddress">
                             <Form.Label
-                                for="colFormLabelLg"
-                                class="col-sm-2 col-form-label col-form-label-lg"
+                                // for="colFormLabelLg"
+                                // class="col-sm-2 col-form-label col-form-label-lg"
                             >
                                 Address
                             </Form.Label>
@@ -161,8 +164,9 @@ class UnchangedForm extends React.Component {
                     </Col>
                 </Row>
 
-                <Row className="mb-3">
+                <Row className="mb-1">
                     <Space>
+                        <ManagerAccess data={this.props.data} />
                         <Button
                             className="editRight"
                             onClick={() => this.redirect()}
@@ -171,8 +175,14 @@ class UnchangedForm extends React.Component {
                         </Button>
                         <Popup2 data={this.props.data}>Change Password</Popup2>
                     </Space>
+                        
                 </Row>
+         
             </Form>
+           
+                    
+            
+            </>
         );
     }
 }

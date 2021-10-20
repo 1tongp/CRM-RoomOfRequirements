@@ -6,13 +6,12 @@ const baseUrl = "http://localhost:8080/calendar"
 
 const testEventUpdate = {
     vaildBody: {
-        "startTime": "0930AM",
-        "endTime": "1030AM"
+        "visibility": "Public",
     }
 }
 
 //const testCalendarId = "61336effc3becb16841a04f8"
-const testCalendarId = "614c1d64501f380a044b5285"
+const testCalendarId = "615ac1517957dd29b8c5e287"
 
 describe("Calendar integration tests", () => {
     it('should be able to update Event', function(done) {
