@@ -18,8 +18,9 @@
 
 .registerpop {
     position: relative;
-    width: 50vw;
-    height: 60vh;
+    width: auto;
+    height: 50vh!important;;
     margin-top: 10vh;
     background-color: #f7f7f7;
+    overflow-y: auto;
 }
