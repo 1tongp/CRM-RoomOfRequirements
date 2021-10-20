@@ -11,13 +11,14 @@ function CustomerDetail(props) {
         axios
             .get(
                 "/order/customertype/" +
-                    props.data.id +
-                    "?type=" +
-                    props.data.insurance
+                props.data.id +
+                "?type=" +
+                props.data.insurance
             )
             .then((response) => {
                 if (response.data.success) {
-                    setData(response.data.orderDetail[0]);
+                    console.log(response)
+                    setData(response.data.orderDetail);
                 }
             });
     }, []);
@@ -49,7 +50,7 @@ function CustomerDetail(props) {
                 onCancel={handleCancel}
             >
                 {/* <p>{props.detailInfo}</p> */}
-                <p>
+                {/* <p>
                     Customer Name: {props.data.firstName} {props.data.lastName}
                 </p>
                 <p>Customer ID: {props.data.id}</p>
@@ -57,7 +58,24 @@ function CustomerDetail(props) {
                 <p>Insurance Type: {detail.type}</p>
                 <p>Insurance Status: {detail.status}</p>
                 <p>Purchase Time: {detail.createTime}</p>
-                <p>Expire Date: {detail.expireDate}</p>
+                <p>Expire Date: {detail.expireDate}</p> */}
+                <>
+                    {(detail.length > 0) ? detail.map((single) => (
+                        <>
+                            <p>
+                                Customer Name: {props.data.firstName} {props.data.lastName}
+                            </p>
+                            <p>Customer ID: {props.data.id}</p>
+                            <p>Insurance Order ID: {single._id}</p>
+                            <p>Insurance Type: {single.type}</p>
+                            <p>Insurance Status: {single.status}</p>
+                            <p>Purchase Time: {single.createTime}</p>
+                            <p>Expire Date: {single.expireDate}</p>
+                        </>
+
+                    )) : <p>no information</p>}
+                </>
+
             </Modal>
         </>
     );

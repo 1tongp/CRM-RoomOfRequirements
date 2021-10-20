@@ -166,8 +166,7 @@ function EventPopup(props) {
         // event is not updated in the list (one step behind????)
         setAllEvent({ ...allEvent, newEvent });
         console.log(allEvent);
-        axios.post(
-            "/calendar/create",
+        axios.post("/calendar/create",
             {
                 staff: props.location.state.staff.id,
                 team: props.location.state.staff.team,
@@ -177,16 +176,18 @@ function EventPopup(props) {
                 endTime: newEvent.end,
                 type: newEvent.type,
                 visibility: newEvent.visibility,
-            },
-            function (res) {
-                if (res.data.success) {
-                    console.log(res);
+            }).then ((response) =>{
+                console.log(response)
+                if (response.data.message == "created a new event") {
+                    console.log(response);
+                    alert("Added event successfully!");
+                    window.location.reload(false);
                 }
-                console.log(res);
-            }
-        );
-        alert("Added event successfully!");
-        window.location.reload(false);
+                else{
+                    console.log(response);
+                    alert("Error! Please create again!")
+                }
+            })
     };
 
     const changeDatetype = (newEvent) => {
