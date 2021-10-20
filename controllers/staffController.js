@@ -130,7 +130,7 @@ exports.staffChangeInfoPost = function (req, res) {
                         { new: true },
                         function (err, changeDetails) {
                             if (err) {
-                                res.status(404).json({ err })
+                                res.status(404).json({ success: false, error: err })
                             }
                             else {
                                 res.status(200).json({ success: true, changeDetails: changeDetails })
@@ -141,7 +141,7 @@ exports.staffChangeInfoPost = function (req, res) {
 }
 
 exports.staffChangeTeamPost = function (req, res) {
-    const { teamId, teamNumber } = req.body;
+    // const { team, teamNumber } = req.body;
     Staff.findById(req.params.id, function (err, staffId) {
 
         // if staff id not exist in database, return the error message
@@ -154,7 +154,7 @@ exports.staffChangeTeamPost = function (req, res) {
             if (err) throw err;
             Staff.findByIdAndUpdate(
                 req.params.id,
-                { teamId, teamNumber },
+                req.body,
                 { new: true },
                 function (err, change) {
                     if (err) {

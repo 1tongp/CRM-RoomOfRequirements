@@ -27,9 +27,7 @@ function CustomerHistory(props) {
         })
     }, []);
 
-    for (let i = 0; i < historyData.length; i++) {
-        historyData[i].staff = staffName;
-    }
+    
     console.log("history data: ");
     console.log(historyData);
 
