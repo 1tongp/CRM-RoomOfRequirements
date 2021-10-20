@@ -24,7 +24,7 @@ function Register(props) {
             console.log(response);
             setTeamId(response.data.team._id);
         });
-    }, []);
+    }, [teamId,teamNum]);
 
     const { Option } = Select;
     const formItemLayout = {

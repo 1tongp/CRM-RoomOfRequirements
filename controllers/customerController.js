@@ -244,7 +244,7 @@ exports.customerPartialGet = function (req, res) {
                         "region":cusList[i].region,
                         "staff":"",
                         "staffID":"",
-                        "photo": cusList[o].photo
+                        "photo": cusList[i].photo
                     })
                 }
             }

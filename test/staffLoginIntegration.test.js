@@ -6,8 +6,8 @@ const baseUrl = "http://localhost:8080/staff"
 
 const testStaffLogin = {
     vaildBody: {
-        "loginEmail": "test@liu",
-        "password": "111"
+        "loginEmail": "ror@h1.com",
+        "password": "123456789c"
     }
 }
 
