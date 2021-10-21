@@ -127,8 +127,8 @@ Distributed under the MIT License.
 
 ## Login Detail
 Login Page:
-- Email: ror@h1.com
-- Password: 321
+- Email: 123@ror.com
+- Password: 123456789a
 
 Team Page:
 - Name: You can use any name. (eg, Will)
