@@ -16,15 +16,15 @@ function Profile(props) {
                 <Navigation data={props}></Navigation>
             </div>
             <div className='profilePage'>
-                {/* <Avatar
+                <Avatar
                     className="lay1"
                     size={200}
                     icon={<AntDesignOutlined />}
                     src={<Image src="./tutu.png" />}
                     srcSet=""
                     alt="Change profile photo"
-                /> */}
-                <UploadImage />
+                />
+                {/* <UploadImage /> */}
                 {/* <UploadImage2 /> */}
                 {/* <Test className="Upload" />  */}
                 {/* <ChangeImage /> */}

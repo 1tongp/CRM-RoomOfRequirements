@@ -30,7 +30,7 @@ class UnchangedForm extends React.Component {
     render() {
         return (
             <>
-            <Form font-family="Comic Sans MS">
+            <Form>
                 <Row className="mb-3">
                     <Col>
                         <Form.Group as={Col} controlId="formGridName">

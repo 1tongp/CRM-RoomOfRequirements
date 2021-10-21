@@ -19,8 +19,6 @@
     margin-left: 2vw;
     margin-top: 2vh;
     letter-spacing: 1px;
-    
-    font-family: Comic Sans MS;
     font-weight: 300;
     font-size: 200%;
     line-height: 2vh;
@@ -57,18 +55,19 @@
 .iconManager {
     display: flex;
     flex-direction: row;
-    margin-left:50vw;
+    margin-left:1vw;
     margin-bottom: 1vh;
     background-color: #ff5858;
     font-family: 'Comic Sans MS'; 
     color: white;
     width: auto;
 }
+
 .editRight {
     position: static;
     bottom: 0;
     right: 0;
-    /* margin-left:50vw; */
+    margin-left: 50vw;
     margin-bottom: 1vh;
     color: black;
     background-color: #c4c4c4;
@@ -85,9 +84,6 @@
     background-color: #c4c4c4;
     width: auto;
 }
-
-
-
 
 .popUp {
     position: fixed;
@@ -129,10 +125,3 @@
     color: white;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-margin-bottom: 0.5rem;
-font-family: Comic Sans MS, sans-serif;
-font-weight: 500;
-line-height: 1.2;
-color: inherit;
-}
