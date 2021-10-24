@@ -127,7 +127,7 @@ Distributed under the MIT License.
 
 ## Login Detail
 Login Page:
-- Email: 123@ror.com
+- Email: tean@ror.com
 - Password: 123456789a
 
 Team Page:
