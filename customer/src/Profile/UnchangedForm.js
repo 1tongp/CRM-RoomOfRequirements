@@ -63,12 +63,8 @@ class UnchangedForm extends React.Component {
                                 }
                                 
                             />
-                            
-                        
-                        </Form.Group>
-                        
+                        </Form.Group> 
                     </Col>
-                    
                 </Row>
 
                 <Row className="mb-3">
