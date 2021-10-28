@@ -1,6 +1,6 @@
 import Navigation from "../components/Navigation";
 import { Avatar, Image } from "antd";
-import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
+import { AntDesignOutlined } from "@ant-design/icons";
 import "../components/component.css";
 import "./Profile.css";
 import UnChangedForm from "./UnchangedForm.js";

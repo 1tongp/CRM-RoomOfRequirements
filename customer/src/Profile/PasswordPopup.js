@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import "./Profile.css";
-import {  Button, Form, Row, Col } from "react-bootstrap";
+import {  Button, Form, Col } from "react-bootstrap";
 import { Modal } from "antd";
-import React, { useState } from "react";
+import React from "react";
 import axios from "../API/axios.js";
 
 class PasswordPopup extends React.Component {

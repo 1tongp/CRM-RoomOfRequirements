@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Form, Row, Col } from "react-bootstrap";
 import { Space } from "antd";
 import "./Profile.css";
 import Popup2 from "./PasswordPopup";
