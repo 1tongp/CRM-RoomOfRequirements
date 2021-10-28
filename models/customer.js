@@ -53,11 +53,6 @@ var CustomerSchema = new Schema({
         type: String,
         required: true,
     },
-    // Product: {
-    //     type: Array,
-    //     required: true,
-    //     default: []
-    // },
 
     insurance:{
         type: Array,

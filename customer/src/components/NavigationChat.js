@@ -1,12 +1,10 @@
 
 import { Button, Menu } from 'antd';
 // icons used
-import { LogoutOutlined, TagsOutlined, DashboardOutlined, CalendarOutlined, MenuOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, DashboardOutlined, CalendarOutlined, MenuOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 import React from 'react';
 import axios from '../API/axios.js';
 import './Navigation.css';
-
-// const { SubMenu } = Menu;
 
 class Navigation extends React.Component {
   constructor(props) {

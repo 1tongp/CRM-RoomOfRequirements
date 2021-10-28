@@ -21,13 +21,11 @@ var CalendarSchema = new Schema({
         default: ''
     },
     
-    // {enum:{Private, Public}}
     visibility: {
         type: String,
         default: 'Private'
     },
 
-    // 0900AM == 09:00, 1345PM == 13:45
     startTime:{
         type: String,
     },

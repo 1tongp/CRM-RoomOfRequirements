@@ -1,11 +1,10 @@
 import Navigation from "../components/Navigation";
 import { Avatar, Image } from "antd";
-import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
+import { AntDesignOutlined } from "@ant-design/icons";
 import "../components/component.css";
 import "./Profile.css";
 import ChangeForm from "./ChangeForm.js";
-import UploadImage from "./UploadImage.js";
-import UploadImage2 from "./UploadImage2.js";
+
 
 
 function Profile(props) {
@@ -24,10 +23,6 @@ function Profile(props) {
                     srcSet=""
                     alt="Change profile photo"
                 />
-                {/* <UploadImage /> */}
-                {/* <UploadImage2 /> */}
-                {/* <Test className="Upload" />  */}
-                {/* <ChangeImage /> */}
                 <div className="lay2">
                     <div>
                         <ChangeForm data={props} />

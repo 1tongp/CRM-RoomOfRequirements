@@ -10,9 +10,6 @@ function CustomerHistory(props) {
     console.log(props);
     const { Search } = Input;
     const [historyData, setHistory] = useState([]);
-    const [insurance, setIns] = useState("");
-    const [staffLast, setLast] = useState("");
-    const [staffName, setSN] = useState("");
 
     useEffect(() => {
         axios.get("/history/list/" + props.data.data.customer).then((response) => {
@@ -20,16 +17,8 @@ function CustomerHistory(props) {
                 setHistory(response.data.history);
             }
         });
-        axios.get("staff/" + props.data.data.staff).then((response) => {
-            if(response.data.success){
-                setSN(response.data.staff.givenName + " " + response.data.staff.familyName)
-            } 
-        })
     }, []);
 
-    
-    console.log("history data: ");
-    console.log(historyData);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 

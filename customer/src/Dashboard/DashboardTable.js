@@ -1,6 +1,6 @@
 import { Table, Tag, Space } from "antd";
 import React from "react";
-const { Column, ColumnGroup } = Table;
+const { Column} = Table;
 
 export default function DashboardTable(props) {
     console.log(props);

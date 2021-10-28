@@ -17,12 +17,6 @@ var OrderSchema = new Schema({
         default: 'pending',
     },
 
-    // payment: {
-    //     type: Number,
-    //     required: true,
-    //     default: 0
-    // },
-
     detail:{
         type: String,
         default: null

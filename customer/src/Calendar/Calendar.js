@@ -2,23 +2,16 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState, setState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Calendar.css";
 import axios from "../API/axios.js";
 import CustomerList from "./CustomerExpired.js";
-
-import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
-
 import { Button, Modal, Form } from "react-bootstrap";
-
 import Navigation from "../components/Navigation";
-import moment from "moment";
-import { message } from "antd";
 import poptest from "./PopupTest";
 
 function EventPopup(props) {
@@ -36,7 +29,6 @@ function EventPopup(props) {
 
     const [allEvents, setEventList] = useState([]);
     const [publicEvents, setPublic] = useState([]);
-    const [creator, setCreator] = useState('');
     useEffect(() => {
         axios
             .get(
@@ -47,9 +39,7 @@ function EventPopup(props) {
             .then((response) => {
                 if (response.data.success) {
                     setEventList(response.data.events);
-                    //console.log(allEvents)
                 }
-                // console.log(typeof(response.data.events[1].start))
             });
         axios
             .get(
@@ -60,7 +50,6 @@ function EventPopup(props) {
             .then((response) => {
                 if (response.data.success) {
                     setPublic(response.data.events);
-                    //console.log(publicEvents)
                 }
             });
     }, []);
@@ -79,7 +68,6 @@ function EventPopup(props) {
             }
         });
         allEventss.push(allEvents[i]);
-        // console.log(allEvents[i])
     }
     for (let i = 0; i < publicEvents.length; i++) {
         publicEvents[i].start = new Date(publicEvents[i].start);
@@ -94,78 +82,16 @@ function EventPopup(props) {
         });
         allEventss.push(publicEvents[i]);
     }
-    console.log(allEventss);
-
-    // dummy data
-    // The input for month indication is smaller than the true month by one -> 6 means 7(July)
-    const events = [
-        // month - 1 => index
-        // start time : end time (exclusive)
-        {
-            title: "Big Meeting",
-            allDay: true,
-            start: new Date(2021, 7, 2),
-            end: new Date(2021, 7, 2),
-        },
-        {
-            title: "Vacation",
-            start: new Date(2021, 8, 7, 7, 0, 0),
-            end: new Date(2021, 8, 7, 11, 0, 0),
-        },
-        {
-            title: "Conference",
-            start: new Date(2021, 9, 23, 7, 0, 0),
-            end: new Date(2021, 9, 23, 13, 0, 0),
-        },
-        {
-            title: "contact client",
-            start: new Date(2021, 8, 23, 15, 0, 0),
-            end: new Date(2021, 8, 23, 16, 0, 0),
-        },
-        {
-            title: "contact client",
-            start: new Date(2021, 8, 23, 19, 0, 0),
-            end: new Date(2021, 8, 23, 20, 0, 0),
-        },
-        // props.loction.state.staff.id
-    ];
-
-    const aevent = [
-        {
-            title: "test",
-            start: "2021-08-12T15:01:00.000Z",
-            end: "2021-08-12T04:01:00.000Z",
-        },
-    ];
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    {/* new set up here */ }
-    const [showUpdate, setShowUpdate] = useState(false);
-    const handleUpdateClose = () => setShowUpdate(false);
-    const handleUpdateShow = () => setShowUpdate(true);
-
-
     const [newEvent, setNewEvent] = useState({ name:"", title: "", visibility: "", type: "", start: new Date().toLocaleDateString, end: new Date().toLocaleDateString })
-    const [allEvent, setAllEvent] = useState(events)
-
-    // console.log(allEvent)
-
+    
     // to reload the page showing new added events on the calendar
     const handleSubmit = () => {
         // The datetime is changed into the correct Date form via 'new Date()'
-        // console.log(new Date(newEvent.start))
-        // console.log(newEvent.start)
-        console.log(newEvent);
-        console.log(newEvent.start);
-        console.log(newEvent.end);
-        console.log(typeof newEvent.end);
-        console.log({ ...allEvent, newEvent });
-        // event is not updated in the list (one step behind????)
-        setAllEvent({ ...allEvent, newEvent });
-        console.log(allEvent);
+        
         axios.post("/calendar/create",
             {
                 staff: props.location.state.staff.id,
@@ -189,90 +115,6 @@ function EventPopup(props) {
                 }
             })
     };
-
-    const changeDatetype = (newEvent) => {
-        console.log(newEvent);
-        console.log(Date(newEvent.start));
-        console.log(Date(newEvent.end));
-    };
-
-    const addeventtolist = () => {
-        console.log(newEvent.start);
-        console.log(Date(newEvent.start));
-
-        /*    
-        for (let i = 0; i < {...allEvent, newEvent}.length; i++) {
-            console.log(typeof(i.start))
-        }
-        console.log({...allEvent, newEvent})
-        //setAllEvent({...allEvent, newEvent})
-        console.log(allEvent)
-        */
-    };
-
-    const addenwevent = () => {
-        return {};
-    };
-
-    const eventPropGetter = () => {
-        const style = {
-            backgroundColor: "#FF0000",
-            paddingLeft: "10px",
-            color: "white",
-        };
-        return {
-            style: style,
-        };
-    };
-
-    const formats = {
-        weekdayFormat: (date, culture, localizer) =>
-            localizer.format(date, "Mon", culture),
-    };
-
-
-    const [show2, setShow2] = useState(false);
-    const handleClose2 = () => setShow2(false);
-
-    const handleShow2 = () => setShow2(true);
-//     const customerModal = (singleEvent) => {
-//         return(
-
-        
-//         <>
-//             <Button
-//                 onClick={handleShow2}>
-                
-//             </Button>
-//             <Modal
-//                 aria-labelledby="contained-modal-title-vcenter"
-//                 centered
-//                 show={show2}
-//                 onHide={handleClose2}
-//                 style={{ marginTup: "2vh" }}
-//             >
-//                 <Modal.Header closeButton>
-//                     <Modal.Title>Sign In</Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>
-//                     <Form>
-
-//                         {
-//                             singleEvent.title
-//                         }
-
-//                     </Form>
-//                 </Modal.Body>
-//                 <Modal.Footer>
-
-//                 </Modal.Footer>
-//             </Modal>
-//         </>
-//         )
-// }
-
-
-
 
     return (
         <>
@@ -332,22 +174,6 @@ function EventPopup(props) {
                                             <Form.Text className="text-mutes"></Form.Text>
                                         </Form.Group>
 
-                                        {/* commrnt out the text from for visibility
-                                        <Form.Group controlId="formEventTitle">
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Event Visibility"
-                                                onChange={(e) =>
-                                                    setNewEvent({
-                                                        ...newEvent,
-                                                        visibility:
-                                                            e.target.value,
-                                                    })
-                                                }
-                                            />
-                                            <Form.Text className="text-mutes"></Form.Text>
-                                        </Form.Group> 
-                                        */}
                                         <Form.Group controlId="formEventTitle">
                                             <Form.Control 
                                                 as = 'select'
@@ -432,9 +258,6 @@ function EventPopup(props) {
                                 // popup
                                 localizer={localizer}
                                 events={allEventss}
-                                // defaultView='week'
-                                // startAccessor={(allEvents) => { const start = Date(allEvents.start)}}
-                                // startAccessor={(allEvents) => { return moment(allEvents.start)}}
                                 startAccessor="start"
                                 endAccessor="end"
                                 style={{ height: 460, margin: "50px" }}
@@ -445,13 +268,6 @@ function EventPopup(props) {
                                 }
                                 components = {{event:
                                     poptest}}
-                                // alert(allEventss.title)
-
-
-
-                                // onClick = {(allEventss) =>
-                                //     alert(allEventss.title)
-                                // }
                                 eventPropGetter={(allEventss) => {
                                     const backgroundColor = allEventss.allDay
                                         ? "#8a083e"

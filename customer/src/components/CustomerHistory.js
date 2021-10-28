@@ -10,8 +10,6 @@ function CustomerHistory(props) {
     console.log(props);
     const { Search } = Input;
     const [historyData, setHistory] = useState([]);
-    const [insurance, setIns] = useState("");
-    const [staffLast, setLast] = useState("");
     useEffect(() => {
         axios.get("/history/list/" + props.data.id).then((response) => {
             if (response.data.success) {

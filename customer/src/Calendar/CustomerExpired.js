@@ -1,9 +1,7 @@
 import "./CustomerExpired.css";
 import axios from "../API/axios.js";
-import React, { useState, setState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Render from "./ExpiredRender";
-//import CustomerHistory from "./ExpCusHistory";
-import CustomerHistory from "../components/CustomerHistory";
 
 function ExpireList(props) {
     console.log(props)
@@ -31,12 +29,6 @@ function ExpireList(props) {
                 {(orders.length > 0) ? orders.map((singleOrder) => (
                     <Render data = {singleOrder}></Render>
                 )):<p>no orders</p>}
-
-                {/*}
-                {(orders.length > 0) ? orders.map((singleOrder) => (
-                    <CustomerHistory className="button" data={singleOrder}> </CustomerHistory>
-                )):<p>no orders</p>}
-                */}
             </div>
         </>
     );

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
 import "./Customer.css";
-import { useEffect } from "react";
 import axios from "../API/axios.js";
 
 function CustomerAssign(props) {
@@ -11,10 +10,6 @@ function CustomerAssign(props) {
 
     const showModal = () => {
         setIsModalVisible(true);
-    };
-
-    const handleOk = () => {
-        setIsModalVisible(false);
     };
 
     const handleCancel = () => {
@@ -39,7 +34,6 @@ function CustomerAssign(props) {
                         })
                 } else {
                     alert("Failed to assign");
-                    // message.error(response.data.error)
                 }
             })
             .catch((error) => {

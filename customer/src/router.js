@@ -6,7 +6,6 @@ import Customer from "./Customer/Customer.js";
 import ProfileChange from "./Profile/ProfileChange.js";
 import ProfileShow from "./Profile/ProfileShow.js";
 import Calendar from "./Calendar/Calendar.js";
-//import Chat from './Chat/Chat.js';
 import Chat from "./TeamChat/Chat/Chat.js";
 import GroupBeforeChat from "./Group/GroupBeforeChat.js";
 import ManagerPage from "./Group/ManagerPage.js";

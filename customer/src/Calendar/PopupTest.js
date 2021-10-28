@@ -1,7 +1,4 @@
-import PropTypes from "prop-types";
-import { Row, Col, Alert } from "react-bootstrap";
-import { Modal, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import React from "react";
 import { Menu, Dropdown, Button } from 'antd';
 import axios from "../API/axios.js";
 import { message } from "antd";
@@ -11,9 +8,6 @@ class MyEvent extends React.Component {
         super(props)
         console.log(this.props)
     }
-    // componentDidMount(){
-    //     MyGlobal.popOver();
-    // }
     state = {
         visible: false,
     };
@@ -40,8 +34,6 @@ class MyEvent extends React.Component {
             window.location.reload(false)
         }
     }
-
-
 
     menu = (
         <>
@@ -86,15 +78,10 @@ class MyEvent extends React.Component {
                     <Dropdown overlay={this.menu} placement="bottomCenter" arrow>
                         <p>{this.props.event.title}</p>
                     </Dropdown>
-
-
                 </div>
-
-
             </div>
         );
     }
 }
-
 
 export default MyEvent

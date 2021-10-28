@@ -27,11 +27,9 @@ StaffRouter.post('/login/unhash', staffController.staffLoginUnhashPost);
 // GET request to get team members
 StaffRouter.get('/member/:teamId', staffController.teamMemberGet);
 
-// // GET request to get the statisics of staff selling rranking
-// StaffRouter.get('/statistic/:teamId', staffController.staffRankingGet);
-
 // GET request to get team members
 StaffRouter.post('/number/:id', staffController.orderNumUpdate);
 
+// GET request to get the staff details
 StaffRouter.get('/', staffController.staffGet);
 module.exports = StaffRouter;

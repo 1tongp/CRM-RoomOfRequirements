@@ -88,10 +88,7 @@ const CustomerAddHistoryForm = ({ visible, onCreate, onCancel }) => {
         </Modal>
     );
 };
-// onTrigger = (event) => {
-//     this.props.parentCallback(event);
-//     event.preventDefault();
-// }
+
 const AddHistoryPage = (props) => {
     const [visible, setVisible] = useState(false);
 
