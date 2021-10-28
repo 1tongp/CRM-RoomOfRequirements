@@ -260,37 +260,6 @@ exports.teamMemberGet = function(req, res){
     })
 }
 
-// // GET request to get the team members based on the 'team ObjectID'
-// exports.staffRankingGet = function(req, res){
-
-//     // check validation of the order id
-//     Staff.find({team: req.params.teamId}, function(err, team){
-//         if(!team){
-//             res.status(404).json({success: false, message: "team is not found!"})
-//         }
-//         else{
-//             var info = [[]]
-//             for(i = 0; i< team.length; i++){
-//                 Order.find({staff: team[i]._id}, function(err, order){
-//                     if(!order){
-//                         info[i].push({
-//                             "member": order.givenName + " " + order.familyName,
-//                             "orders": 0
-//                         })
-//                     }
-//                     else{
-//                         info[i].push({
-//                             "member": order.givenName + " " + order.familyName,
-//                             "orders": order.length
-//                         })
-//                     }
-//                 })
-//             }
-//             res.status(200).json({success: true, statistic: info})   
-//         }
-//     })
-// }
-
 // POST request to update the number of orders for a particular staff
 exports.orderNumUpdate = function (req, res) {
     const { orderNum } = req.body;

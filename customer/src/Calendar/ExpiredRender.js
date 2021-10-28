@@ -1,14 +1,11 @@
-//import "./CustomerExpired.css";
 import axios from "../API/axios.js";
-import React, { useState, setState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./ExpiredRender.css";
-//import CustomerHistory from "./ExpCusHistory";
 import CustomerHistory from "../components/CalendarHistory";
-import { Menu, Dropdown, Button } from "antd";
+import { Menu, Dropdown} from "antd";
 function Render(props) {
     console.log(props)
     const [name, setName] = useState('')
-    const [date, setDate] = useState('')
     const [detail, setDetail] = useState('')
     useEffect(() => {
         axios.get("/customer/" + props.data.customer).then((response) => {
@@ -22,7 +19,6 @@ function Render(props) {
 
     }, []);
     console.log(detail)
-    // setDate(props.data.expireDate.slice(0,9))
 
     const info = (
         <>

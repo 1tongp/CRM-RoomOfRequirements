@@ -1,12 +1,9 @@
 import React from 'react'
-import { Statistic, Card, Row, Col } from 'antd';
+import { Statistic, Card, Row} from 'antd';
 import {Chart, DemoBar} from './Chart';
-import DashboardTable from './DashboardTable';
 import './DashboardContent.css';
 import axios from '../API/axios.js';
 import {useState, useEffect} from 'react';
-import { DivOverlay } from 'leaflet';
-
 import home from '../pictures/home.jpeg';
 import car from '../pictures/car.jpeg';
 import landlord from '../pictures/landlord.jpeg';
@@ -22,8 +19,6 @@ function DashboardContent(props) {
 
     // get all customers for a particular staff
     const [numCustomer, setCus] = useState(0);
-    const [numOrder, setOrd] = useState(0);
-
 
     useEffect(() =>{
         
@@ -33,15 +28,6 @@ function DashboardContent(props) {
             if (response.data.success) {
                 setCus(response.data.customers.length)
             }   
-        })
-
-        axios.get('/order/' + props.data.location.state.staff.id).then(response => {
-            console.log(props);
-            console.log(response);
-            if (response.data.success) {
-                setOrd(response.data.orders.length)
-            }
-            
         })
       }, [])
 
@@ -53,14 +39,8 @@ function DashboardContent(props) {
                 </span>
                 <br />
                 <br />
-                {/* resize */}
                 <h4>Insurance Summary</h4>
 
-                {/*
-                <span className="Title">
-                    Insurance Summary
-                </span>
-                */}
                 <Row className='cardrow'>
                     <Card className='card1'
                     style={{ width: 200, marginRight: 16 }}
@@ -122,7 +102,6 @@ function DashboardContent(props) {
                 </Card>
 
                 <Card 
-                // title="Inner Card title" extra={<a href="https://www.hsbc.com.au/insurance/products/landlord/">More</a>}
                 style={{ height: 300, marginRight: 12 }}
                     cover={
                     <img
@@ -158,11 +137,8 @@ function DashboardContent(props) {
                 <br />
 
                 <h4>Monthly trading volume</h4>
-                <div className='trading'>
-            
+                <div className='trading'>           
                     <Chart className='chart' data = {props}/>
-                
-                    {/* <DashboardTable data={props} numCus = {numCustomer}/> */}
                 </div> 
             </div>         
         </div>      

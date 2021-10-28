@@ -3,7 +3,6 @@
 // "npm run server" to run the server and connect to database
 
 const express = require('express');
-//const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser  = require('body-parser');
 const app = require('express')()
@@ -14,7 +13,7 @@ const io = require('socket.io')(server, {
       origin: '*',
     }
 });
-// const io = require("socket.io")(server);
+
 const path = require('path');
 // lead routes in
 const staff = require('./routes/staff');
@@ -28,10 +27,7 @@ const history = require('./routes/history');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
 app.use(cors());
-// app.get('/', (req, res) => {
-//     res.status(200).send("Welcome to CRM Web App!")
-// })
-// Bodyparser Middleware
+
 app.use(bodyParser.json());
 
 // chat
@@ -69,24 +65,6 @@ io.on('connect', (socket) => {
   })
 });
 
-
-/*
-// chat starts here
-io.on('connection', socket => {
-  socket.on('message', ({ name, message }) => {
-    io.emit('message', { name, message })
-  })
-})
-*/
-
-
-// io.of("api/socket").on("connection", (socket) => {
-//     console.log("socket.io: User connected: ", socket.id);
-//     socket.on("disconnected", () => {
-//         console.log("socket.io : User disconnected: ", socket.id);
-//     });
-// });
-
 // connect mongoose new method
 const database = require('./config/keys').mangoURL;
 mongoose
@@ -94,38 +72,6 @@ mongoose
         {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
     .then(() => console.log("Successfully Connected to MongoDB!! Start run the request!"))
     
-// const connection = mongoose.connection;
-// connection.once("open", () => {
-//     console.log("Setting change streams");
-//     const orderChangeStream = connection.collection("orders").watch();
-
-//     orderChangeStream.on("change", (change) => {
-//         switch(change.operationType){
-//             case "insert":
-//                 console.log("inseration detected at backend");
-//                 const order = {
-//                     _id : change.fullDocument._id,
-//                     customer : change.fullDocument.customer,
-//                     vendor : change.fullDocument.vendor,
-//                     snacksList : change.fullDocument.snacksList,
-//                     createTime : change.fullDocument.createTime
-//                 };
-//                 io.of("/api/socket").emit("newOrder", order);
-//                 break;
-            
-//             case "update":
-//                 console.log("update detected at backend");
-//                 io.of("/api/socket").emit("updateOrder", change.documentKey._id);
-//                 break;
-
-//             case "delete":
-//                 console.log("deletion detected at backend");
-//                 io.of("/api/socket").emit("deleteOrder", change.documentKey._id);
-//                 break;
-//         }
-//     })
-// })
-
 // use the routes
 app.use('/staff', staff);
 app.use('/customer',customer);

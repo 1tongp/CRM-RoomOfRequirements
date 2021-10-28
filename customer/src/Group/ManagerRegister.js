@@ -85,11 +85,6 @@ function Register(props) {
                             console.log("success");
                             console.log(response);
                             alert("Staff has been successfully added");
-                            // props.history.push('/customer', {
-                            //     staff: response.data.staff,
-                            //     vendors: vendors,
-                            //     position: [lat, lng]
-                            // });
                             window.location.reload(false);
                         } else {
                             alert(
@@ -260,14 +255,12 @@ function Register(props) {
                         ]}
                     >
                         <Input
-                            // addonBefore={prefixSelector}
                             style={{
                                 width: "100%",
                             }}
                             onChange={(e) => setphone(e.target.value)}
                         />
-
-                        {/* <Form.Control onChange={e => setphone(e.target.value)} /> */}
+                      
                     </Form.Item>
 
                     <Form.Item
@@ -322,10 +315,8 @@ function Register(props) {
                         >
                             <Option value="Staff">Staff</Option>
                             <Option value="Manager">Manager</Option>
-                            {/* <Option value="other">Other</Option> */}
                         </Select>
 
-                        {/* <Input onChange={e => setRole(e.target.value)} /> */}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
                         <Button

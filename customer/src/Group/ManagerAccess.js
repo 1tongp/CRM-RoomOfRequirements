@@ -27,7 +27,6 @@ class ManagerAccess extends React.Component {
                 Manager Priority Access
             </Button> : <></>}
             
-            {/* <button type="button" class="btn btn-secondary">Manager Priority Access</button> */}
             </>
         );
     }

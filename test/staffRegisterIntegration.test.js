@@ -10,7 +10,7 @@ const testStaffSignup = {
 	    "teamNumber": "1",
         "givenName": "Kerry1",
         "familyName": "liu1",
-        "loginEmail": "testnew1@test",
+        "loginEmail": "testnew3@test",
         "password": "365",
         "role": "Manager",
         "phone": 13580807979,

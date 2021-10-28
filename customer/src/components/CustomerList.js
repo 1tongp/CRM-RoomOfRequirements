@@ -334,8 +334,6 @@ function CustomerList(props) {
                         }}
                     />
                 </div>
-                {/* apply this to the table */}
-                {/* <CustomerHistory></CustomerHistory> */}
 
                 <div>
                     <Search

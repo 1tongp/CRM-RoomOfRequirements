@@ -31,7 +31,6 @@ function Login(props) {
                         key: "1",
                     });
                 } else {
-                    // alert('Invalid Email or Password')
                     message.error(response.data.error);
                 }
             })

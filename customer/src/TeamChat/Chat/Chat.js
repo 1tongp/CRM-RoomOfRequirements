@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
-
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
-
-
 import Navigation from '../../components/NavigationChat';
 import TeamList from '../../Group/TeamListPro.js';
 import UploadFile from '../../Group/UploadFile.js';
-
-
 import './Chat.css';
-import axios from "../../API/axios";
 
 const ENDPOINT = "https://crm-room-of-requirement.herokuapp.com/" || "http://localhost:8080";
 

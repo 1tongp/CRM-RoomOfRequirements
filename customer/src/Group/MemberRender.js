@@ -1,7 +1,6 @@
 import "./TeamList.css";
-import axios from "../API/axios.js";
-import React, { useState, setState, useEffect } from "react";
-import { Menu, Dropdown, Button } from "antd";
+import React from "react";
+import { Menu, Dropdown} from "antd";
 
 function Render(props) {
     console.log(props);

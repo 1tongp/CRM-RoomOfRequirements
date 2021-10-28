@@ -2,25 +2,10 @@ import React from 'react';
 
 import onlineIcon from '../../icons/onlineIcon.png';
 import closeIcon from '../../icons/closeIcon.png';
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import './InfoBar.css';
-import { useHistory } from "react-router-dom";
 import axios from "../../API/axios.js";
 import io from "socket.io-client";
-
-// const InfoBar = ({ props, room }) => (
-//   <div className="infoBar">
-//     <div className="leftInnerContainer">
-//       <img className="onlineIcon" src={onlineIcon} alt="online icon" />
-//       <h3>{room}</h3>
-//     </div>
-//     <div className="rightInnerContainer">
-//       <Button onClick={onClose}>
-//         <img src={closeIcon} alt="close icon" />
-//       </Button>
-//     </div>
-//   </div>
-// );
 
 function InfoBar (props){
   const ENDPOINT = "https://crm-room-of-requirement.herokuapp.com/" || "http://localhost:8080";
