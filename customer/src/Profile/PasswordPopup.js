@@ -5,47 +5,6 @@ import { Modal } from "antd";
 import React, { useState } from "react";
 import axios from "../API/axios.js";
 
-// function PasswordPopup(props) {
-//     const [isModalVisible, setIsModalVisible] = useState(false);
-
-//     const showModal = () => {
-//         setIsModalVisible(true);
-//     };
-
-// const [password2, setPassword2] = useState('');
-// const [password, setPassword] = useState('');
-
-//     const handleCancel = () => {
-//     setIsModalVisible(false);
-//     };
-
-//     return (
-//         <>
-//         <Button className='button' onClick={showModal}>
-//             Details
-//         </Button>
-//         <Modal title="Change Password" visible={isModalVisible} onOk={handleCancel} onCancel={handleCancel}>
-// <div className="popUp-title">Change Password for account: "xxx@hsbc.com"</div>
-//     <Form>
-//         <Col>
-//         <Form.Group as={Col} controlId="formGridOldPassword">
-//         <Form.Label>New Password</Form.Label>
-//         <Form.Control size="lg" type="password" placeholder="Enter Your New Password" onChange={e => setPassword(e.target.value)} />
-//         </Form.Group>
-//         </Col>
-//         <Col>
-//         <Form.Group as={Col} controlId="formGridNewPassword">
-//         <Form.Label>Comfirm Password</Form.Label>
-//         <Form.Control size="lg" type="password2" placeholder="Comfirm Your New Password" onChange={e => setPassword2(e.target.value)} />
-//         </Form.Group>
-//         </Col>
-//     </Form>
-//                         {/* <button className="close-btn" onClick={() => setIsModalVisible(false)}>Save and close</button> */}
-//         </Modal>
-//         </>
-//     );
-// }
-
 class PasswordPopup extends React.Component {
     state = {
         loading: false,
@@ -89,11 +48,6 @@ class PasswordPopup extends React.Component {
                             console.log("success");
                             console.log(response);
                             alert("Staff has been successfully updated");
-                            // props.history.push('/customer', {
-                            //     staff: response.data.staff,
-                            //     vendors: vendors,
-                            //     position: [lat, lng]
-                            // }); 
                         }                        
                         else {
                             alert("updated Fail: some error exist")

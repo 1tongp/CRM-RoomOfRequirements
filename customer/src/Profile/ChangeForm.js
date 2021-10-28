@@ -59,10 +59,6 @@ class ChangeForm extends React.Component {
         this.setState({ modal1Visible });
     }
 
-    // handleChange = e => {
-    //     this.setState({ [e.target.name]: e.target.value });
-    // };
-
     NameFirstChange = e => {
         this.setState({ firstName : e.target.value });
     };
