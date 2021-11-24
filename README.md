@@ -125,7 +125,7 @@ This is an example of how to list things you need to use the software and how to
 
 Distributed under the MIT License.
 
-## Addtional Documents
+## Additional Documents
 Confluence: https://room-of-requirement.atlassian.net/wiki/spaces/ROR/overview?homepageId=65716
 
 ## Login Detail
