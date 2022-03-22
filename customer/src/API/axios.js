@@ -4,7 +4,7 @@ import _axios from "axios";
 const axios = baseUrl => {
     const instance = _axios.create({
         // connected to the heroku
-        baseURL: "https://crm-room-of-requirement.herokuapp.com/" || "http://localhost:8080"
+        baseURL: "https://roomofrequirement-crm.herokuapp.com/" || "http://localhost:8080"
     });
     return instance;
 };
