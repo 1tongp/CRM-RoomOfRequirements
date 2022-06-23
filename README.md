@@ -1,14 +1,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/1tongp/COMP30022-Team020">
+  <a href="https://github.com/1tongp/CRM-RoomOfRequirements">
     <img src="./customer/public/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">HSBC CRM System</h3>
 
   <p align="center">
-    An CRM system built for the HSBC insurance department!
+    A CRM system built for the HSBC insurance department!
     <br />
     <a href="https://room-of-requirement.atlassian.net/wiki/spaces/ROR/pages/14975667/Introduction"><strong>Explore the project Confluence 
     page »</strong></a>
@@ -91,7 +91,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repository
     ```sh
-    git clone https://github.com/1tongp/COMP30022-Team020.git
+    git clone https://github.com/1tongp/CRM-RoomOfRequirements.git
     ```
 2. Install NPM packages in main folder (backend)
     ```sh
